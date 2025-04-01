@@ -79,6 +79,144 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
     alert("Build saved successfully!")
   }
 
-  
+  return (
+    <Card className="bg-zinc-900/50 border-zinc-800 sticky top-4">
+      <CardHeader className="pb-3">
+        <CardTitle className="flex justify-between items-center">
+          <span>Build Summary</span>
+          <Badge variant="outline" className="bg-purple-900/30 text-purple-300 border-purple-500">
+            {selectedComponentsCount}/8 Parts
+          </Badge>
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4 mb-6">
+          <Input
+            value={buildName}
+            onChange={(e) => setBuildName(e.target.value)}
+            className="bg-zinc-800 border-zinc-700 text-white"
+            placeholder="Name your build"
+          />
+
+          <div className="h-[300px] overflow-y-auto pr-2 space-y-2">
+            <AnimatePresence>
+              {Object.entries(selectedComponents).map(([type, component]) => {
+                if (!component) return null
+
+                return (
+                  <motion.div
+                    key={type}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex items-center justify-between bg-zinc-800/50 rounded-lg p-3 border border-zinc-700">
+                      <div className="flex items-center">
+                        <div className="mr-3 text-purple-400">{componentIcons[type as ComponentType]}</div>
+                        <div>
+                          <div className="font-medium line-clamp-1">{component.name}</div>
+                          <div className="text-sm text-zinc-400">${component.price.toFixed(2)}</div>
+                        </div>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-zinc-400 hover:text-white hover:bg-zinc-700"
+                        onClick={() => onRemoveComponent(type as ComponentType, null)}
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </AnimatePresence>
+
+            {selectedComponentsCount === 0 && (
+              <div className="text-center py-10 text-zinc-500">
+                <p>No components selected yet.</p>
+                <p className="text-sm">Start by selecting parts from the tabs above.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="border-t border-zinc-800 pt-4 mb-6">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-zinc-400">Subtotal</span>
+            <span>${totalPrice.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between items-center text-lg font-bold">
+            <span>Total</span>
+            <span>${totalPrice.toFixed(2)}</span>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          <Button className="w-full bg-purple-600 hover:bg-purple-700" disabled={selectedComponentsCount === 0}>
+            Complete Build
+          </Button>
+
+          <div className="grid grid-cols-3 gap-2">
+            <Button
+              variant="outline"
+              className="bg-zinc-800 border-zinc-700 hover:bg-zinc-700"
+              onClick={handleSaveBuild}
+              disabled={selectedComponentsCount === 0}
+            >
+              <Download className="h-4 w-4 mr-1" />
+              Save
+            </Button>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="bg-zinc-800 border-zinc-700 hover:bg-zinc-700"
+                  disabled={selectedComponentsCount === 0}
+                >
+                  <Share2 className="h-4 w-4 mr-1" />
+                  Share
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="bg-zinc-900 border-zinc-700">
+                <DialogHeader>
+                  <DialogTitle>Share Your Build</DialogTitle>
+                </DialogHeader>
+                <div className="py-4">
+                  <p className="text-zinc-400 mb-4">Copy this link to share your build with others:</p>
+                  <div className="flex items-center space-x-2">
+                    <Input
+                      readOnly
+                      value={`https://rigcrafter.com/build/${Math.random().toString(36).substring(2, 8)}`}
+                      className="bg-zinc-800 border-zinc-700"
+                    />
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="bg-zinc-800 border-zinc-700 hover:bg-zinc-700"
+                      onClick={handleCopyBuild}
+                    >
+                      <Clipboard className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+
+            <Button
+              variant="outline"
+              className={`bg-zinc-800 border-zinc-700 hover:bg-zinc-700 ${isCopied ? "text-green-500" : ""}`}
+              onClick={handleCopyBuild}
+              disabled={selectedComponentsCount === 0}
+            >
+              {isCopied ? "Copied!" : "Copy"}
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
 }
 
