@@ -60,7 +60,76 @@ export default function ComponentSelector({ type, selectedComponent, onSelect, s
     return labels[type]
   }
 
-  
+  return (
+    <div>
+      <div className="mb-6 flex flex-col md:flex-row gap-4">
+        <div className="relative flex-grow">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400" size={18} />
+          <Input
+            type="text"
+            placeholder={`Search ${getTypeLabel(type)}...`}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 bg-zinc-900 border-zinc-700"
+          />
+        </div>
+        <div className="flex gap-2">
+          <select
+            className="bg-zinc-900 border border-zinc-700 rounded-md px-3 py-2 text-sm"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as "price" | "rating" | "name")}
+          >
+            <option value="rating">Sort by Rating</option>
+            <option value="price">Sort by Price</option>
+            <option value="name">Sort by Name</option>
+          </select>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+            className="bg-zinc-900 border-zinc-700"
+          >
+            {sortOrder === "asc" ? "↑" : "↓"}
+          </Button>
+        </div>
+      </div>
+
+      {suggestions.length > 0 && (
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-3 text-purple-400">Recommended for your build</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {suggestions.slice(0, 2).map((component) => (
+              <ComponentCard
+                key={component.id}
+                component={component}
+                isSelected={selectedComponent?.id === component.id}
+                onSelect={onSelect}
+                isSuggested={true}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {filteredComponents.map((component) => (
+          <ComponentCard
+            key={component.id}
+            component={component}
+            isSelected={selectedComponent?.id === component.id}
+            onSelect={onSelect}
+            isSuggested={isSuggested(component)}
+          />
+        ))}
+      </div>
+
+      {filteredComponents.length === 0 && (
+        <div className="text-center py-10 text-zinc-400">
+          <p>No components found matching your criteria.</p>
+        </div>
+      )}
+    </div>
+  )
 }
 
 interface ComponentCardProps {
