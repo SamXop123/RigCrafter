@@ -36,7 +36,36 @@ export default function AboutSection() {
               className="rounded-3xl relative z-10"
             />
           </div>
-          
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">About drannel</h2>
+            <p className="text-lg mb-6 text-zinc-300">
+              drannel is not just a beat maker; he's a sonic architect crafting the soundscapes of tomorrow. With a
+              decade of experience and an ear for innovation, drannel pushes the boundaries of what's possible in music
+              production.
+            </p>
+            <p className="text-lg mb-8 text-zinc-300">
+              From chart-topping hits to underground anthems, drannel's versatile style and meticulous attention to
+              detail ensure that each beat is not just a track, but a journey waiting to be explored by the right
+              artist.
+            </p>
+            <div className="grid grid-cols-2 gap-6">
+              {achievements.map((achievement, index) => (
+                <motion.div
+                  key={achievement.label}
+                  className="bg-zinc-900/50 rounded-lg p-4 border border-white/10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center mb-2">
+                    <div className="mr-2 text-white">{achievement.icon}</div>
+                    <div className="text-2xl font-bold">{achievement.value}</div>
+                  </div>
+                  <div className="text-sm text-zinc-400">{achievement.label}</div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
