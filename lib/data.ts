@@ -1,0 +1,861 @@
+import type { Component, ComponentType } from "./types"
+
+// Mock data for components
+const cpus: Component[] = [
+  {
+    id: "cpu-1",
+    type: "cpu",
+    name: "AMD Ryzen 9 7950X",
+    brand: "AMD",
+    price: 699.99,
+    rating: 4.9,
+    description: "16-core, 32-thread processor with high clock speeds for gaming and content creation",
+    specs: {
+      Cores: "16",
+      Threads: "32",
+      BaseFrequency: "4.5 GHz",
+      BoostFrequency: "5.7 GHz",
+      Cache: "64MB",
+      TDP: "170W",
+    },
+    tags: ["AMD", "Ryzen 9", "AM5", "DDR5"],
+    compatibility: {
+      socket: "AM5",
+      tdp: 170,
+    },
+  },
+  {
+    id: "cpu-2",
+    type: "cpu",
+    name: "Intel Core i9-13900K",
+    brand: "Intel",
+    price: 589.99,
+    rating: 4.8,
+    description: "24-core, 32-thread processor with excellent single-core performance",
+    specs: {
+      Cores: "24 (8P+16E)",
+      Threads: "32",
+      BaseFrequency: "3.0 GHz",
+      BoostFrequency: "5.8 GHz",
+      Cache: "36MB",
+      TDP: "125W",
+    },
+    tags: ["Intel", "Core i9", "LGA1700", "DDR5", "DDR4"],
+    compatibility: {
+      socket: "LGA1700",
+      tdp: 125,
+    },
+  },
+  {
+    id: "cpu-3",
+    type: "cpu",
+    name: "AMD Ryzen 7 7800X3D",
+    brand: "AMD",
+    price: 449.99,
+    rating: 4.9,
+    description: "8-core, 16-thread processor with 3D V-Cache technology for gaming",
+    specs: {
+      Cores: "8",
+      Threads: "16",
+      BaseFrequency: "4.2 GHz",
+      BoostFrequency: "5.0 GHz",
+      Cache: "96MB",
+      TDP: "120W",
+    },
+    tags: ["AMD", "Ryzen 7", "AM5", "DDR5", "3D V-Cache"],
+    compatibility: {
+      socket: "AM5",
+      tdp: 120,
+    },
+  },
+  {
+    id: "cpu-4",
+    type: "cpu",
+    name: "Intel Core i7-13700K",
+    brand: "Intel",
+    price: 409.99,
+    rating: 4.7,
+    description: "16-core, 24-thread processor with great gaming and multitasking performance",
+    specs: {
+      Cores: "16 (8P+8E)",
+      Threads: "24",
+      BaseFrequency: "3.4 GHz",
+      BoostFrequency: "5.4 GHz",
+      Cache: "30MB",
+      TDP: "125W",
+    },
+    tags: ["Intel", "Core i7", "LGA1700", "DDR5", "DDR4"],
+    compatibility: {
+      socket: "LGA1700",
+      tdp: 125,
+    },
+  },
+  {
+    id: "cpu-5",
+    type: "cpu",
+    name: "AMD Ryzen 5 7600X",
+    brand: "AMD",
+    price: 299.99,
+    rating: 4.6,
+    description: "6-core, 12-thread processor with excellent gaming performance",
+    specs: {
+      Cores: "6",
+      Threads: "12",
+      BaseFrequency: "4.7 GHz",
+      BoostFrequency: "5.3 GHz",
+      Cache: "32MB",
+      TDP: "105W",
+    },
+    tags: ["AMD", "Ryzen 5", "AM5", "DDR5"],
+    compatibility: {
+      socket: "AM5",
+      tdp: 105,
+    },
+  },
+]
+
+const gpus: Component[] = [
+  {
+    id: "gpu-1",
+    type: "gpu",
+    name: "NVIDIA GeForce RTX 4090",
+    brand: "NVIDIA",
+    price: 1599.99,
+    rating: 4.9,
+    description: "Flagship GPU with exceptional performance for 4K and 8K gaming",
+    specs: {
+      VRAM: "24GB GDDR6X",
+      Boost: "2.52 GHz",
+      CUDA: "16384",
+      TDP: "450W",
+    },
+    tags: ["NVIDIA", "RTX 4090", "4K", "8K", "Ray Tracing"],
+    compatibility: {
+      tdp: 450,
+      pciSlots: 4,
+    },
+  },
+  {
+    id: "gpu-2",
+    type: "gpu",
+    name: "AMD Radeon RX 7900 XTX",
+    brand: "AMD",
+    price: 999.99,
+    rating: 4.7,
+    description: "High-end GPU with excellent performance for 4K gaming",
+    specs: {
+      VRAM: "24GB GDDR6",
+      Boost: "2.5 GHz",
+      Stream: "12288",
+      TDP: "355W",
+    },
+    tags: ["AMD", "Radeon", "RX 7900 XTX", "4K", "Ray Tracing"],
+    compatibility: {
+      tdp: 355,
+      pciSlots: 3,
+    },
+  },
+  {
+    id: "gpu-3",
+    type: "gpu",
+    name: "NVIDIA GeForce RTX 4080",
+    brand: "NVIDIA",
+    price: 1199.99,
+    rating: 4.8,
+    description: "High-end GPU with excellent performance for 4K gaming",
+    specs: {
+      VRAM: "16GB GDDR6X",
+      Boost: "2.51 GHz",
+      CUDA: "9728",
+      TDP: "320W",
+    },
+    tags: ["NVIDIA", "RTX 4080", "4K", "Ray Tracing"],
+    compatibility: {
+      tdp: 320,
+      pciSlots: 3,
+    },
+  },
+  {
+    id: "gpu-4",
+    type: "gpu",
+    name: "AMD Radeon RX 7800 XT",
+    brand: "AMD",
+    price: 499.99,
+    rating: 4.6,
+    description: "Mid-range GPU with great performance for 1440p gaming",
+    specs: {
+      VRAM: "16GB GDDR6",
+      Boost: "2.4 GHz",
+      Stream: "3840",
+      TDP: "263W",
+    },
+    tags: ["AMD", "Radeon", "RX 7800 XT", "1440p"],
+    compatibility: {
+      tdp: 263,
+      pciSlots: 2,
+    },
+  },
+  {
+    id: "gpu-5",
+    type: "gpu",
+    name: "NVIDIA GeForce RTX 4070",
+    brand: "NVIDIA",
+    price: 599.99,
+    rating: 4.7,
+    description: "Mid-range GPU with great performance for 1440p gaming",
+    specs: {
+      VRAM: "12GB GDDR6X",
+      Boost: "2.48 GHz",
+      CUDA: "5888",
+      TDP: "200W",
+    },
+    tags: ["NVIDIA", "RTX 4070", "1440p", "Ray Tracing"],
+    compatibility: {
+      tdp: 200,
+      pciSlots: 2,
+    },
+  },
+]
+
+const ram: Component[] = [
+  {
+    id: "ram-1",
+    type: "ram",
+    name: "Corsair Vengeance RGB DDR5-6000 32GB",
+    brand: "Corsair",
+    price: 159.99,
+    rating: 4.8,
+    description: "High-performance DDR5 memory with RGB lighting",
+    specs: {
+      Capacity: "32GB (2x16GB)",
+      Speed: "6000MHz",
+      CAS: "36",
+      Voltage: "1.35V",
+    },
+    tags: ["Corsair", "DDR5", "RGB", "32GB"],
+    compatibility: {
+      memoryType: "DDR5",
+    },
+  },
+  {
+    id: "ram-2",
+    type: "ram",
+    name: "G.Skill Trident Z5 RGB DDR5-7200 32GB",
+    brand: "G.Skill",
+    price: 219.99,
+    rating: 4.9,
+    description: "Ultra-fast DDR5 memory with RGB lighting",
+    specs: {
+      Capacity: "32GB (2x16GB)",
+      Speed: "7200MHz",
+      CAS: "34",
+      Voltage: "1.4V",
+    },
+    tags: ["G.Skill", "DDR5", "RGB", "32GB"],
+    compatibility: {
+      memoryType: "DDR5",
+    },
+  },
+  {
+    id: "ram-3",
+    type: "ram",
+    name: "Kingston Fury Beast DDR5-5200 32GB",
+    brand: "Kingston",
+    price: 129.99,
+    rating: 4.7,
+    description: "Reliable DDR5 memory with good performance",
+    specs: {
+      Capacity: "32GB (2x16GB)",
+      Speed: "5200MHz",
+      CAS: "40",
+      Voltage: "1.25V",
+    },
+    tags: ["Kingston", "DDR5", "32GB"],
+    compatibility: {
+      memoryType: "DDR5",
+    },
+  },
+  {
+    id: "ram-4",
+    type: "ram",
+    name: "Corsair Vengeance LPX DDR4-3600 32GB",
+    brand: "Corsair",
+    price: 109.99,
+    rating: 4.8,
+    description: "High-performance DDR4 memory with low profile design",
+    specs: {
+      Capacity: "32GB (2x16GB)",
+      Speed: "3600MHz",
+      CAS: "18",
+      Voltage: "1.35V",
+    },
+    tags: ["Corsair", "DDR4", "32GB"],
+    compatibility: {
+      memoryType: "DDR4",
+    },
+  },
+  {
+    id: "ram-5",
+    type: "ram",
+    name: "G.Skill Ripjaws V DDR4-3200 32GB",
+    brand: "G.Skill",
+    price: 89.99,
+    rating: 4.7,
+    description: "Reliable DDR4 memory with good performance",
+    specs: {
+      Capacity: "32GB (2x16GB)",
+      Speed: "3200MHz",
+      CAS: "16",
+      Voltage: "1.35V",
+    },
+    tags: ["G.Skill", "DDR4", "32GB"],
+    compatibility: {
+      memoryType: "DDR4",
+    },
+  },
+]
+
+const storage: Component[] = [
+  {
+    id: "storage-1",
+    type: "storage",
+    name: "Samsung 990 Pro 2TB NVMe SSD",
+    brand: "Samsung",
+    price: 199.99,
+    rating: 4.9,
+    description: "Ultra-fast PCIe 4.0 NVMe SSD with excellent performance",
+    specs: {
+      Capacity: "2TB",
+      Interface: "PCIe 4.0 x4",
+      Read: "7450 MB/s",
+      Write: "6900 MB/s",
+    },
+    tags: ["Samsung", "NVMe", "PCIe 4.0", "2TB"],
+    compatibility: {
+      storageInterface: ["M.2", "PCIe 4.0"],
+    },
+  },
+  {
+    id: "storage-2",
+    type: "storage",
+    name: "WD Black SN850X 1TB NVMe SSD",
+    brand: "Western Digital",
+    price: 149.99,
+    rating: 4.8,
+    description: "High-performance PCIe 4.0 NVMe SSD for gaming",
+    specs: {
+      Capacity: "1TB",
+      Interface: "PCIe 4.0 x4",
+      Read: "7300 MB/s",
+      Write: "6300 MB/s",
+    },
+    tags: ["Western Digital", "NVMe", "PCIe 4.0", "1TB"],
+    compatibility: {
+      storageInterface: ["M.2", "PCIe 4.0"],
+    },
+  },
+  {
+    id: "storage-3",
+    type: "storage",
+    name: "Crucial P3 Plus 2TB NVMe SSD",
+    brand: "Crucial",
+    price: 129.99,
+    rating: 4.6,
+    description: "Good value PCIe 4.0 NVMe SSD with decent performance",
+    specs: {
+      Capacity: "2TB",
+      Interface: "PCIe 4.0 x4",
+      Read: "5000 MB/s",
+      Write: "4200 MB/s",
+    },
+    tags: ["Crucial", "NVMe", "PCIe 4.0", "2TB"],
+    compatibility: {
+      storageInterface: ["M.2", "PCIe 4.0"],
+    },
+  },
+  {
+    id: "storage-4",
+    type: "storage",
+    name: "Samsung 870 EVO 2TB SATA SSD",
+    brand: "Samsung",
+    price: 159.99,
+    rating: 4.8,
+    description: "Reliable SATA SSD with good performance",
+    specs: {
+      Capacity: "2TB",
+      Interface: "SATA III",
+      Read: "560 MB/s",
+      Write: "530 MB/s",
+    },
+    tags: ["Samsung", "SATA", "2TB"],
+    compatibility: {
+      storageInterface: ["SATA"],
+    },
+  },
+  {
+    id: "storage-5",
+    type: "storage",
+    name: "Seagate Barracuda 4TB HDD",
+    brand: "Seagate",
+    price: 89.99,
+    rating: 4.5,
+    description: "High-capacity HDD for mass storage",
+    specs: {
+      Capacity: "4TB",
+      Interface: "SATA III",
+      RPM: "5400",
+      Cache: "256MB",
+    },
+    tags: ["Seagate", "HDD", "SATA", "4TB"],
+    compatibility: {
+      storageInterface: ["SATA"],
+    },
+  },
+]
+
+const motherboards: Component[] = [
+  {
+    id: "mb-1",
+    type: "motherboard",
+    name: "ASUS ROG Maximus Z790 Hero",
+    brand: "ASUS",
+    price: 629.99,
+    rating: 4.8,
+    description: "High-end Z790 motherboard with excellent features and overclocking capabilities",
+    specs: {
+      Socket: "LGA1700",
+      Chipset: "Z790",
+      Memory: "4x DDR5 DIMM",
+      FormFactor: "ATX",
+      PCIe: "PCIe 5.0 x16",
+    },
+    tags: ["ASUS", "Z790", "LGA1700", "DDR5", "ATX"],
+    compatibility: {
+      socket: "LGA1700",
+      chipset: ["Z790"],
+      memoryType: "DDR5",
+      formFactor: "ATX",
+      pciSlots: 3,
+      storageInterface: ["M.2", "PCIe 4.0", "SATA"],
+    },
+  },
+  {
+    id: "mb-2",
+    type: "motherboard",
+    name: "MSI MPG X670E Carbon WiFi",
+    brand: "MSI",
+    price: 479.99,
+    rating: 4.7,
+    description: "Feature-rich X670E motherboard for AMD Ryzen 7000 series processors",
+    specs: {
+      Socket: "AM5",
+      Chipset: "X670E",
+      Memory: "4x DDR5 DIMM",
+      FormFactor: "ATX",
+      PCIe: "PCIe 5.0 x16",
+    },
+    tags: ["MSI", "X670E", "AM5", "DDR5", "ATX"],
+    compatibility: {
+      socket: "AM5",
+      chipset: ["X670E"],
+      memoryType: "DDR5",
+      formFactor: "ATX",
+      pciSlots: 3,
+      storageInterface: ["M.2", "PCIe 4.0", "SATA"],
+    },
+  },
+  {
+    id: "mb-3",
+    type: "motherboard",
+    name: "Gigabyte B650 AORUS Elite AX",
+    brand: "Gigabyte",
+    price: 229.99,
+    rating: 4.6,
+    description: "Mid-range B650 motherboard with good features for AMD Ryzen 7000 series",
+    specs: {
+      Socket: "AM5",
+      Chipset: "B650",
+      Memory: "4x DDR5 DIMM",
+      FormFactor: "ATX",
+      PCIe: "PCIe 4.0 x16",
+    },
+    tags: ["Gigabyte", "B650", "AM5", "DDR5", "ATX"],
+    compatibility: {
+      socket: "AM5",
+      chipset: ["B650"],
+      memoryType: "DDR5",
+      formFactor: "ATX",
+      pciSlots: 2,
+      storageInterface: ["M.2", "PCIe 4.0", "SATA"],
+    },
+  },
+  {
+    id: "mb-4",
+    type: "motherboard",
+    name: "ASRock B760M Pro RS/D4",
+    brand: "ASRock",
+    price: 139.99,
+    rating: 4.5,
+    description: "Budget-friendly B760 motherboard with DDR4 support for Intel 13th gen",
+    specs: {
+      Socket: "LGA1700",
+      Chipset: "B760",
+      Memory: "4x DDR4 DIMM",
+      FormFactor: "Micro-ATX",
+      PCIe: "PCIe 4.0 x16",
+    },
+    tags: ["ASRock", "B760", "LGA1700", "DDR4", "Micro-ATX"],
+    compatibility: {
+      socket: "LGA1700",
+      chipset: ["B760"],
+      memoryType: "DDR4",
+      formFactor: "Micro-ATX",
+      pciSlots: 2,
+      storageInterface: ["M.2", "PCIe 4.0", "SATA"],
+    },
+  },
+  {
+    id: "mb-5",
+    type: "motherboard",
+    name: "ASUS ROG Strix B650E-F Gaming WiFi",
+    brand: "ASUS",
+    price: 289.99,
+    rating: 4.7,
+    description: "Feature-rich B650E motherboard with excellent gaming features",
+    specs: {
+      Socket: "AM5",
+      Chipset: "B650E",
+      Memory: "4x DDR5 DIMM",
+      FormFactor: "ATX",
+      PCIe: "PCIe 4.0 x16",
+    },
+    tags: ["ASUS", "B650E", "AM5", "DDR5", "ATX"],
+    compatibility: {
+      socket: "AM5",
+      chipset: ["B650E"],
+      memoryType: "DDR5",
+      formFactor: "ATX",
+      pciSlots: 2,
+      storageInterface: ["M.2", "PCIe 4.0", "SATA"],
+    },
+  },
+]
+
+const powerSupplies: Component[] = [
+  {
+    id: "psu-1",
+    type: "powerSupply",
+    name: "Corsair RM1000x 1000W 80+ Gold",
+    brand: "Corsair",
+    price: 189.99,
+    rating: 4.9,
+    description: "High-quality 1000W power supply with 80+ Gold certification and fully modular cables",
+    specs: {
+      Wattage: "1000W",
+      Certification: "80+ Gold",
+      Modular: "Fully Modular",
+      Warranty: "10 Years",
+    },
+    tags: ["Corsair", "1000W", "80+ Gold", "Fully Modular"],
+    compatibility: {
+      wattage: 1000,
+    },
+  },
+  {
+    id: "psu-2",
+    type: "powerSupply",
+    name: "EVGA SuperNOVA 850 G6 850W 80+ Gold",
+    brand: "EVGA",
+    price: 149.99,
+    rating: 4.8,
+    description: "Reliable 850W power supply with 80+ Gold certification and fully modular cables",
+    specs: {
+      Wattage: "850W",
+      Certification: "80+ Gold",
+      Modular: "Fully Modular",
+      Warranty: "10 Years",
+    },
+    tags: ["EVGA", "850W", "80+ Gold", "Fully Modular"],
+    compatibility: {
+      wattage: 850,
+    },
+  },
+  {
+    id: "psu-3",
+    type: "powerSupply",
+    name: "be quiet! Straight Power 11 750W 80+ Gold",
+    brand: "be quiet!",
+    price: 139.99,
+    rating: 4.7,
+    description: "Silent 750W power supply with 80+ Gold certification and fully modular cables",
+    specs: {
+      Wattage: "750W",
+      Certification: "80+ Gold",
+      Modular: "Fully Modular",
+      Warranty: "5 Years",
+    },
+    tags: ["be quiet!", "750W", "80+ Gold", "Fully Modular"],
+    compatibility: {
+      wattage: 750,
+    },
+  },
+  {
+    id: "psu-4",
+    type: "powerSupply",
+    name: "Seasonic FOCUS GX-650 650W 80+ Gold",
+    brand: "Seasonic",
+    price: 109.99,
+    rating: 4.8,
+    description: "High-quality 650W power supply with 80+ Gold certification and fully modular cables",
+    specs: {
+      Wattage: "650W",
+      Certification: "80+ Gold",
+      Modular: "Fully Modular",
+      Warranty: "10 Years",
+    },
+    tags: ["Seasonic", "650W", "80+ Gold", "Fully Modular"],
+    compatibility: {
+      wattage: 650,
+    },
+  },
+  {
+    id: "psu-5",
+    type: "powerSupply",
+    name: "Corsair CX550M 550W 80+ Bronze",
+    brand: "Corsair",
+    price: 69.99,
+    rating: 4.6,
+    description: "Budget-friendly 550W power supply with 80+ Bronze certification and semi-modular cables",
+    specs: {
+      Wattage: "550W",
+      Certification: "80+ Bronze",
+      Modular: "Semi-Modular",
+      Warranty: "5 Years",
+    },
+    tags: ["Corsair", "550W", "80+ Bronze", "Semi-Modular"],
+    compatibility: {
+      wattage: 550,
+    },
+  },
+]
+
+const cases: Component[] = [
+  {
+    id: "case-1",
+    type: "case",
+    name: "Lian Li O11 Dynamic EVO",
+    brand: "Lian Li",
+    price: 169.99,
+    rating: 4.9,
+    description: "Premium mid-tower case with excellent airflow and build quality",
+    specs: {
+      FormFactor: "Mid Tower",
+      Motherboard: "E-ATX, ATX, Micro-ATX, Mini-ITX",
+      Expansion: "7 slots",
+      Fans: "Up to 10x 120mm",
+    },
+    tags: ["Lian Li", "Mid Tower", "Tempered Glass", "RGB"],
+    compatibility: {
+      formFactor: "ATX",
+    },
+  },
+  {
+    id: "case-2",
+    type: "case",
+    name: "Corsair 5000D Airflow",
+    brand: "Corsair",
+    price: 174.99,
+    rating: 4.8,
+    description: "High-airflow mid-tower case with excellent cable management",
+    specs: {
+      FormFactor: "Mid Tower",
+      Motherboard: "ATX, Micro-ATX, Mini-ITX",
+      Expansion: "7 slots",
+      Fans: "Up to 10x 120mm",
+    },
+    tags: ["Corsair", "Mid Tower", "Airflow", "Tempered Glass"],
+    compatibility: {
+      formFactor: "ATX",
+    },
+  },
+  {
+    id: "case-3",
+    type: "case",
+    name: "Fractal Design Meshify 2 Compact",
+    brand: "Fractal Design",
+    price: 139.99,
+    rating: 4.8,
+    description: "Compact mid-tower case with excellent airflow and minimalist design",
+    specs: {
+      FormFactor: "Mid Tower",
+      Motherboard: "ATX, Micro-ATX, Mini-ITX",
+      Expansion: "7 slots",
+      Fans: "Up to 7x 120mm",
+    },
+    tags: ["Fractal Design", "Mid Tower", "Airflow", "Tempered Glass"],
+    compatibility: {
+      formFactor: "ATX",
+    },
+  },
+  {
+    id: "case-4",
+    type: "case",
+    name: "NZXT H7 Flow",
+    brand: "NZXT",
+    price: 129.99,
+    rating: 4.7,
+    description: "Clean and minimalist mid-tower case with good airflow",
+    specs: {
+      FormFactor: "Mid Tower",
+      Motherboard: "E-ATX, ATX, Micro-ATX, Mini-ITX",
+      Expansion: "7 slots",
+      Fans: "Up to 8x 120mm",
+    },
+    tags: ["NZXT", "Mid Tower", "Airflow", "Tempered Glass"],
+    compatibility: {
+      formFactor: "ATX",
+    },
+  },
+  {
+    id: "case-5",
+    type: "case",
+    name: "Cooler Master NR200P",
+    brand: "Cooler Master",
+    price: 99.99,
+    rating: 4.8,
+    description: "Compact mini-ITX case with excellent hardware compatibility",
+    specs: {
+      FormFactor: "Mini Tower",
+      Motherboard: "Mini-ITX",
+      Expansion: "3 slots",
+      Fans: "Up to 7x 120mm",
+    },
+    tags: ["Cooler Master", "Mini-ITX", "Compact", "Tempered Glass"],
+    compatibility: {
+      formFactor: "Mini-ITX",
+    },
+  },
+]
+
+const cooling: Component[] = [
+  {
+    id: "cooling-1",
+    type: "cooling",
+    name: "NZXT Kraken X73 RGB 360mm AIO",
+    brand: "NZXT",
+    price: 199.99,
+    rating: 4.8,
+    description: "Premium 360mm AIO liquid cooler with RGB lighting",
+    specs: {
+      Type: "Liquid Cooler",
+      Radiator: "360mm",
+      Fans: "3x 120mm",
+      RGB: "Yes",
+    },
+    tags: ["NZXT", "AIO", "360mm", "RGB"],
+    compatibility: {
+      tdp: 300,
+    },
+  },
+  {
+    id: "cooling-2",
+    type: "cooling",
+    name: "Corsair iCUE H150i ELITE CAPELLIX 360mm AIO",
+    brand: "Corsair",
+    price: 189.99,
+    rating: 4.8,
+    description: "High-performance 360mm AIO liquid cooler with vibrant RGB lighting",
+    specs: {
+      Type: "Liquid Cooler",
+      Radiator: "360mm",
+      Fans: "3x 120mm",
+      RGB: "Yes",
+    },
+    tags: ["Corsair", "AIO", "360mm", "RGB"],
+    compatibility: {
+      tdp: 300,
+    },
+  },
+  {
+    id: "cooling-3",
+    type: "cooling",
+    name: "Noctua NH-D15 Air Cooler",
+    brand: "Noctua",
+    price: 99.99,
+    rating: 4.9,
+    description: "Premium dual-tower air cooler with excellent cooling performance",
+    specs: {
+      Type: "Air Cooler",
+      Fans: "2x 140mm",
+      Height: "165mm",
+      RGB: "No",
+    },
+    tags: ["Noctua", "Air Cooler", "Dual Tower"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "cooling-4",
+    type: "cooling",
+    name: "be quiet! Dark Rock Pro 4",
+    brand: "be quiet!",
+    price: 89.99,
+    rating: 4.8,
+    description: "Silent dual-tower air cooler with excellent cooling performance",
+    specs: {
+      Type: "Air Cooler",
+      Fans: "2x 135mm",
+      Height: "162.8mm",
+      RGB: "No",
+    },
+    tags: ["be quiet!", "Air Cooler", "Silent", "Dual Tower"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "cooling-5",
+    type: "cooling",
+    name: "Arctic Liquid Freezer II 240mm AIO",
+    brand: "Arctic",
+    price: 99.99,
+    rating: 4.7,
+    description: "Value-oriented 240mm AIO liquid cooler with excellent performance",
+    specs: {
+      Type: "Liquid Cooler",
+      Radiator: "240mm",
+      Fans: "2x 120mm",
+      RGB: "No",
+    },
+    tags: ["Arctic", "AIO", "240mm", "Value"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+]
+
+// Function to get components by type
+export function getComponents(type: ComponentType): Component[] {
+  switch (type) {
+    case "cpu":
+      return cpus
+    case "gpu":
+      return gpus
+    case "ram":
+      return ram
+    case "storage":
+      return storage
+    case "motherboard":
+      return motherboards
+    case "powerSupply":
+      return powerSupplies
+    case "case":
+      return cases
+    case "cooling":
+      return cooling
+    default:
+      return []
+  }
+}
+
