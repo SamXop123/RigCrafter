@@ -23,4 +23,25 @@ export function getCompatibilityIssues(selectedComponents: Record<ComponentType,
     }
   }
 
+  // Check case and motherboard form factor compatibility
+  if (pcCase && motherboard) {
+    // Mini-ITX cases can only fit Mini-ITX motherboards
+    if (pcCase.compatibility.formFactor === "Mini-ITX" && motherboard.compatibility.formFactor !== "Mini-ITX") {
+      issues.push(
+        `Motherboard form factor (${motherboard.compatibility.formFactor}) is too large for the case (${pcCase.compatibility.formFactor}).`,
+      )
+    }
+
+    // Micro-ATX cases can fit Micro-ATX and Mini-ITX motherboards
+    if (
+      pcCase.compatibility.formFactor === "Micro-ATX" &&
+      motherboard.compatibility.formFactor !== "Micro-ATX" &&
+      motherboard.compatibility.formFactor !== "Mini-ITX"
+    ) {
+      issues.push(
+        `Motherboard form factor (${motherboard.compatibility.formFactor}) is too large for the case (${pcCase.compatibility.formFactor}).`,
+      )
+    }
+  }
+
 
