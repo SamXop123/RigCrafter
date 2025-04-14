@@ -44,4 +44,32 @@ export function getCompatibilityIssues(selectedComponents: Record<ComponentType,
     }
   }
 
+  // Check power supply wattage is sufficient
+  if (powerSupply) {
+    let totalPowerDraw = 0
+
+    if (cpu) totalPowerDraw += cpu.compatibility.tdp || 0
+    if (gpu) totalPowerDraw += gpu.compatibility.tdp || 0
+
+    // Add some overhead for other components
+    totalPowerDraw += 100
+
+    if (totalPowerDraw > powerSupply.compatibility.wattage) {
+      issues.push(
+        `Power supply wattage (${powerSupply.compatibility.wattage}W) may not be sufficient for your components (estimated ${totalPowerDraw}W).`,
+      )
+    }
+  }
+
+  // Check CPU cooler TDP compatibility
+  if (cpu && cooling) {
+    if (cooling.compatibility.tdp < (cpu.compatibility.tdp || 0)) {
+      issues.push(
+        `CPU cooler TDP rating (${cooling.compatibility.tdp}W) is lower than CPU TDP (${cpu.compatibility.tdp}W).`,
+      )
+    }
+  }
+
+  return issues
+}
 
