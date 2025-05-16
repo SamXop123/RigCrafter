@@ -2,6 +2,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Space_Grotesk } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/next"
 import type React from "react"
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] })
