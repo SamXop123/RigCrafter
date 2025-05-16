@@ -9,7 +9,10 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "RigCrafter - Custom Gaming PC Builder",
   description: "Build your dream gaming PC with our interactive component selector",
-    generator: 'v0.dev'
+  generator: 'SamXop123',
+  icons: {
+    icon: "/favicon.ico", 
+  },
 }
 
 export default function RootLayout({
@@ -19,6 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+      </head>
       <body className={`${spaceGrotesk.className} bg-black text-white`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
@@ -27,6 +33,7 @@ export default function RootLayout({
     </html>
   )
 }
+
 
 
 
