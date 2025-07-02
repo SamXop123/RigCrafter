@@ -4,7 +4,7 @@
 
 RigCrafter is a modern, interactive web application that helps users build custom gaming PCs by selecting compatible components, checking compatibility issues, and optimizing their budget. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
-![RigCrafter Preview](https://via.placeholder.com/800x400/000000/FFFFFF?text=RigCrafter+Preview)
+![RigCrafter Preview](./public/rigcraft.png)
 
 ## ✨ Features
 
