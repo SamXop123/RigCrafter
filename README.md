@@ -60,7 +60,7 @@ RigCrafter is a modern, interactive web application that helps users build custo
 ```
 rigcrafter/
 ├── app/
-│   ├── components/          # Legacy components (from original fork)
+│   ├── components/         
 │   ├── globals.css         # Global styles
 │   ├── layout.tsx          # Root layout
 │   └── page.tsx            # Home page
@@ -138,20 +138,6 @@ The application includes mock data for:
 - 5+ Cooling solutions (air/liquid)
 -->
 
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy with zero configuration
-
-### Other Platforms
-The app can be deployed to any platform that supports Next.js:
-- Netlify
-- Railway
-- DigitalOcean App Platform
-- AWS Amplify
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
@@ -183,6 +169,4 @@ If you have any questions or need help, please:
 ---
 
 **Built with ❤️ for PC building enthusiasts**
-
-
 
