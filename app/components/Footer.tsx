@@ -59,13 +59,13 @@ export default function Footer() {
         { name: "About", href: "#about" },
         { name: "Blog", href: "#blog" },
         { name: "Careers", href: "#careers" },
-        { name: "Contact", href: "#contact" }
+        { name: "Contact", href: "/contact" }
       ]
     }
   ]
 
   return (
-    <footer className="relative bg-gradient-to-t from-black via-zinc-900/50 to-transparent border-t border-white/5">
+    <footer className="relative bg-gradient-to-t from-black via-zinc-900/50 to-transparent border-t border-white/5 z-20">
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 pointer-events-none" />
       
