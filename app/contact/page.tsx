@@ -1,21 +1,19 @@
-import RigBuilder from "@/components/rig-builder"
-import HeroSection from "@/components/hero-section"
+import ContactSection from "@/app/components/ContactSection"
 import Footer from "@/app/components/Footer"
-import Header from "./components/Header"
+import Header from "@/app/components/Header"
 
-export default function Home() {
+export default function ContactPage() {
   return (
     <div className="min-h-screen text-white relative">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-black/30 to-black"></div>
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:40px_40px]" />
       <div className="relative z-10">
-        <Header/>
-        <main className="container mx-auto px-4">
-          <HeroSection />
-          <RigBuilder />
+        <Header />
+        <main>
+          <ContactSection />
         </main>
         <Footer />
       </div>
     </div>
   )
 }
-

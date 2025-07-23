@@ -1,33 +1,9 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Play, Disc3, Music2, AudioWaveformIcon as Waveform } from "lucide-react"
-
-const FloatingParticle = ({ delay }: { delay: number }) => {
-  const y = useMotionValue(0)
-  const ySpring = useSpring(y, { stiffness: 100, damping: 10 })
-
-  useEffect(() => {
-    const moveParticle = () => {
-      y.set(Math.random() * -100)
-      setTimeout(moveParticle, Math.random() * 5000 + 3000)
-    }
-    setTimeout(moveParticle, delay)
-  }, [y, delay])
-
-  return (
-    <motion.div
-      className="absolute w-1 h-1 bg-white rounded-full"
-      style={{
-        x: `${Math.random() * 100}%`,
-        y: ySpring,
-        opacity: 0.5,
-      }}
-    />
-  )
-}
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -52,9 +28,6 @@ export default function HeroSection() {
     <section ref={containerRef} className="min-h-screen relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 to-black"></div>
-        {[...Array(50)].map((_, i) => (
-          <FloatingParticle key={i} delay={i * 100} />
-        ))}
       </div>
 
       <motion.div style={{ y, opacity }} className="relative pt-32 pb-16 px-4">
