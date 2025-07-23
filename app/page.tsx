@@ -1,5 +1,6 @@
 import RigBuilder from "@/components/rig-builder"
 import HeroSection from "@/components/hero-section"
+import Footer from "@/app/components/Footer"
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
           <HeroSection />
           <RigBuilder />
         </main>
+        <Footer />
       </div>
     </div>
   )
