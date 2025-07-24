@@ -57,6 +57,11 @@ export default function Header() {
               </Link>
             </li>
             <li>
+              <Link href="/about" className="hover:text-purple-400 transition-colors duration-300">
+                About
+              </Link>
+            </li>
+            <li>
               <Link href="/#builder" className="hover:text-purple-400 transition-colors duration-300">
                 Builder
               </Link>
