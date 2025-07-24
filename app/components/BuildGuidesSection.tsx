@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Clock, Users, Star, ArrowRight, BookOpen, Video, FileText, Wrench, User } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react"
 
 const guides = [
   {
@@ -156,6 +157,8 @@ const categories = [
 ]
 
 export default function BuildGuidesSection() {
+  const [selectedCategory, setSelectedCategory] = useState("All Guides")
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -182,6 +185,11 @@ export default function BuildGuidesSection() {
       default: return "text-zinc-400 bg-zinc-400/10 border-zinc-400/20"
     }
   }
+
+  // Filter guides based on selected category
+  const filteredGuides = selectedCategory === "All Guides" 
+    ? guides 
+    : guides.filter(guide => guide.category === selectedCategory)
 
   return (
     <section className="min-h-screen py-32 relative overflow-hidden">
@@ -214,7 +222,12 @@ export default function BuildGuidesSection() {
           {categories.map((category, index) => (
             <motion.button
               key={category.name}
-              className="px-4 py-2 bg-black/50 backdrop-blur-lg rounded-lg border border-white/10 hover:border-purple-500/30 transition-all text-zinc-300 hover:text-white"
+              onClick={() => setSelectedCategory(category.name)}
+              className={`px-4 py-2 backdrop-blur-lg rounded-lg border transition-all ${
+                selectedCategory === category.name
+                  ? "bg-purple-500/20 border-purple-500/50 text-white"
+                  : "bg-black/50 border-white/10 hover:border-purple-500/30 text-zinc-300 hover:text-white"
+              }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -224,86 +237,114 @@ export default function BuildGuidesSection() {
         </motion.div>
 
         {/* Guides Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {guides.map((guide) => (
-            <motion.div
-              key={guide.id}
-              variants={itemVariants}
-              className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer"
-              whileHover={{ y: -5 }}
-            >
-              <div className="relative overflow-hidden">
-                <Image
-                  src={guide.image}
-                  alt={guide.title}
-                  width={400}
-                  height={200}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 left-4 flex items-center space-x-2">
-                  <span className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded text-xs text-white flex items-center">
-                    {guide.icon}
-                    <span className="ml-1">{guide.type}</span>
-                  </span>
-                  <span className={`px-2 py-1 rounded text-xs border ${getDifficultyColor(guide.difficulty)}`}>
-                    {guide.difficulty}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm text-purple-400 font-medium">{guide.category}</span>
-                  <div className="flex items-center text-xs text-zinc-400">
-                    <Star className="w-3 h-3 text-yellow-400 mr-1" />
-                    {guide.rating}
+        {filteredGuides.length > 0 ? (
+          <motion.div
+            key={selectedCategory} // Re-trigger animation when category changes
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredGuides.map((guide) => (
+              <motion.div
+                key={guide.id}
+                variants={itemVariants}
+                className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer"
+                whileHover={{ y: -5 }}
+              >
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={guide.image}
+                    alt={guide.title}
+                    width={400}
+                    height={200}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4 flex items-center space-x-2">
+                    <span className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded text-xs text-white flex items-center">
+                      {guide.icon}
+                      <span className="ml-1">{guide.type}</span>
+                    </span>
+                    <span className={`px-2 py-1 rounded text-xs border ${getDifficultyColor(guide.difficulty)}`}>
+                      {guide.difficulty}
+                    </span>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
-                  {guide.title}
-                </h3>
-
-                <p className="text-zinc-400 text-sm mb-4 leading-relaxed">
-                  {guide.description}
-                </p>
-
-                <div className="flex items-center justify-between text-xs text-zinc-500 mb-4">
-                  <div className="flex items-center">
-                    <Clock className="w-3 h-3 mr-1" />
-                    {guide.readTime}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm text-purple-400 font-medium">{guide.category}</span>
+                    <div className="flex items-center text-xs text-zinc-400">
+                      <Star className="w-3 h-3 text-yellow-400 mr-1" />
+                      {guide.rating}
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <Users className="w-3 h-3 mr-1" />
-                    {guide.views} views
+
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    {guide.title}
+                  </h3>
+
+                  <p className="text-zinc-400 text-sm mb-4 leading-relaxed">
+                    {guide.description}
+                  </p>
+
+                  <div className="flex items-center justify-between text-xs text-zinc-500 mb-4">
+                    <div className="flex items-center">
+                      <Clock className="w-3 h-3 mr-1" />
+                      {guide.readTime}
+                    </div>
+                    <div className="flex items-center">
+                      <Users className="w-3 h-3 mr-1" />
+                      {guide.views} views
+                    </div>
                   </div>
+
+                  <div className="text-xs text-zinc-500 mb-4 border-t border-white/5 pt-3">
+                    <div className="flex items-center justify-between">
+                      <span>By {guide.author}</span>
+                      <span>Updated {new Date(guide.lastUpdated).toLocaleDateString()}</span>
+                    </div>
+                  </div>
+
+                  <motion.button
+                    className="w-full flex items-center justify-center px-4 py-2 bg-white text-black rounded-lg font-medium hover:bg-zinc-200 transition-colors group"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Read Guide
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
                 </div>
-
-                <div className="text-xs text-zinc-500 mb-4 border-t border-white/5 pt-3">
-                  <div className="flex items-center justify-between">
-                    <span>By {guide.author}</span>
-                    <span>Updated {new Date(guide.lastUpdated).toLocaleDateString()}</span>
-                  </div>
-                </div>
-
-                <motion.button
-                  className="w-full flex items-center justify-center px-4 py-2 bg-white text-black rounded-lg font-medium hover:bg-zinc-200 transition-colors group"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Read Guide
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center py-16"
+          >
+            <div className="bg-black/50 backdrop-blur-lg rounded-xl p-12 border border-white/10 max-w-md mx-auto">
+              <BookOpen className="w-16 h-16 text-purple-400 mx-auto mb-6" />
+              <h3 className="text-2xl font-bold text-white mb-4">No Guides Found</h3>
+              <p className="text-zinc-400 mb-6">
+                No guides available in the "{selectedCategory}" category yet. 
+                Check back soon for new content!
+              </p>
+              <motion.button
+                onClick={() => setSelectedCategory("All Guides")}
+                className="px-6 py-3 bg-purple-500 text-white rounded-lg font-semibold hover:bg-purple-600 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View All Guides
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
 
         {/* CTA Section */}
         <motion.div
