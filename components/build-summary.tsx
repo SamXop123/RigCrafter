@@ -1,6 +1,6 @@
 "use client"
 
-import { JSX, useState } from "react"
+import { JSX, useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -32,6 +32,9 @@ interface BuildSummaryProps {
 export default function BuildSummary({ selectedComponents, totalPrice, onRemoveComponent }: BuildSummaryProps) {
   const [isCopied, setIsCopied] = useState(false)
   const [buildName, setBuildName] = useState("My Gaming Rig")
+  const [buildMode, setBuildMode] = useState<"custom" | "saved">("custom")
+  const [savedBuilds, setSavedBuilds] = useState<any[]>([])
+  const [selectedSavedBuild, setSelectedSavedBuild] = useState("")
 
   const componentIcons: Record<ComponentType, JSX.Element> = {
     cpu: <Cpu className="w-4 h-4" />,
@@ -55,48 +58,127 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
     cooling: "Cooling",
   }
 
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("savedBuilds") || "[]")
+    setSavedBuilds(saved)
+  }, [])
+  
   const selectedComponentsCount = Object.values(selectedComponents).filter(Boolean).length
 
   const handleCopyBuild = () => {
-    const buildText =
-      `RigCrafter Build: ${buildName}\n\n` +
-      Object.entries(selectedComponents)
-        .filter(([_, component]) => component !== null)
-        .map(
-          ([type, component]) =>
-            `${componentLabels[type as ComponentType]}: ${component?.name} - $${component?.price.toFixed(2)}`,
-        )
-        .join("\n") +
-      `\n\nTotal: $${totalPrice.toFixed(2)}`
+    const buildToCopy = {
+      buildName,
+      selectedComponents: Object.fromEntries(
+        Object.entries(selectedComponents).filter(([_, v]) => v !== null)
+      ),
+      totalPrice,
+      timestamp: new Date().toISOString(),
+    };
 
-    navigator.clipboard.writeText(buildText)
-    setIsCopied(true)
-    setTimeout(() => setIsCopied(false), 2000)
-  }
+    const buildText = JSON.stringify(buildToCopy, null, 2);
+
+    navigator.clipboard.writeText(buildText);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
 
   const handleSaveBuild = () => {
-    // In a real app, this would save to a database or local storage
-    alert("Build saved successfully!")
+    const savedBuilds = JSON.parse(localStorage.getItem("savedBuilds") || "[]");
+
+    const newBuild = {
+      buildName,
+      selectedComponents: Object.fromEntries(
+        Object.entries(selectedComponents).filter(([_, v]) => v !== null)
+      ),
+      totalPrice,
+      timestamp: new Date().toISOString(),
+    };
+
+    if (savedBuilds.some((b: any) => b.buildName === buildName)) {
+      alert("A build with this name already exists!");
+      return;
+    }
+
+    savedBuilds.push(newBuild);
+    localStorage.setItem("savedBuilds", JSON.stringify(savedBuilds));
+    setSavedBuilds(savedBuilds)
+    alert("Build saved successfully!");
+  };
+
+  const handleSelectSavedBuild = (name: string) => {
+    const selected = savedBuilds.find((b) => b.buildName === name)
+    if (!selected) return
+
+    setBuildName(selected.buildName)
+    setSelectedSavedBuild(name)
+
+    Object.keys(selectedComponents).forEach((type) =>
+      onRemoveComponent(type as ComponentType, null)
+    )
+
+    Object.entries(selected.selectedComponents).forEach(([type, comp]) => {
+      onRemoveComponent(type as ComponentType, comp as Component)
+    })
   }
 
   return (
     <Card className="bg-zinc-900/50 border-zinc-800 sticky top-4">
       <CardHeader className="pb-3">
-        <CardTitle className="flex justify-between items-center">
+        <CardTitle className="flex justify-between items-center pb-4">
           <span>Build Summary</span>
           <Badge variant="outline" className="bg-purple-900/30 text-purple-300 border-purple-500">
             {selectedComponentsCount}/8 Parts
           </Badge>
         </CardTitle>
+
+        <div className="mt-4 flex gap-x-4 text-sm text-white">
+          <label className="flex items-center">
+            <input
+              type="radio"
+              value="custom"
+              checked={buildMode === "custom"}
+              onChange={() => setBuildMode("custom")}
+              className="mr-1"
+            />
+            Custom
+          </label>
+          <label className="flex items-center">
+            <input
+              type="radio"
+              value="saved"
+              checked={buildMode === "saved"}
+              onChange={() => setBuildMode("saved")}
+              className="mr-1"
+            />
+            Load Saved
+          </label>
+        </div>
       </CardHeader>
+
       <CardContent>
         <div className="space-y-4 mb-6">
-          <Input
-            value={buildName}
-            onChange={(e) => setBuildName(e.target.value)}
-            className="bg-zinc-800 border-zinc-700 text-white"
-            placeholder="Name your build"
-          />
+          {buildMode === "custom" ? (
+            <Input
+              value={buildName}
+              onChange={(e) => setBuildName(e.target.value)}
+              className="bg-zinc-800 border-zinc-700 text-white"
+              placeholder="Name your build"
+            />
+          ) : (
+            <select
+              value={selectedSavedBuild}
+              onChange={(e) => handleSelectSavedBuild(e.target.value)}
+              className="bg-zinc-800 text-white border border-zinc-700 p-2 rounded w-full"
+            >
+              <option value="">-- Select Saved Build --</option>
+              {savedBuilds.map((b) => (
+                <option key={b.buildName} value={b.buildName}>
+                  {b.buildName}
+                </option>
+              ))}
+            </select>
+          )}
 
           <div className="h-[300px] overflow-y-auto pr-2 space-y-2">
             <AnimatePresence>
@@ -163,7 +245,7 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
               variant="outline"
               className="bg-zinc-800 border-zinc-700 hover:bg-zinc-700"
               onClick={handleSaveBuild}
-              disabled={selectedComponentsCount === 0}
+              disabled={selectedComponentsCount === 0 || buildMode === "saved"}
             >
               <Download className="h-4 w-4 mr-1" />
               Save
