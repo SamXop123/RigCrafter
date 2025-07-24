@@ -10,6 +10,7 @@ import { Star, Search, Info, Check } from "lucide-react"
 import type { Component, ComponentType } from "@/lib/types"
 import { getComponents } from "@/lib/data"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { toast } from "sonner";
 
 interface ComponentSelectorProps {
   type: ComponentType
@@ -91,6 +92,36 @@ export default function ComponentSelector({ type, selectedComponent, onSelect, s
           >
             {sortOrder === "asc" ? "↑" : "↓"}
           </Button>
+        <TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button
+        onClick={() => {
+          const validComponents = filteredComponents.filter(
+            (c) => !c.tags.includes("unsupported") && c.rating > 2
+          );
+
+          if (validComponents.length === 0) return;
+          const randomIndex = Math.floor(Math.random() * validComponents.length);
+          const randomComponent = validComponents[randomIndex];
+          onSelect(randomComponent);
+          toast.success(`🎉 You got: ${randomComponent.name}`);
+        }}
+        disabled={filteredComponents.length === 0}
+        className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded disabled:opacity-50"
+      >
+        🎲 Surprise Me!
+      </Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>Feeling Lucky?</p>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+
+
+
+
         </div>
       </div>
 
@@ -141,10 +172,18 @@ interface ComponentCardProps {
 
 function ComponentCard({ component, isSelected, onSelect, isSuggested }: ComponentCardProps) {
   return (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.3 }}
+    >
       <Card
         className={`overflow-hidden transition-colors ${
-          isSelected ? "bg-purple-900/30 border-purple-500" : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
+          isSelected
+            ? "bg-purple-900/30 border-purple-500"
+            : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
         }`}
       >
         <CardContent className="p-0">
@@ -215,4 +254,5 @@ function ComponentCard({ component, isSelected, onSelect, isSuggested }: Compone
     </motion.div>
   )
 }
+
 
