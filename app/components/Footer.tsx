@@ -38,27 +38,27 @@ export default function Footer() {
     {
       title: "Product",
       links: [
-        { name: "PC Builder", href: "#builder" },
-        { name: "Components", href: "#components" },
-        { name: "Compatibility", href: "#compatibility" },
-        { name: "Pricing", href: "#pricing" }
+        { name: "PC Builder", href: "/" },
+        { name: "Components", href: "/#components" },
+        { name: "Compatibility", href: "/#compatibility" },
+        { name: "Build Guides", href: "/guides" }
       ]
     },
     {
       title: "Resources",
       links: [
-        { name: "Documentation", href: "#docs" },
-        { name: "Build Guides", href: "#guides" },
-        { name: "Support", href: "#support" },
-        { name: "FAQ", href: "#faq" }
+        { name: "Documentation", href: "/docs" },
+        { name: "Build Guides", href: "/guides" },
+        { name: "FAQ", href: "/faq" },
+        { name: "Blog", href: "/blog" }
       ]
     },
     {
       title: "Company",
       links: [
-        { name: "About", href: "#about" },
-        { name: "Blog", href: "#blog" },
-        { name: "Careers", href: "#careers" },
+        { name: "About", href: "/about" },
+        { name: "Blog", href: "/blog" },
+        { name: "Careers", href: "/careers" },
         { name: "Contact", href: "/contact" }
       ]
     }
@@ -164,13 +164,13 @@ export default function Footer() {
               &copy; {currentYear} RigCrafter. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-              <Link href="#privacy" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+              <Link href="/privacy" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
                 Privacy Policy
               </Link>
-              <Link href="#terms" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+              <Link href="/terms" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
                 Terms of Service
               </Link>
-              <Link href="#cookies" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
+              <Link href="/cookies" className="hover:text-white transition-colors duration-300 whitespace-nowrap">
                 Cookies
               </Link>
             </div>
