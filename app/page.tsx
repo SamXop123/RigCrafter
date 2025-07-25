@@ -1,7 +1,7 @@
 import RigBuilder from "@/components/rig-builder"
 import HeroSection from "@/components/hero-section"
 import Footer from "@/app/components/Footer"
-import Header from "./components/Header"
+import Header from "@/app/components/Header"
 
 export default function Home() {
   return (

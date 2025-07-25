@@ -15,10 +15,13 @@ import {
   Power,
   Box,
   Fan,
+  Shuffle,
+  Zap,
 } from "lucide-react"
 import type { Component, ComponentType } from "@/lib/types"
 import { getCompatibilityIssues } from "@/lib/compatibility"
 import { getComponentSuggestions } from "@/lib/suggestions"
+import { randomizeCompatibleRig, randomizeByBudget } from "@/lib/randomizer"
 
 export default function RigBuilder() {
   const [selectedComponents, setSelectedComponents] = useState<Record<ComponentType, Component | null>>({
@@ -45,6 +48,7 @@ export default function RigBuilder() {
   })
 
   const [activeTab, setActiveTab] = useState<ComponentType>("cpu")
+  const [isRandomizing, setIsRandomizing] = useState(false)
 
   useEffect(() => {
     // Check compatibility whenever selected components change
@@ -61,6 +65,29 @@ export default function RigBuilder() {
       ...prev,
       [type]: component,
     }))
+  }
+
+  const handleRandomizeRig = async () => {
+    setIsRandomizing(true)
+
+    // Add a small delay for visual feedback
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
+    const randomBuild = randomizeCompatibleRig()
+    setSelectedComponents(randomBuild)
+
+    setIsRandomizing(false)
+  }
+
+  const handleRandomizeByBudget = async (budget: number) => {
+    setIsRandomizing(true)
+
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
+    const randomBuild = randomizeByBudget(budget)
+    setSelectedComponents(randomBuild)
+
+    setIsRandomizing(false)
   }
 
   const calculateTotalPrice = () => {
@@ -88,7 +115,54 @@ export default function RigBuilder() {
         transition={{ duration: 0.5 }}
         className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-xl"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Build Your Gaming PC</h2>
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-0">Build Your Gaming PC</h2>
+
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Button
+              onClick={handleRandomizeRig}
+              disabled={isRandomizing}
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium"
+            >
+              {isRandomizing ? (
+                <Zap className="w-4 h-4 mr-2 animate-spin" />
+              ) : (
+                <Shuffle className="w-4 h-4 mr-2" />
+              )}
+              {isRandomizing ? "Randomizing..." : "Randomize Build"}
+            </Button>
+
+            <div className="flex gap-1">
+              <Button
+                onClick={() => handleRandomizeByBudget(1000)}
+                disabled={isRandomizing}
+                variant="outline"
+                size="sm"
+                className="hover:bg-zinc-800"
+              >
+                Budget $1K
+              </Button>
+              <Button
+                onClick={() => handleRandomizeByBudget(2000)}
+                disabled={isRandomizing}
+                variant="outline"
+                size="sm"
+                className="hover:bg-zinc-800"
+              >
+                Mid $2K
+              </Button>
+              <Button
+                onClick={() => handleRandomizeByBudget(3000)}
+                disabled={isRandomizing}
+                variant="outline"
+                size="sm"
+                className="hover:bg-zinc-800"
+              >
+                High-End $3K
+              </Button>
+            </div>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
