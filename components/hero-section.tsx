@@ -67,7 +67,8 @@ export default function HeroSection() {
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="bg-zinc-900/50 rounded-xl p-6 backdrop-blur-lg border border-white/10 transition-colors hover:border-purple-500/20"
+                className="bg-black/40 rounded-2xl p-6 backdrop-blur-md border border-transparent hover:border-purple-500/50 shadow-lg hover:shadow-purple-500/30 transition-all duration-300 bg-gradient-to-br from-purple-600/10 to-pink-500/10"
+
               >
                 <div className="mb-2 text-purple-400 flex justify-center">{stat.icon}</div>
                 <motion.div
