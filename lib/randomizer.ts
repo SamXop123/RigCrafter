@@ -2,159 +2,177 @@ import type { Component, ComponentType } from "./types";
 import { getComponents } from "./data";
 import { getCompatibilityIssues } from "./compatibility";
 
-let fallbackIndex = 0; // remembers which fallback build was shown last
+const emptyBuild: Record<ComponentType, Component | null> = {
+  cpu: null,
+  gpu: null,
+  ram: null,
+  storage: null,
+  motherboard: null,
+  powerSupply: null,
+  case: null,
+  cooling: null,
+};
 
-// Generate one compatible random build (no budget filtering)
+// ---- Random compatible build without budget ----
 export function randomizeCompatibleRig(): Record<ComponentType, Component | null> {
   const maxAttempts = 100;
   let attempts = 0;
 
   while (attempts < maxAttempts) {
-    const randomBuild: Record<ComponentType, Component | null> = {
-      cpu: null,
-      gpu: null,
-      ram: null,
-      storage: null,
-      motherboard: null,
-      powerSupply: null,
-      case: null,
-      cooling: null,
-    };
+    const randomBuild: Record<ComponentType, Component | null> = generateRandomCompatibleBuild();
 
-    // 1. CPU
-    const cpus = getComponents("cpu");
-    randomBuild.cpu = cpus[Math.floor(Math.random() * cpus.length)];
-
-    // 2. Motherboard (match socket)
-    const motherboards = getComponents("motherboard").filter(
-      (mb) => mb.compatibility.socket === randomBuild.cpu?.compatibility.socket
-    );
-    if (!motherboards.length) {
-      attempts++;
-      continue;
-    }
-    randomBuild.motherboard =
-      motherboards[Math.floor(Math.random() * motherboards.length)];
-
-    // 3. RAM (match memory type)
-    const rams = getComponents("ram").filter(
-      (ram) => ram.compatibility.memoryType === randomBuild.motherboard?.compatibility.memoryType
-    );
-    if (!rams.length) {
-      attempts++;
-      continue;
-    }
-    randomBuild.ram = rams[Math.floor(Math.random() * rams.length)];
-
-    // 4. GPU
-    const gpus = getComponents("gpu");
-    randomBuild.gpu = gpus[Math.floor(Math.random() * gpus.length)];
-
-    // 5. Power Supply (match wattage)
-    const cpuTdp = randomBuild.cpu?.compatibility.tdp || 0;
-    const gpuTdp = randomBuild.gpu?.compatibility.tdp || 0;
-    const requiredWattage = cpuTdp + gpuTdp + 150;
-    const powerSupplies = getComponents("powerSupply").filter(
-      (psu) => (psu.compatibility.wattage || 0) >= requiredWattage
-    );
-    if (!powerSupplies.length) {
-      attempts++;
-      continue;
-    }
-    randomBuild.powerSupply =
-      powerSupplies[Math.floor(Math.random() * powerSupplies.length)];
-
-    // 6. Case (match form factor)
-    const cases = getComponents("case").filter((pcCase) => {
-      const mbFormFactor = randomBuild.motherboard?.compatibility.formFactor;
-      const caseFormFactor = pcCase.compatibility.formFactor;
-
-      if (caseFormFactor === "ATX") return true;
-      if (caseFormFactor === "Micro-ATX" && (mbFormFactor === "Micro-ATX" || mbFormFactor === "Mini-ITX")) return true;
-      if (caseFormFactor === "Mini-ITX" && mbFormFactor === "Mini-ITX") return true;
-      return false;
-    });
-    if (!cases.length) {
-      attempts++;
-      continue;
-    }
-    randomBuild.case = cases[Math.floor(Math.random() * cases.length)];
-
-    // 7. Cooling (match TDP)
-    const coolers = getComponents("cooling").filter(
-      (cooler) => (cooler.compatibility.tdp || 0) >= cpuTdp
-    );
-    if (!coolers.length) {
-      attempts++;
-      continue;
-    }
-    randomBuild.cooling = coolers[Math.floor(Math.random() * coolers.length)];
-
-    // 8. Storage
-    const storages = getComponents("storage");
-    randomBuild.storage = storages[Math.floor(Math.random() * storages.length)];
-
-    // Final compatibility check
     const issues = getCompatibilityIssues(randomBuild);
-    if (issues.length === 0) return randomBuild;
-
+    if (issues.length === 0) {
+      return randomBuild;
+    }
     attempts++;
   }
 
   console.warn("Could not generate a compatible random build after", maxAttempts, "attempts");
+  return emptyBuild;
+}
+
+// ---- Main budget-based randomizer ----
+export function randomizeByBudget(maxBudgetInput: number): { build: Record<ComponentType, Component | null>; message: string } {
+  const maxAttempts = 100;
+  let attempts = 0;
+
+  // ---- Budget ranges ----
+  let minBudget = 0;
+  let maxBudget = maxBudgetInput;
+
+  if (maxBudgetInput === 1000) {
+    minBudget = 0;
+    maxBudget = 1500;
+  } else if (maxBudgetInput === 2000) {
+    minBudget = 1750;
+    maxBudget = 2499;
+  } else if (maxBudgetInput === 3000) {
+    minBudget = 2500;
+    maxBudget = 3500; // strict lower bound
+  }
+
+  const validBuilds: { build: Record<ComponentType, Component | null>; price: number }[] = [];
+
+  while (attempts < maxAttempts) {
+    const randomBuild = generateRandomCompatibleBuild();
+    const totalPrice = calculateBuildPrice(randomBuild);
+
+    if (totalPrice >= minBudget && totalPrice <= maxBudget) {
+      const issues = getCompatibilityIssues(randomBuild);
+      if (issues.length === 0) {
+        validBuilds.push({ build: randomBuild, price: totalPrice });
+      }
+    }
+    attempts++;
+  }
+
+  // ---- If we found builds in range ----
+  if (validBuilds.length > 0) {
+    const bestBuild = validBuilds.sort((a, b) => a.price - b.price)[0];
+    return { build: bestBuild.build, message: "" };
+  }
+
+  // ---- Strict behavior for 3K ----
+  if (maxBudgetInput === 3000) {
+    return {
+      build: emptyBuild,
+      message: `No builds found in the $${minBudget}–$${maxBudget} range.`,
+    };
+  }
+
+  // ---- Fallback for 1K and 2K (get cheapest valid) ----
+  const cheapest = getCheapestCompatibleBuild();
   return {
-    cpu: null,
-    gpu: null,
-    ram: null,
-    storage: null,
-    motherboard: null,
-    powerSupply: null,
-    case: null,
-    cooling: null,
+    build: cheapest.build,
+    message: `No builds found in the range. Showing closest option: $${cheapest.price}`,
   };
 }
 
-// Budget-aware build randomizer
-export function randomizeByBudget(maxBudget: number): {
-  build: Record<ComponentType, Component | null>;
-  message?: string;
-} {
-  const builds: { build: Record<ComponentType, Component | null>; total: number }[] = [];
-  const maxAttempts = 200;
+// ---- Core: Generate one fully compatible build ----
+function generateRandomCompatibleBuild(): Record<ComponentType, Component | null> {
+  const build: Record<ComponentType, Component | null> = { ...emptyBuild };
 
-  // Generate a pool of valid builds
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    const build = randomizeCompatibleRig();
-    const total = Object.values(build).reduce((sum, comp) => sum + (comp?.price || 0), 0);
+  // Step 1: CPU
+  const cpus = getComponents("cpu");
+  build.cpu = getRandom(cpus);
+
+  // Step 2: Motherboard (match socket)
+  const motherboards = getComponents("motherboard").filter(mb => mb.compatibility.socket === build.cpu?.compatibility.socket);
+  if (!motherboards.length) return emptyBuild;
+  build.motherboard = getRandom(motherboards);
+
+  // Step 3: RAM (match memory type)
+  const rams = getComponents("ram").filter(ram => ram.compatibility.memoryType === build.motherboard?.compatibility.memoryType);
+  if (!rams.length) return emptyBuild;
+  build.ram = getRandom(rams);
+
+  // Step 4: GPU
+  const gpus = getComponents("gpu");
+  build.gpu = getRandom(gpus);
+
+  // Step 5: PSU (satisfy wattage)
+  const cpuTdp = build.cpu?.compatibility.tdp || 0;
+  const gpuTdp = build.gpu?.compatibility.tdp || 0;
+  const requiredWattage = cpuTdp + gpuTdp + 150;
+
+  const psus = getComponents("powerSupply").filter(psu => (psu.compatibility.wattage || 0) >= requiredWattage);
+  if (!psus.length) return emptyBuild;
+  build.powerSupply = getRandom(psus);
+
+  // Step 6: Case (match form factor)
+  const cases = getComponents("case").filter(c => isCaseCompatible(c, build.motherboard?.compatibility.formFactor));
+  if (!cases.length) return emptyBuild;
+  build.case = getRandom(cases);
+
+  // Step 7: Cooling (satisfy CPU TDP)
+  const coolers = getComponents("cooling").filter(cooler => (cooler.compatibility.tdp || 0) >= cpuTdp);
+  if (!coolers.length) return emptyBuild;
+  build.cooling = getRandom(coolers);
+
+  // Step 8: Storage (any)
+  const storages = getComponents("storage");
+  build.storage = getRandom(storages);
+
+  return build;
+}
+
+// ---- Calculate total price ----
+function calculateBuildPrice(build: Record<ComponentType, Component | null>): number {
+  return Object.values(build).reduce((total, comp) => total + (comp?.price || 0), 0);
+}
+
+// ---- Find cheapest compatible build regardless of budget ----
+function getCheapestCompatibleBuild(): { build: Record<ComponentType, Component | null>; price: number } {
+  let bestBuild: Record<ComponentType, Component | null> = emptyBuild;
+  let bestPrice = Infinity;
+
+  for (let i = 0; i < 100; i++) {
+    const build = generateRandomCompatibleBuild();
+    const price = calculateBuildPrice(build);
     const issues = getCompatibilityIssues(build);
 
-    if (issues.length === 0) {
-      builds.push({ build, total });
+    if (issues.length === 0 && price < bestPrice) {
+      bestBuild = build;
+      bestPrice = price;
     }
   }
 
-  // Sort builds by price
-  builds.sort((a, b) => a.total - b.total);
+  return { build: bestBuild, price: bestPrice };
+}
 
-  // Filter builds within budget
-  const validBuilds = builds.filter((b) => b.total <= maxBudget);
+// ---- Helpers ----
+function getRandom<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
-  // Case 1: There are builds within budget → return random one
-  if (validBuilds.length > 0) {
-    const selected = validBuilds[Math.floor(Math.random() * validBuilds.length)];
-    return { build: selected.build };
-  }
+function isCaseCompatible(pcCase: Component, mbFormFactor?: string): boolean {
+  const caseFormFactor = pcCase.compatibility.formFactor;
 
-  // Case 2: No build within budget → show cheapest available sequentially
-  if (!builds.length) {
-    return { build: randomizeCompatibleRig(), message: "No builds available at all." };
-  }
+  if (!mbFormFactor) return false;
+  if (caseFormFactor === "ATX") return true;
+  if (caseFormFactor === "Micro-ATX" && (mbFormFactor === "Micro-ATX" || mbFormFactor === "Mini-ITX")) return true;
+  if (caseFormFactor === "Mini-ITX" && mbFormFactor === "Mini-ITX") return true;
 
-  const selected = builds[fallbackIndex % builds.length];
-  fallbackIndex++;
-
-  return {
-    build: selected.build,
-    message: `Sorry, the closest rig to this budget is $${selected.total.toFixed(2)}`,
-  };
+  return false;
 }
