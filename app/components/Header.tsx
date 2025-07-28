@@ -3,14 +3,18 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X ,Cpu} from "lucide-react"
+import { Menu, X, Cpu, User, LogOut } from "lucide-react"
+import { useAuth } from "@/lib/auth-context"
+import AuthModal from "@/components/auth-modal"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [showAuthModal, setShowAuthModal] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
+  const { user, logout } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,6 +69,14 @@ export default function Header() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   const closeMenu = () => setIsMenuOpen(false)
+
+  const handleLogout = async () => {
+    try {
+      await logout()
+    } catch (error) {
+      console.error("Error logging out:", error)
+    }
+  }
 
   return (
     <>
@@ -121,11 +133,41 @@ export default function Header() {
             </ul>
           </nav>
 
-          <Button asChild variant="outline" className="hidden md:block border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50">
-            <Link href="/#builder">
-              Start Building
-            </Link>
-          </Button>
+          <div className="hidden md:flex items-center space-x-4">
+            {user ? (
+              <>
+                <Button asChild variant="outline" className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50">
+                  <Link href="/dashboard">
+                    <User className="w-4 h-4 mr-2" />
+                    Dashboard
+                  </Link>
+                </Button>
+                <Button 
+                  onClick={handleLogout}
+                  variant="outline" 
+                  className="border-red-500/30 text-red-400 hover:bg-red-500/10"
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Button 
+                onClick={() => setShowAuthModal(true)}
+                variant="outline" 
+                className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50"
+              >
+                <User className="w-4 h-4 mr-2" />
+                Sign In
+              </Button>
+            )}
+            
+            <Button asChild variant="outline" className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50">
+              <Link href="/#builder">
+                Start Building
+              </Link>
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -187,6 +229,51 @@ export default function Header() {
                 Contact
               </Link>
             </li>
+            {user ? (
+              <>
+                <li className="pt-4 w-full max-w-xs">
+                  <Button 
+                    asChild 
+                    variant="outline" 
+                    className="w-full border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50 transition-all duration-200"
+                    onClick={closeMenu}
+                  >
+                    <Link href="/dashboard">
+                      <User className="w-4 h-4 mr-2" />
+                      Dashboard
+                    </Link>
+                  </Button>
+                </li>
+                <li className="w-full max-w-xs">
+                  <Button 
+                    onClick={() => {
+                      handleLogout()
+                      closeMenu()
+                    }}
+                    variant="outline" 
+                    className="w-full border-red-500/30 text-red-400 hover:bg-red-500/10 transition-all duration-200"
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Logout
+                  </Button>
+                </li>
+              </>
+            ) : (
+              <li className="pt-4 w-full max-w-xs">
+                <Button 
+                  onClick={() => {
+                    setShowAuthModal(true)
+                    closeMenu()
+                  }}
+                  variant="outline" 
+                  className="w-full border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50 transition-all duration-200"
+                >
+                  <User className="w-4 h-4 mr-2" />
+                  Sign In
+                </Button>
+              </li>
+            )}
+            
             <li className="pt-4 w-full max-w-xs">
               <Button 
                 asChild 
@@ -202,6 +289,9 @@ export default function Header() {
           </ul>
         </div>
       </nav>
+
+      {/* Auth Modal */}
+      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </>
   )
 }
