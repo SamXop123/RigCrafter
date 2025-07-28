@@ -2,6 +2,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Space_Grotesk } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { AuthProvider } from "@/lib/auth-context"
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "sonner"
 import type React from "react"
@@ -29,8 +30,10 @@ export default function RootLayout({
       </head>
       <body className={`${spaceGrotesk.className} bg-black text-white`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
-          <Toaster richColors position="top-center" />
+          <AuthProvider>
+            {children}
+            <Toaster richColors position="top-center" />
+          </AuthProvider>
         </ThemeProvider>
         <Analytics />
       </body>

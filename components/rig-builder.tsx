@@ -1,11 +1,18 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import ComponentSelector from "./component-selector";
-import BuildSummary from "./build-summary";
-import CompatibilityChecker from "./compatibility-checker";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import ComponentSelector from "./component-selector"
+import BuildSummary from "./build-summary"
+import CompatibilityChecker from "./compatibility-checker"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useAuth } from "@/lib/auth-context"
+import { db } from "@/lib/firebase"
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+
 import {
   Cpu,
   CpuIcon as Gpu,
@@ -17,11 +24,13 @@ import {
   Fan,
   Shuffle,
   Zap,
-} from "lucide-react";
-import type { Component, ComponentType } from "@/lib/types";
-import { getCompatibilityIssues } from "@/lib/compatibility";
-import { getComponentSuggestions } from "@/lib/suggestions";
-import { randomizeCompatibleRig, randomizeByBudget } from "@/lib/randomizer";
+
+  Save,
+} from "lucide-react"
+import type { Component, ComponentType } from "@/lib/types"
+import { getCompatibilityIssues } from "@/lib/compatibility"
+import { getComponentSuggestions } from "@/lib/suggestions"
+import { randomizeCompatibleRig, randomizeByBudget } from "@/lib/randomizer"
 
 export default function RigBuilder() {
   const [selectedComponents, setSelectedComponents] = useState<
@@ -51,9 +60,13 @@ export default function RigBuilder() {
     cooling: [],
   });
 
-  const [activeTab, setActiveTab] = useState<ComponentType>("cpu");
-  const [isRandomizing, setIsRandomizing] = useState(false);
-
+  const [activeTab, setActiveTab] = useState<ComponentType>("cpu")
+  const [isRandomizing, setIsRandomizing] = useState(false)
+  const [showSaveDialog, setShowSaveDialog] = useState(false)
+  const [buildName, setBuildName] = useState("")
+  const [isSaving, setIsSaving] = useState(false)
+  const { user } = useAuth()
+    
   // For popup message
   const [popupMessage, setPopupMessage] = useState<string | null>(null);
 
@@ -99,6 +112,38 @@ export default function RigBuilder() {
 
     setIsRandomizing(false);
   };
+
+  const handleSaveBuild = async () => {
+    if (!user) {
+      alert("Please sign in to save your build")
+      return
+    }
+
+    if (!buildName.trim()) {
+      alert("Please enter a name for your build")
+      return
+    }
+
+    setIsSaving(true)
+    try {
+      await addDoc(collection(db, "builds"), {
+        userId: user.uid,
+        name: buildName.trim(),
+        components: selectedComponents,
+        totalPrice: calculateTotalPrice(),
+        createdAt: serverTimestamp(),
+      })
+      
+      setBuildName("")
+      setShowSaveDialog(false)
+      alert("Build saved successfully!")
+    } catch (error) {
+      console.error("Error saving build:", error)
+      alert("Failed to save build. Please try again.")
+    } finally {
+      setIsSaving(false)
+    }
+  }
 
   const calculateTotalPrice = () => {
     return Object.values(selectedComponents).reduce((total, component) => {
@@ -158,6 +203,16 @@ export default function RigBuilder() {
               )}
               {isRandomizing ? "Randomizing..." : "Randomize Build"}
             </Button>
+
+            {user && (
+              <Button
+                onClick={() => setShowSaveDialog(true)}
+                className="bg-green-600 hover:bg-green-700 text-white font-medium"
+              >
+                <Save className="w-4 h-4 mr-2" />
+                Save Build
+              </Button>
+            )}
 
             <div className="flex gap-1">
               <Button
@@ -247,6 +302,71 @@ export default function RigBuilder() {
           </div>
         </div>
       </motion.div>
+
+      {/* Save Build Dialog */}
+      <Dialog open={showSaveDialog} onOpenChange={setShowSaveDialog}>
+        <DialogContent className="bg-black/90 backdrop-blur-xl border border-white/10 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-500">
+              Save Your Build
+            </DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="buildName" className="text-sm font-medium text-gray-300">
+                Build Name
+              </Label>
+              <Input
+                id="buildName"
+                value={buildName}
+                onChange={(e) => setBuildName(e.target.value)}
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-400 focus:border-purple-500"
+                placeholder="Enter a name for your build"
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSaveBuild()
+                  }
+                }}
+              />
+            </div>
+
+            <div className="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+              <span className="text-gray-300">Total Price:</span>
+              <span className="text-lg font-bold text-purple-400">
+                ${calculateTotalPrice().toLocaleString()}
+              </span>
+            </div>
+
+            <div className="flex space-x-2">
+              <Button
+                onClick={handleSaveBuild}
+                disabled={isSaving || !buildName.trim()}
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium"
+              >
+                {isSaving ? (
+                  <div className="flex items-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Saving...
+                  </div>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4 mr-2" />
+                    Save Build
+                  </>
+                )}
+              </Button>
+              <Button
+                onClick={() => setShowSaveDialog(false)}
+                variant="outline"
+                className="border-white/10 text-white hover:bg-white/5"
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
