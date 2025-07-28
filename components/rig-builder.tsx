@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useAuth } from "@/lib/auth-context"
 import { db } from "@/lib/firebase"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+
 import {
   Cpu,
   CpuIcon as Gpu,
@@ -23,6 +24,7 @@ import {
   Fan,
   Shuffle,
   Zap,
+
   Save,
 } from "lucide-react"
 import type { Component, ComponentType } from "@/lib/types"
@@ -31,7 +33,9 @@ import { getComponentSuggestions } from "@/lib/suggestions"
 import { randomizeCompatibleRig, randomizeByBudget } from "@/lib/randomizer"
 
 export default function RigBuilder() {
-  const [selectedComponents, setSelectedComponents] = useState<Record<ComponentType, Component | null>>({
+  const [selectedComponents, setSelectedComponents] = useState<
+    Record<ComponentType, Component | null>
+  >({
     cpu: null,
     gpu: null,
     ram: null,
@@ -40,10 +44,12 @@ export default function RigBuilder() {
     powerSupply: null,
     case: null,
     cooling: null,
-  })
+  });
 
-  const [compatibilityIssues, setCompatibilityIssues] = useState<string[]>([])
-  const [suggestions, setSuggestions] = useState<Record<ComponentType, Component[]>>({
+  const [compatibilityIssues, setCompatibilityIssues] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<
+    Record<ComponentType, Component[]>
+  >({
     cpu: [],
     gpu: [],
     ram: [],
@@ -52,7 +58,7 @@ export default function RigBuilder() {
     powerSupply: [],
     case: [],
     cooling: [],
-  })
+  });
 
   const [activeTab, setActiveTab] = useState<ComponentType>("cpu")
   const [isRandomizing, setIsRandomizing] = useState(false)
@@ -60,46 +66,52 @@ export default function RigBuilder() {
   const [buildName, setBuildName] = useState("")
   const [isSaving, setIsSaving] = useState(false)
   const { user } = useAuth()
+    
+  // For popup message
+  const [popupMessage, setPopupMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check compatibility whenever selected components change
-    const issues = getCompatibilityIssues(selectedComponents)
-    setCompatibilityIssues(issues)
+    const issues = getCompatibilityIssues(selectedComponents);
+    setCompatibilityIssues(issues);
 
-    // Update suggestions based on current selections
-    const newSuggestions = getComponentSuggestions(selectedComponents)
-    setSuggestions(newSuggestions)
-  }, [selectedComponents])
+    const newSuggestions = getComponentSuggestions(selectedComponents);
+    setSuggestions(newSuggestions);
+  }, [selectedComponents]);
 
-  const handleComponentSelect = (type: ComponentType, component: Component | null) => {
+  const handleComponentSelect = (
+    type: ComponentType,
+    component: Component | null
+  ) => {
     setSelectedComponents((prev) => ({
       ...prev,
       [type]: component,
-    }))
-  }
+    }));
+  };
 
   const handleRandomizeRig = async () => {
-    setIsRandomizing(true)
+    setIsRandomizing(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-    // Add a small delay for visual feedback
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    const randomBuild = randomizeCompatibleRig();
+    setSelectedComponents(randomBuild);
 
-    const randomBuild = randomizeCompatibleRig()
-    setSelectedComponents(randomBuild)
-
-    setIsRandomizing(false)
-  }
+    setIsRandomizing(false);
+  };
 
   const handleRandomizeByBudget = async (budget: number) => {
-    setIsRandomizing(true)
+    setIsRandomizing(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    const { build, message } = randomizeByBudget(budget);
+    setSelectedComponents(build);
 
-    const randomBuild = randomizeByBudget(budget)
-    setSelectedComponents(randomBuild)
+    if (message) {
+      setPopupMessage(message);
+      setTimeout(() => setPopupMessage(null), 3000);
+    }
 
-    setIsRandomizing(false)
-  }
+    setIsRandomizing(false);
+  };
 
   const handleSaveBuild = async () => {
     if (!user) {
@@ -135,9 +147,9 @@ export default function RigBuilder() {
 
   const calculateTotalPrice = () => {
     return Object.values(selectedComponents).reduce((total, component) => {
-      return total + (component?.price || 0)
-    }, 0)
-  }
+      return total + (component?.price || 0);
+    }, 0);
+  };
 
   const componentTabs = [
     { type: "cpu" as ComponentType, icon: <Cpu className="w-5 h-5" />, label: "CPU" },
@@ -148,10 +160,25 @@ export default function RigBuilder() {
     { type: "powerSupply" as ComponentType, icon: <Power className="w-5 h-5" />, label: "Power Supply" },
     { type: "case" as ComponentType, icon: <Box className="w-5 h-5" />, label: "Case" },
     { type: "cooling" as ComponentType, icon: <Fan className="w-5 h-5" />, label: "Cooling" },
-  ]
+  ];
 
   return (
     <section id="builder" className="py-16 relative">
+      {/* Popup Toast */}
+      <AnimatePresence>
+        {popupMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-5 right-5 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-lg z-50"
+          >
+            {popupMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -159,7 +186,9 @@ export default function RigBuilder() {
         className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-xl"
       >
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-0">Build Your Gaming PC</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-0">
+            Build Your Gaming PC
+          </h2>
 
           <div className="flex flex-col sm:flex-row gap-2">
             <Button
@@ -226,13 +255,17 @@ export default function RigBuilder() {
                     key={tab.type}
                     variant={activeTab === tab.type ? "default" : "outline"}
                     className={`flex items-center ${
-                      activeTab === tab.type ? "bg-purple-600 hover:bg-purple-700" : "hover:bg-zinc-800"
+                      activeTab === tab.type
+                        ? "bg-purple-600 hover:bg-purple-700"
+                        : "hover:bg-zinc-800"
                     }`}
                     onClick={() => setActiveTab(tab.type)}
                   >
                     {tab.icon}
                     <span className="ml-2">{tab.label}</span>
-                    {selectedComponents[tab.type] && <span className="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>}
+                    {selectedComponents[tab.type] && (
+                      <span className="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
+                    )}
                   </Button>
                 ))}
               </div>
@@ -249,7 +282,9 @@ export default function RigBuilder() {
                 <ComponentSelector
                   type={activeTab}
                   selectedComponent={selectedComponents[activeTab]}
-                  onSelect={(component) => handleComponentSelect(activeTab, component)}
+                  onSelect={(component) =>
+                    handleComponentSelect(activeTab, component)
+                  }
                   suggestions={suggestions[activeTab]}
                 />
               </motion.div>
@@ -333,6 +368,5 @@ export default function RigBuilder() {
         </DialogContent>
       </Dialog>
     </section>
-  )
+  );
 }
-
