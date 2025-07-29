@@ -52,19 +52,24 @@ export default function HeroSection() {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-          {[
-            { icon: <Cpu className="w-6 h-6" />, label: "CPUs", value: "50+" },
-            { icon: <Gpu className="w-6 h-6" />, label: "GPUs", value: "40+" },
-            { icon: <HardDrive className="w-6 h-6" />, label: "Storage Options", value: "30+" },
-            { icon: <Layers className="w-6 h-6" />, label: "Configurations", value: "1000+" },
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + index * 0.1 }}
-              className="text-center"
-            >
+  {[
+    { icon: <Cpu className="w-6 h-6" />, label: "CPUs", value: "50+" },
+    { icon: <Gpu className="w-6 h-6" />, label: "GPUs", value: "40+" },
+    { icon: <HardDrive className="w-6 h-6" />, label: "Storage Options", value: "30+" },
+    { icon: <Layers className="w-6 h-6" />, label: "Configurations", value: "1000+" },
+  ].map((stat, index) => (
+    <motion.div
+      key={stat.label}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 + index * 0.1 }}
+      className="text-center bg-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-4"
+      style={{
+        boxShadow: "0 0 30px rgba(255, 255, 255, 0.5)"
+      }}
+    >
+     
+
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="bg-zinc-900/50 rounded-xl p-6 backdrop-blur-lg border border-white/10 transition-colors hover:border-purple-500/20"

@@ -109,12 +109,48 @@ export default function RigBuilder() {
 
   return (
     <section id="builder" className="py-16 relative">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-xl"
-      >
+   <>
+  <style jsx>{`
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  `}</style>
+
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+    className="relative rounded-2xl p-6 md:p-8 overflow-visible"
+    style={{
+      backgroundColor: 'rgba(0,0,0,0.3)',
+      backdropFilter: 'blur(8px)',
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      boxShadow: `
+        -20px -20px 80px rgba(128, 0, 128, 0.4),
+        20px 80px 300px rgba(225, 0, 255, 0.3),
+        -10px 30px 300px rgba(144, 0, 255, 0.25),
+        30px -10px 80px rgba(255, 0, 122, 0.2),
+        0 0 200px rgba(200, 0, 255, 0.1)
+      `
+    }}
+  >
+    <div
+      className="absolute inset-0 -z-10 rounded-2xl opacity-30"
+      style={{
+        background: `linear-gradient(135deg, #800080, #e100ff, #ff007a)`,
+        backgroundSize: '400% 400%',
+        animation: 'gradientShift 10s ease infinite'
+      }}
+    />
+
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-0">Build Your Gaming PC</h2>
 
@@ -166,8 +202,32 @@ export default function RigBuilder() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <div className="mb-6 overflow-x-auto">
+            
+  
+            <div
+  className="mb-6 overflow-x-auto"
+  style={{
+    scrollbarWidth: 'none', // Firefox
+    msOverflowStyle: 'none', // IE 10+
+  }}
+>
               <div className="flex space-x-2 min-w-max">
+    {componentTabs.map((tab) => (
+      <Button
+        key={tab.type}
+        variant={activeTab === tab.type ? "default" : "outline"}
+        className={`flex items-center ${
+          activeTab === tab.type ? "bg-purple-600 hover:bg-purple-700" : "hover:bg-zinc-800"
+        }`}
+        onClick={() => setActiveTab(tab.type)}
+      >
+        {tab.icon}
+        <span className="ml-2">{tab.label}</span>
+        {selectedComponents[tab.type] && (
+          <span className="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
+        )}
+      </Button>
+    ))}
                 {componentTabs.map((tab) => (
                   <Button
                     key={tab.type}
@@ -214,6 +274,7 @@ export default function RigBuilder() {
           </div>
         </div>
       </motion.div>
+      </>
     </section>
   )
 }
