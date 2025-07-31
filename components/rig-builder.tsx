@@ -134,18 +134,18 @@ export default function RigBuilder() {
       backdropFilter: 'blur(8px)',
       border: '1px solid rgba(255, 255, 255, 0.1)',
       boxShadow: `
-        -20px -20px 80px rgba(128, 0, 128, 0.4),
-        20px 80px 300px rgba(225, 0, 255, 0.3),
-        -10px 30px 300px rgba(144, 0, 255, 0.25),
-        30px -10px 80px rgba(255, 0, 122, 0.2),
-        0 0 200px rgba(200, 0, 255, 0.1)
-      `
+  -20px -20px 100px rgba(128, 0, 128, 0.4),       /* Purple */
+  30px -10px 100px rgba(255, 182, 193, 0.2),      /* Light Pink */
+  0 0 300px rgba(255, 255, 255, 0.15)            /* White glow */
+`
+
     }}
   >
     <div
       className="absolute inset-0 -z-10 rounded-2xl opacity-30"
       style={{
-        background: `linear-gradient(135deg, #800080, #e100ff, #ff007a)`,
+        background: `linear-gradient(135deg, #800080, #000000)`,
+
         backgroundSize: '400% 400%',
         animation: 'gradientShift 10s ease infinite'
       }}
@@ -205,13 +205,13 @@ export default function RigBuilder() {
             
   
             <div
-  className="mb-6 overflow-x-auto"
+  className="mb-6 overflow-x-auto scrollbar-hide"
   style={{
     scrollbarWidth: 'none', // Firefox
     msOverflowStyle: 'none', // IE 10+
   }}
 >
-              <div className="flex space-x-2 min-w-max">
+              <div className="flex space-x-2 w-max">
     {componentTabs.map((tab) => (
       <Button
         key={tab.type}
@@ -228,20 +228,6 @@ export default function RigBuilder() {
         )}
       </Button>
     ))}
-                {componentTabs.map((tab) => (
-                  <Button
-                    key={tab.type}
-                    variant={activeTab === tab.type ? "default" : "outline"}
-                    className={`flex items-center ${
-                      activeTab === tab.type ? "bg-purple-600 hover:bg-purple-700" : "hover:bg-zinc-800"
-                    }`}
-                    onClick={() => setActiveTab(tab.type)}
-                  >
-                    {tab.icon}
-                    <span className="ml-2">{tab.label}</span>
-                    {selectedComponents[tab.type] && <span className="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>}
-                  </Button>
-                ))}
               </div>
             </div>
 

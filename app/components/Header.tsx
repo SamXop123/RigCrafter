@@ -68,66 +68,100 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed w-full z-50 transition-all duration-300 ease-in-out ${
-        isScrolled ? "bg-black/90 backdrop-blur-lg border-b border-white/5" : "bg-transparent"
-      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2 z-10" onClick={closeMenu}>
-            <Cpu className="h-6 w-6 sm:h-8 sm:w-8 text-purple-500" />
-            <span className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-500">
-              RigCrafter
-            </span>
-          </Link>
-          
-          <div className="md:hidden z-10">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleMenu}
-              className="relative overflow-hidden transition-all duration-200 hover:bg-white/10"
-            >
-              <div className={`transition-all duration-300 ${isMenuOpen ? "rotate-180 opacity-0" : "rotate-0 opacity-100"}`}>
-                <Menu className="h-5 w-5" />
-              </div>
-              <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isMenuOpen ? "rotate-0 opacity-100" : "rotate-180 opacity-0"}`}>
-                <X className="h-5 w-5" />
-              </div>
-            </Button>
-          </div>
+     <header
+  className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out 
+    ${
+      isScrolled
+        ? "bg-black/40 backdrop-blur-xl border-b border-white/10 shadow-md"
+        : "bg-black/10 backdrop-blur-lg"
+    } 
+    ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+>
+  <div className="container mx-auto px-6 py-6 flex justify-between items-center">
+    <Link
+      href="/"
+      className="flex items-center space-x-2 z-10"
+      onClick={closeMenu}
+    >
+      <Cpu className="h-7 w-7 sm:h-9 sm:w-9 text-purple-500" />
+      <span className="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-500">
+        RigCrafter
+      </span>
+    </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:block">
-            <ul className="flex space-x-8">
-              <li>
-                <Link href="/" className="hover:text-purple-400 transition-colors duration-300">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-purple-400 transition-colors duration-300">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/#builder" className="hover:text-purple-400 transition-colors duration-300">
-                  Builder
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-purple-400 transition-colors duration-300">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          <Button asChild variant="outline" className="hidden md:block border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50">
-            <Link href="/#builder">
-              Start Building
-            </Link>
-          </Button>
+    {/* Mobile Menu Button */}
+    <div className="md:hidden z-10">
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={toggleMenu}
+        className="relative overflow-hidden transition-all duration-200 hover:bg-white/10"
+      >
+        <div
+          className={`transition-all duration-300 ${
+            isMenuOpen ? "rotate-180 opacity-0" : "rotate-0 opacity-100"
+          }`}
+        >
+          <Menu className="h-6 w-6" />
         </div>
-      </header>
+        <div
+          className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+            isMenuOpen ? "rotate-0 opacity-100" : "rotate-180 opacity-0"
+          }`}
+        >
+          <X className="h-6 w-6" />
+        </div>
+      </Button>
+    </div>
+
+    {/* Desktop Navigation */}
+    <nav className="hidden md:block">
+      <ul className="flex space-x-10 text-2xl">
+        <li>
+          <Link
+            href="/"
+            className="hover:text-purple-400 transition-colors duration-300"
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/about"
+            className="hover:text-purple-400 transition-colors duration-300"
+          >
+            About
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/#builder"
+            className="hover:text-purple-400 transition-colors duration-300"
+          >
+            Builder
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/contact"
+            className="hover:text-purple-400 transition-colors duration-300"
+          >
+            Contact
+          </Link>
+        </li>
+      </ul>
+    </nav>
+
+    <Button
+      asChild
+      variant="outline"
+      className="hidden md:block border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50 text-lg px-6 py-2"
+    >
+      <Link href="/#builder">FAQs</Link>
+    </Button>
+  </div>
+</header>
+
 
       {/* Mobile Menu Backdrop */}
       <div 

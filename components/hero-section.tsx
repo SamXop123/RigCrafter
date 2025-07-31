@@ -28,26 +28,45 @@ export default function HeroSection() {
             budget, and craft the perfect rig.
           </p>
           <div className="relative inline-block">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative z-10">
-              <Button
-                size="lg"
-                className="bg-white text-black hover:bg-zinc-200 text-lg px-8 py-6 rounded-full transition-colors relative overflow-hidden group"
-                asChild
-              >
-                <a href="#builder">
-                  <span className="relative z-10">Start Building</span>
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-purple-400 to-white"
-                    initial={{ x: "100%" }}
-                    whileHover={{ x: "0%" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.span whileHover={{ x: 5 }} transition={{ duration: 0.2 }} className="ml-2 relative z-10">
-                    →
-                  </motion.span>
-                </a>
-              </Button>
-            </motion.div>
+           <motion.div
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="relative z-10"
+>
+  <Button
+    size="lg"
+    className="relative overflow-hidden bg-white/20 backdrop-blur-md border border-white/20 rounded-full text-white text-lg px-8 py-6 transition-all duration-300 group"
+    asChild
+  >
+    <a href="#builder" className="flex items-center">
+      {/* Text with hover/click behavior */}
+      <motion.span
+        whileTap={{ opacity: 0.6 }}
+        className="relative z-10 transition-all duration-300"
+      >
+        Start Building
+      </motion.span>
+
+      {/* Arrow with motion */}
+      <motion.span
+        whileHover={{ x: 5 }}
+        transition={{ duration: 0.2 }}
+        className="ml-2 relative z-10"
+      >
+        →
+      </motion.span>
+
+      {/* Gradient overlay */}
+      <motion.span
+        className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/10 opacity-30"
+        initial={{ x: "100%" }}
+        whileHover={{ x: "0%" }}
+        transition={{ duration: 0.4 }}
+      />
+    </a>
+  </Button>
+</motion.div>
+
           </div>
         </motion.div>
 
