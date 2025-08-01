@@ -15,7 +15,38 @@ const docSections = [
       { name: "Basic Navigation", href: "#navigation" }
     ]
   },
+{
+  title: "Testing",
+  icon: <Terminal className="w-6 h-6" />,
+  description: "Run and manage tests for the project",
+  items: [
+    { name: "Test Locally", href: "#testing" },
+    { name: "Watch Mode", href: "#testing" },
+    { name: "Lint Checks", href: "#testing" }
+  ]
+},
+   {
+  title: "Core Features",
+  icon: <Zap className="w-6 h-6" />,
+  description: "Main features of RigCrafter",
+  items: [
+    { name: "Component Selector", href: "#core-features" },
+    { name: "Smart Recommendations", href: "#core-features" },
+    { name: "Live Price Optimization", href: "#core-features" }
+  ]
+},
   {
+  title: "Analytics & Performance",
+  icon: <Code className="w-6 h-6" />,
+  description: "Monitor and improve performance",
+  items: [
+    { name: "Lighthouse Audits", href: "#analytics-performance" },
+    { name: "Built-in Analytics", href: "#analytics-performance" },
+    { name: "Bundle Analyzer", href: "#analytics-performance" }
+  ]
+},
+
+{
     title: "Contributing",
     icon: <Users className="w-6 h-6" />,
     description: "Help us improve RigCrafter",
@@ -54,7 +85,7 @@ const docSections = [
       { name: "Build System", href: "#build-system" }
     ]
   }
-]
+];
 
 const quickLinks = [
   {
@@ -83,7 +114,7 @@ const quickLinks = [
     icon: <Puzzle className="w-5 h-5" />,
     href: "#component-database"
   }
-]
+];
 
 export default function DocumentationSection() {
   const containerVariants = {
@@ -243,4 +274,4 @@ export default function DocumentationSection() {
       </div>
     </section>
   )
-}
+};

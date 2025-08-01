@@ -55,6 +55,39 @@ RigCrafter is a modern, interactive web application that helps users build custo
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
 
+
+## ✅ Testing
+
+To run tests locally:
+
+```bash
+npm run test
+npm run test:watch
+npm run lint
+```
+
+## 🧩 Core Features
+
+- **Component Selector** – Choose from a wide range of CPUs, GPUs, RAM, motherboards, storage, and more
+- **Real-Time Compatibility Checks** – Detect and prevent component conflicts as you build
+- **Smart Recommendations** – Get AI-based suggestions to match your use case and budget
+- **Live Price Optimization** – View and compare pricing across components
+- **Build Preview & Export** – Save, share, or export your final rig build
+- **Responsive UI** – Works seamlessly on desktops, tablets, and mobile devices
+
+## 📊 Analytics & Performance
+
+To improve user experience and optimize system performance, RigCrafter incorporates basic analytics and performance tools.
+
+### ⚙️ Included Tools
+
+- **Lighthouse Audits**: Regularly run Lighthouse for insights on performance, accessibility, best practices, and SEO.
+- **Next.js Built-in Analytics**: Monitor rendering performance (static vs. server-side) and optimize builds.
+- **Bundle Analyzer**: Analyze and reduce bundle size for faster load times.
+  ```bash
+  npm run analyze
+
+
 ## 📁 Project Structure
 
 ```
