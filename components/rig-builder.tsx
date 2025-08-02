@@ -163,8 +163,11 @@ export default function RigBuilder() {
   ];
 
   return (
-    
-<section id="builder" className="relative z-10 py-16">
+     <section id="builder" className="relative z-10 py-16">
+
+  <div className="absolute inset-0 -z-10 flex justify-center items-center">
+    <div className="w-full max-w-7xl h-full rounded-3xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 blur-[70px] opacity-35 scale-[1.04]"></div>
+  </div>
 
   <div className="absolute inset-0 -z-10 flex justify-center items-center">
     <div className="w-full max-w-7xl h-full rounded-3xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 blur-[70px] opacity-35 scale-[1.04]"></div>
