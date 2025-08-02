@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -38,6 +39,7 @@ export default function UserDashboard() {
   const [loading, setLoading] = useState(true)
   const [selectedBuild, setSelectedBuild] = useState<SavedBuild | null>(null)
   const [showBuildDetails, setShowBuildDetails] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     if (user) {
@@ -85,6 +87,8 @@ export default function UserDashboard() {
   const handleLogout = async () => {
     try {
       await logout()
+      router.push("/")
+      
     } catch (error) {
       console.error("Error logging out:", error)
     }
@@ -113,7 +117,7 @@ export default function UserDashboard() {
     <div className="min-h-screen bg-black text-white p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-4">
           <div className="flex items-center space-x-3">
             <User className="h-8 w-8 text-purple-500" />
             <div>
@@ -131,6 +135,20 @@ export default function UserDashboard() {
             <LogOut className="w-4 h-4 mr-2" />
             Logout
           </Button>
+        </div>
+
+        {/* Back Button */}
+        <div className="mb-6">
+         <Button
+  onClick={() => router.push("/")}
+  variant="outline"
+ className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500/50"
+>
+  ← Back to Home
+</Button>
+
+ 
+
         </div>
 
         {/* Saved Builds */}
@@ -259,4 +277,4 @@ export default function UserDashboard() {
       </Dialog>
     </div>
   )
-} 
+}
