@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Calendar, Clock, User, ArrowRight, Tag, TrendingUp } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link";
 
 const blogPosts = [
   {
@@ -303,13 +304,15 @@ export default function BlogSection() {
                   <span className="text-xs text-zinc-500">
                     {new Date(post.date).toLocaleDateString()}
                   </span>
-                  <motion.button
-                    className="flex items-center text-purple-400 hover:text-purple-300 transition-colors text-sm"
-                    whileHover={{ x: 5 }}
-                  >
-                    Read More
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </motion.button>
+                  <Link href={`/blog/${post.id}`} className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+  <motion.span
+    whileHover={{ x: 5 }}
+    className="flex items-center"
+  >
+    Read More
+    <ArrowRight className="w-4 h-4 ml-2" />
+  </motion.span>
+</Link>
                 </div>
               </div>
             </motion.div>
