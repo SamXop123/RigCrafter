@@ -15,7 +15,19 @@ const docSections = [
       { name: "Basic Navigation", href: "#navigation" }
     ]
   },
+  
+   {
+  title: "Core Features",
+  icon: <Zap className="w-6 h-6" />,
+  description: "Main features of RigCrafter",
+  items: [
+    { name: "Component Selector", href: "#core-features" },
+    { name: "Smart Recommendations", href: "#core-features" },
+    { name: "Live Price Optimization", href: "#core-features" }
+  ]
+},
   {
+
   title: "Run Locally",
   icon: <Terminal className="w-6 h-6" />,
   description: "Steps to clone, install, and run the project on your machine",
@@ -78,8 +90,8 @@ const docSections = [
     ]
 },
 
-
   {
+
     title: "Contributing",
     icon: <Users className="w-6 h-6" />,
     description: "Help us improve RigCrafter",
@@ -112,6 +124,32 @@ const docSections = [
 
 ]
 
+  {
+    title: "User Guide",
+    icon: <Zap className="w-6 h-6" />,
+    description: "Master RigCrafter's features",
+    items: [
+      { name: "Build Configuration", href: "#build-config" },
+      { name: "Compatibility Checker", href: "#compatibility" },
+      { name: "Performance Estimates", href: "#performance" },
+      { name: "Export & Sharing", href: "#export-share" },
+      { name: "Troubleshooting", href: "#troubleshooting" },
+      { name: "Best Practices", href: "#best-practices" }
+    ]
+  },
+  {
+    title: "Project Structure",
+    icon: <Code className="w-6 h-6" />,
+    description: "Understanding the codebase",
+    items: [
+      { name: "Frontend Architecture", href: "#frontend" },
+      { name: "Component System", href: "#component-system" },
+      { name: "Data Management", href: "#data-management" },
+      { name: "Build System", href: "#build-system" }
+    ]
+  }
+];
+
 const quickLinks = [
   {
     title: "GitHub Repository",
@@ -139,7 +177,7 @@ const quickLinks = [
     icon: <Puzzle className="w-5 h-5" />,
     href: "#component-database"
   }
-]
+];
 
 export default function DocumentationSection() {
   const containerVariants = {
@@ -299,4 +337,4 @@ export default function DocumentationSection() {
       </div>
     </section>
   )
-}
+};
