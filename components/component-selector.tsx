@@ -23,7 +23,7 @@ export default function ComponentSelector({ type, selectedComponent, onSelect, s
   const [searchQuery, setSearchQuery] = useState("")
   const [priceFilter, setPriceFilter] = useState<[number, number]>([0, 2000])
   const [sortBy, setSortBy] = useState<"price" | "rating" | "name">("rating")
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc")
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
 
   const components = getComponents(type)
 
@@ -37,7 +37,7 @@ export default function ComponentSelector({ type, selectedComponent, onSelect, s
       if (sortBy === "price") {
         return sortOrder === "asc" ? a.price - b.price : b.price - a.price
       } else if (sortBy === "rating") {
-        return sortOrder === "asc" ? a.rating - b.rating : b.rating - a.rating
+        return sortOrder === "desc" ? a.rating - b.rating : b.rating - a.rating
       } else {
         return sortOrder === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
       }
@@ -90,7 +90,9 @@ export default function ComponentSelector({ type, selectedComponent, onSelect, s
             onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
             className="bg-zinc-900 border-zinc-700"
           >
-            {sortOrder === "asc" ? "↑" : "↓"}
+            {sortBy === "rating"
+              ? (sortOrder === "asc" ? "↓" : "↑")
+              : (sortOrder === "asc" ? "↑" : "↓")}
           </Button>
         <TooltipProvider>
   <Tooltip>
