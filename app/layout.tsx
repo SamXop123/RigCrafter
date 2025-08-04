@@ -7,7 +7,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 import type React from "react";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { BackToTopButton } from "@/components/back-to-top-button"; // <-- IMPORT
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
