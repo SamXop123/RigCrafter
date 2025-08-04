@@ -5,6 +5,8 @@ import { Calendar, Clock, User, ArrowRight, Tag, TrendingUp } from "lucide-react
 import Image from "next/image"
 import Link from "next/link";
 
+import Link from "next/link"
+
 const blogPosts = [
   {
     id: 1,
@@ -184,58 +186,60 @@ export default function BlogSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer">
-            <div className="grid md:grid-cols-2 gap-0">
-              <div className="relative overflow-hidden">
-                <Image
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  width={600}
-                  height={400}
-                  className="w-full h-64 md:h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-purple-500 text-white text-sm rounded-full flex items-center">
-                    <TrendingUp className="w-3 h-3 mr-1" />
-                    Featured
-                  </span>
-                </div>
-              </div>
-              
-              <div className="p-8 flex flex-col justify-center">
-                <div className="flex items-center mb-3">
-                  <span className="text-sm text-purple-400 font-medium">{featuredPost.category}</span>
-                  <span className="mx-2 text-zinc-500">•</span>
-                  <span className="text-sm text-zinc-400">{featuredPost.readTime}</span>
-                </div>
-
-                <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
-                  {featuredPost.title}
-                </h2>
-
-                <p className="text-zinc-400 mb-6 leading-relaxed">
-                  {featuredPost.excerpt}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-sm text-zinc-400">
-                    <User className="w-4 h-4 mr-2" />
-                    {featuredPost.author}
-                    <Calendar className="w-4 h-4 ml-4 mr-2" />
-                    {new Date(featuredPost.date).toLocaleDateString()}
+          <Link href={`/blog/${featuredPost.id}`}>
+            <div className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer">
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-64 md:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-purple-500 text-white text-sm rounded-full flex items-center">
+                      <TrendingUp className="w-3 h-3 mr-1" />
+                      Featured
+                    </span>
                   </div>
-                  
-                  <motion.button
-                    className="flex items-center text-purple-400 hover:text-purple-300 transition-colors"
-                    whileHover={{ x: 5 }}
-                  >
-                    Read More
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </motion.button>
+                </div>
+                
+                <div className="p-8 flex flex-col justify-center">
+                  <div className="flex items-center mb-3">
+                    <span className="text-sm text-purple-400 font-medium">{featuredPost.category}</span>
+                    <span className="mx-2 text-zinc-500">•</span>
+                    <span className="text-sm text-zinc-400">{featuredPost.readTime}</span>
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
+                    {featuredPost.title}
+                  </h2>
+
+                  <p className="text-zinc-400 mb-6 leading-relaxed">
+                    {featuredPost.excerpt}
+                  </p>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center text-sm text-zinc-400">
+                      <User className="w-4 h-4 mr-2" />
+                      {featuredPost.author}
+                      <Calendar className="w-4 h-4 ml-4 mr-2" />
+                      {new Date(featuredPost.date).toLocaleDateString()}
+                    </div>
+                    
+                    <motion.button
+                      className="flex items-center text-purple-400 hover:text-purple-300 transition-colors"
+                      whileHover={{ x: 5 }}
+                    >
+                      Read More
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </motion.button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         </motion.div>
 
         {/* Regular Posts Grid */}
@@ -250,55 +254,56 @@ export default function BlogSection() {
             <motion.div
               key={post.id}
               variants={itemVariants}
-              className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer"
               whileHover={{ y: -5 }}
             >
-              <div className="relative overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  width={400}
-                  height={200}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded text-xs text-white">
-                    {post.category}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
-                  {post.title}
-                </h3>
-
-                <p className="text-zinc-400 text-sm mb-4 leading-relaxed line-clamp-3">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-2 py-1 bg-zinc-800/50 text-zinc-400 text-xs rounded flex items-center"
-                    >
-                      <Tag className="w-3 h-3 mr-1" />
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between text-xs text-zinc-500 mb-4">
-                  <div className="flex items-center">
-                    <User className="w-3 h-3 mr-1" />
-                    {post.author}
+              <Link href={`/blog/${post.id}`}>
+                <div className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer h-full">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={400}
+                      height={200}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded text-xs text-white">
+                        {post.category}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <Clock className="w-3 h-3 mr-1" />
-                    {post.readTime}
-                  </div>
-                </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-zinc-400 text-sm mb-4 leading-relaxed line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="px-2 py-1 bg-zinc-800/50 text-zinc-400 text-xs rounded flex items-center"
+                        >
+                          <Tag className="w-3 h-3 mr-1" />
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs text-zinc-500 mb-4">
+                      <div className="flex items-center">
+                        <User className="w-3 h-3 mr-1" />
+                        {post.author}
+                      </div>
+                      <div className="flex items-center">
+                        <Clock className="w-3 h-3 mr-1" />
+                        {post.readTime}
+                      </div>
+                    </div>
 
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-zinc-500">
@@ -313,8 +318,21 @@ export default function BlogSection() {
     <ArrowRight className="w-4 h-4 ml-2" />
   </motion.span>
 </Link>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-zinc-500">
+                        {new Date(post.date).toLocaleDateString()}
+                      </span>
+                      <motion.button
+                        className="flex items-center text-purple-400 hover:text-purple-300 transition-colors text-sm"
+                        whileHover={{ x: 5 }}
+                      >
+                        Read More
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </motion.button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
