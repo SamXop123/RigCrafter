@@ -115,53 +115,54 @@ body {
   @apply border-l-4 border-purple-500 pl-4 text-zinc-400 italic mb-4;
 }
 
-/* Component tabs responsive scrollbar - Mobile: NO scrollbar, Desktop: Purple scrollbar */
-#component-tabs.component-tabs-scroll {
+/* Component tabs responsive scrollbar - Clean implementation */
+.component-tabs-scroll {
   /* MOBILE: Completely hide scrollbar on devices < 1024px */
   scrollbar-width: none !important; /* Firefox */
   -ms-overflow-style: none !important; /* IE and Edge */
+  /* Add padding to create space between tabs and scrollbar area */
+  padding-bottom: 8px !important;
 }
 
-/* MOBILE: Hide webkit scrollbar on all devices < 1024px */
-#component-tabs.component-tabs-scroll::-webkit-scrollbar {
+.component-tabs-scroll::-webkit-scrollbar {
   display: none !important; /* Completely hidden on mobile */
   width: 0px !important;
   height: 0px !important;
-  background: transparent !important;
 }
 
-#component-tabs.component-tabs-scroll::-webkit-scrollbar-track {
+.component-tabs-scroll::-webkit-scrollbar-track {
   display: none !important; /* Hidden on mobile */
 }
 
-#component-tabs.component-tabs-scroll::-webkit-scrollbar-thumb {
+.component-tabs-scroll::-webkit-scrollbar-thumb {
   display: none !important; /* Hidden on mobile */
 }
 
 /* DESKTOP ONLY: Show custom purple scrollbar on devices >= 1024px */
 @media (min-width: 1024px) {
-  #component-tabs.component-tabs-scroll {
+  .component-tabs-scroll {
     scrollbar-width: thin !important; /* Firefox */
     scrollbar-color: hsl(270 100% 60%) hsl(0 0% 8%) !important;
+    /* More padding on desktop for better spacing */
+    padding-bottom: 12px !important;
   }
 
-  #component-tabs.component-tabs-scroll::-webkit-scrollbar {
+  .component-tabs-scroll::-webkit-scrollbar {
     display: block !important; /* Show only on desktop */
     width: 10px !important;
     height: 10px !important;
     background: hsl(0 0% 8%) !important;
   }
 
-  #component-tabs.component-tabs-scroll::-webkit-scrollbar-track {
+  .component-tabs-scroll::-webkit-scrollbar-track {
     display: block !important; /* Show only on desktop */
     background: hsl(0 0% 8%) !important;
     border-radius: 6px !important;
     border: 2px solid hsl(0 0% 12%) !important;
     box-shadow: inset 0 0 3px rgba(0,0,0,0.3) !important;
-    margin-top: 8px !important;
   }
 
-  #component-tabs.component-tabs-scroll::-webkit-scrollbar-thumb {
+  .component-tabs-scroll::-webkit-scrollbar-thumb {
     display: block !important; /* Show only on desktop */
     background: linear-gradient(135deg, hsl(270 100% 60%), hsl(270 100% 75%)) !important; 
     border-radius: 6px !important;
@@ -170,98 +171,12 @@ body {
     transition: all 0.3s ease !important;
   }
 
-  #component-tabs.component-tabs-scroll::-webkit-scrollbar-thumb:hover {
+  .component-tabs-scroll::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, hsl(270 100% 70%), hsl(270 100% 85%)) !important;
     border-color: hsl(270 100% 65%) !important;
     box-shadow: 0 0 10px hsl(270 100% 70%) !important;
     transform: scale(1.1) !important;
   }
-}
-
-/* Hide scrollbar utility class */
-.scrollbar-hide {
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-
-/* Show scrollbar utility class - overrides scrollbar-hide */
-@media (min-width: 1024px) {
-  .scrollbar-visible {
-    scrollbar-width: thin !important; /* Firefox */
-    -ms-overflow-style: auto !important; /* IE and Edge */
-  }
-
-  .scrollbar-visible::-webkit-scrollbar {
-    display: block !important; /* Safari and Chrome */
-    width: 8px !important;
-    height: 8px !important;
-  }
-
-  .scrollbar-visible::-webkit-scrollbar-track {
-    background: hsl(0 0% 5%) !important;
-    border-radius: 4px !important;
-    border: 1px solid hsl(0 0% 8%) !important;
-  }
-
-  .scrollbar-visible::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, hsl(270 100% 60%), hsl(270 100% 70%)) !important; 
-    border-radius: 4px !important;
-    border: 1px solid hsl(270 100% 50%) !important;
-    transition: all 0.3s ease !important;
-  }
-
-  .scrollbar-visible::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, hsl(270 100% 70%), hsl(270 100% 80%)) !important;
-    border-color: hsl(270 100% 60%) !important;
-    transform: scale(1.05) !important;
-  }
-}
-
-/* Custom Scrollbar Styling */
-/* Webkit browsers (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(0 0% 5%);
-  border-radius: 4px;
-  border: 1px solid hsl(0 0% 8%);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, hsl(270 100% 60%), hsl(270 100% 70%)); 
-  border-radius: 4px;
-  border: 1px solid hsl(270 100% 50%);
-  transition: all 0.3s ease;
-  margin: 12px 0; /* This creates visual spacing by making thumb shorter */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, hsl(270 100% 70%), hsl(270 100% 80%));
-  border-color: hsl(270 100% 60%);
-  transform: scale(1.05);
-}
-
-::-webkit-scrollbar-thumb:active {
-  background: hsl(270 100% 55%); 
-}
-
-::-webkit-scrollbar-corner {
-  background: hsl(0 0% 5%);
-}
-
-/* Alternative: Use body margin approach without affecting width */
-body {
-  margin-top: 8px;
-  margin-bottom: 8px;
 }
 
 /* Scrollbar for specific containers like dropdowns */
