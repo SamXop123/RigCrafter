@@ -26,3 +26,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Custom exclusions - modified files not to be uploaded
+/lib/firebase.ts
+package-lock.json
+package.json
+
+# misc

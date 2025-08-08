@@ -256,12 +256,12 @@ export default function RigBuilder() {
           <div className="lg:col-span-2">
             {/* Scroll Navigation Container */}
             <div className="mb-6 relative">
-              <div className="flex items-start">
+              <div className="flex items-center">
                 {/* Left Scroll Button - Hidden on desktop (≥1024px) */}
                 <Button
                   variant="ghost"
-                  size="sm"
-                  className="lg:hidden bg-purple-600 hover:bg-purple-700 border-none text-white shadow-lg px-3 rounded-lg mr-2 mt-2"
+                  size="default"
+                  className="lg:hidden bg-purple-600 hover:bg-purple-700 border-none text-white shadow-lg px-3 rounded-lg mr-2 h-10"
                   onClick={() => {
                     const container = document.getElementById('component-tabs');
                     if (container) {
@@ -299,8 +299,8 @@ export default function RigBuilder() {
                 {/* Right Scroll Button - Hidden on desktop (≥1024px) */}
                 <Button
                   variant="ghost"
-                  size="sm"
-                  className="lg:hidden bg-purple-600 hover:bg-purple-700 border-none text-white shadow-lg px-3 rounded-lg ml-2 mt-2"
+                  size="default"
+                  className="lg:hidden bg-purple-600 hover:bg-purple-700 border-none text-white shadow-lg px-3 rounded-lg ml-2 h-10"
                   onClick={() => {
                     const container = document.getElementById('component-tabs');
                     if (container) {
