@@ -124,6 +124,12 @@ export default function RigBuilder() {
       return
     }
 
+    // Check if Firebase is available
+    if (!db) {
+      alert("Firebase is not available. Cannot save build.")
+      return
+    }
+
     setIsSaving(true)
     try {
       await addDoc(collection(db, "builds"), {
