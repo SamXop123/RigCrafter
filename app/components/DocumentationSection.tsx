@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Book, Code, Users, Zap, Github, ExternalLink, ArrowRight, FileText, Terminal, Puzzle, AlertTriangle, UploadCloud, AlertCircle } from "lucide-react"
 
 const docSections = [
-   {
+  {
     title: "Getting Started",
     icon: <Book className="w-6 h-6" />,
     description: "Quick start guide and basic concepts",
@@ -12,46 +12,43 @@ const docSections = [
       { name: "Installation & Setup", href: "#installation" },
       { name: "Your First Build", href: "#first-build" },
       { name: "Understanding Components", href: "#components" },
-      { name: "Basic Navigation", href: "#navigation" }
-    ]
+      { name: "Basic Navigation", href: "#navigation" },
+    ],
   },
-  
-   {
-  title: "Core Features",
-  icon: <Zap className="w-6 h-6" />,
-  description: "Main features of RigCrafter",
-  items: [
-    { name: "Component Selector", href: "#core-features" },
-    { name: "Smart Recommendations", href: "#core-features" },
-    { name: "Live Price Optimization", href: "#core-features" }
-  ]
-},
   {
-
-  title: "Run Locally",
-  icon: <Terminal className="w-6 h-6" />,
-  description: "Steps to clone, install, and run the project on your machine",
-  items: [
-    { name: "Clone the Repository", href: "#clone-repo" },
-    { name: "Install Dependencies", href: "#install-dependencies" },
-    { name: "Run Development Server", href: "#run-dev" },
-    { name: "Open in Browser", href: "#open-browser" }
-  ]
-},
-{
-  title: "User Guide",
-  icon: <Zap className="w-6 h-6" />,
-  description: "Master RigCrafter's features",
-  items: [
-    { name: "Build Configuration", href: "#build-config" },
-    { name: "Compatibility Checker", href: "#compatibility" },
-    { name: "Performance Estimates", href: "#performance" },
-    { name: "Export & Sharing", href: "#export-share" },
-    { name: "Troubleshooting", href: "#troubleshooting" },
-    { name: "Best Practices", href: "#best-practices" }
-  ]
-},
-  
+    title: "Core Features",
+    icon: <Zap className="w-6 h-6" />,
+    description: "Main features of RigCrafter",
+    items: [
+      { name: "Component Selector", href: "#core-features" },
+      { name: "Smart Recommendations", href: "#core-features" },
+      { name: "Live Price Optimization", href: "#core-features" },
+    ],
+  },
+  {
+    title: "Run Locally",
+    icon: <Terminal className="w-6 h-6" />,
+    description: "Steps to clone, install, and run the project on your machine",
+    items: [
+      { name: "Clone the Repository", href: "#clone-repo" },
+      { name: "Install Dependencies", href: "#install-dependencies" },
+      { name: "Run Development Server", href: "#run-dev" },
+      { name: "Open in Browser", href: "#open-browser" },
+    ],
+  },
+  {
+    title: "User Guide",
+    icon: <Zap className="w-6 h-6" />,
+    description: "Master RigCrafter's features",
+    items: [
+      { name: "Build Configuration", href: "#build-config" },
+      { name: "Compatibility Checker", href: "#compatibility" },
+      { name: "Performance Estimates", href: "#performance" },
+      { name: "Export & Sharing", href: "#export-share" },
+      { name: "Troubleshooting", href: "#troubleshooting" },
+      { name: "Best Practices", href: "#best-practices" },
+    ],
+  },
   {
     title: "Project Structure",
     icon: <Code className="w-6 h-6" />,
@@ -60,38 +57,35 @@ const docSections = [
       { name: "Frontend Architecture", href: "#frontend" },
       { name: "Component System", href: "#component-system" },
       { name: "Data Management", href: "#data-management" },
-      { name: "Build System", href: "#build-system" }
-    ]
+      { name: "Build System", href: "#build-system" },
+    ],
   },
   {
-  title: "Firebase Integration",
-  icon: <Zap className="w-6 h-6" />,
-  description: "How to set up Firebase for authentication and Firestore",
-  items: [
-    { name: "Firebase Project Setup", href: "#firebase-setup" },
-    { name: "Enable Authentication", href: "#firebase-auth" },
-    { name: "Enable Firestore", href: "#firebase-firestore" },
-    { name: ".env.local Configuration", href: "#firebase-env" },
-    { name: "Data Structure", href: "#firebase-data" },
-    { name: "Manual Testing", href: "#manual-testing" }
-  ]
-},
-{
-  title: "Common Errors & Fixes",
-  icon: <AlertCircle className="w-6 h-6" />,  
-
-  description: "Resolve frequent issues faced during setup and usage",
-  items: [
-    { name: "npm install --legacy-peer-deps", href: "#legacy-peer-deps" },
-    { name: "Firebase Permission Denied Error", href: "#firebase-permission" },
-    { name: "Module Not Found Error", href: "#module-not-found" },
-    { name: "React Version Conflict with Dependencies", href: "#react-version-conflict" },
-    { name: "ESLint Plugin Import Errors", href: "#eslint-errors" }
-    ]
-},
-
+    title: "Firebase Integration",
+    icon: <Zap className="w-6 h-6" />,
+    description: "How to set up Firebase for authentication and Firestore",
+    items: [
+      { name: "Firebase Project Setup", href: "#firebase-setup" },
+      { name: "Enable Authentication", href: "#firebase-auth" },
+      { name: "Enable Firestore", href: "#firebase-firestore" },
+      { name: ".env.local Configuration", href: "#firebase-env" },
+      { name: "Data Structure", href: "#firebase-data" },
+      { name: "Manual Testing", href: "#manual-testing" },
+    ],
+  },
   {
-
+    title: "Common Errors & Fixes",
+    icon: <AlertCircle className="w-6 h-6" />,
+    description: "Resolve frequent issues faced during setup and usage",
+    items: [
+      { name: "npm install --legacy-peer-deps", href: "#legacy-peer-deps" },
+      { name: "Firebase Permission Denied Error", href: "#firebase-permission" },
+      { name: "Module Not Found Error", href: "#module-not-found" },
+      { name: "React Version Conflict with Dependencies", href: "#react-version-conflict" },
+      { name: "ESLint Plugin Import Errors", href: "#eslint-errors" },
+    ],
+  },
+  {
     title: "Contributing",
     icon: <Users className="w-6 h-6" />,
     description: "Help us improve RigCrafter",
@@ -103,51 +97,22 @@ const docSections = [
       { name: "Code Style Guide", href: "#style-guide" },
       { name: "Component Data Updates", href: "#component-data" },
       { name: "Testing Guidelines", href: "#testing" },
-      { name: "Documentation Updates", href: "#docs-updates" }
-    ]
-  },
-
-{
-  title: "Deployment Guide",
-  icon: <UploadCloud className="w-6 h-6" />,  
-
-  description: "Steps to deploy RigCrafter to production",
-  items: [
-    { name: "Build the Project", href: "#build-project" },
-    { name: "Set Environment Variables", href: "#env-setup" },
-    { name: "Choose a Hosting Platform", href: "#choose-host" },
-    { name: "Deploy to Vercel", href: "#vercel-deploy" },
-    { name: "Deploy to Netlify", href: "#netlify-deploy" },
-    { name: "Post Deployment Checks", href: "#post-deploy" }
-  ]
-}
-
-]
-
-  {
-    title: "User Guide",
-    icon: <Zap className="w-6 h-6" />,
-    description: "Master RigCrafter's features",
-    items: [
-      { name: "Build Configuration", href: "#build-config" },
-      { name: "Compatibility Checker", href: "#compatibility" },
-      { name: "Performance Estimates", href: "#performance" },
-      { name: "Export & Sharing", href: "#export-share" },
-      { name: "Troubleshooting", href: "#troubleshooting" },
-      { name: "Best Practices", href: "#best-practices" }
-    ]
+      { name: "Documentation Updates", href: "#docs-updates" },
+    ],
   },
   {
-    title: "Project Structure",
-    icon: <Code className="w-6 h-6" />,
-    description: "Understanding the codebase",
+    title: "Deployment Guide",
+    icon: <UploadCloud className="w-6 h-6" />,
+    description: "Steps to deploy RigCrafter to production",
     items: [
-      { name: "Frontend Architecture", href: "#frontend" },
-      { name: "Component System", href: "#component-system" },
-      { name: "Data Management", href: "#data-management" },
-      { name: "Build System", href: "#build-system" }
-    ]
-  }
+      { name: "Build the Project", href: "#build-project" },
+      { name: "Set Environment Variables", href: "#env-setup" },
+      { name: "Choose a Hosting Platform", href: "#choose-host" },
+      { name: "Deploy to Vercel", href: "#vercel-deploy" },
+      { name: "Deploy to Netlify", href: "#netlify-deploy" },
+      { name: "Post Deployment Checks", href: "#post-deploy" },
+    ],
+  },
 ];
 
 const quickLinks = [
@@ -156,27 +121,27 @@ const quickLinks = [
     description: "View source code and contribute",
     icon: <Github className="w-5 h-5" />,
     href: "https://github.com/SamXop123/RigCrafter",
-    external: true
+    external: true,
   },
   {
     title: "Contribution Guide",
     description: "Step-by-step guide to contributing",
     icon: <FileText className="w-5 h-5" />,
-    href: "#contribution-guide"
+    href: "#contribution-guide",
   },
   {
     title: "Issue Tracker",
     description: "Report bugs and request features",
     icon: <Terminal className="w-5 h-5" />,
     href: "https://github.com/SamXop123/RigCrafter/issues",
-    external: true
+    external: true,
   },
   {
     title: "Component Database",
     description: "Understand the component data structure",
     icon: <Puzzle className="w-5 h-5" />,
-    href: "#component-database"
-  }
+    href: "#component-database",
+  },
 ];
 
 export default function DocumentationSection() {
