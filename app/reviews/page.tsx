@@ -1,8 +1,8 @@
-import BlogSection from "@/app/components/BlogSection"
+import ReviewSection from "@/app/components/review-section";
 import Footer from "@/app/components/Footer"
 import Header from "@/app/components/Header"
 
-export default function BlogPage() {
+export default function ReviewsPage() {
   return (
     <div className="min-h-screen text-white relative">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-black/30 to-black"></div>
@@ -10,7 +10,7 @@ export default function BlogPage() {
       <div className="relative z-10">
         <Header />
         <main>
-          <BlogSection />
+          <ReviewSection />
         </main>
         <Footer />
       </div>
