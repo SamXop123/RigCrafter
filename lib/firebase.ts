@@ -16,25 +16,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app;
-let auth;
-let db;
+const app = initializeApp(firebaseConfig);
 
-try {
-  app = initializeApp(firebaseConfig);
-  // Initialize Firebase Authentication and get a reference to the service
-  auth = getAuth(app);
-  // Initialize Cloud Firestore and get a reference to the service
-  db = getFirestore(app);
-} catch (error) {
-  console.warn('Firebase initialization failed. Running in demo mode.', error);
-  // Fallback to null values - components should handle this gracefully
-  app = null;
-  auth = null;
-  db = null;
-}
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
 
-export { auth, db };
+// Initialize Cloud Firestore and get a reference to the service
+export const db = getFirestore(app);
+
 export default app; 
 
 // export const analytics = typeof window !== "undefined" ? getAnalytics(app) : null;
