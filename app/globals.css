@@ -117,11 +117,11 @@ body {
 
 /* Component tabs responsive scrollbar - Clean implementation */
 .component-tabs-scroll {
-  /* MOBILE: Completely hide scrollbar on devices < 1024px */
-  scrollbar-width: none !important; /* Firefox */
-  -ms-overflow-style: none !important; /* IE and Edge */
-  /* Add padding to create space between tabs and scrollbar area */
-  padding-bottom: 8px !important;
+
+  scrollbar-width: none !important; 
+  -ms-overflow-style: none !important; 
+  
+  
 }
 
 .component-tabs-scroll::-webkit-scrollbar {
@@ -130,20 +130,12 @@ body {
   height: 0px !important;
 }
 
-.component-tabs-scroll::-webkit-scrollbar-track {
-  display: none !important; /* Hidden on mobile */
-}
-
-.component-tabs-scroll::-webkit-scrollbar-thumb {
-  display: none !important; /* Hidden on mobile */
-}
 
 /* DESKTOP ONLY: Show custom purple scrollbar on devices >= 1024px */
 @media (min-width: 1024px) {
   .component-tabs-scroll {
     scrollbar-width: thin !important; /* Firefox */
     scrollbar-color: hsl(270 100% 60%) hsl(0 0% 8%) !important;
-    /* More padding on desktop for better spacing */
     padding-bottom: 12px !important;
   }
 
@@ -191,16 +183,11 @@ body {
   border: none;
 }
 
-/* Firefox */
+
+/* Firefox and better scrollbar visibility on dark backgrounds */
 * {
   scrollbar-width: thin;
   scrollbar-color: hsl(270 100% 60%) hsl(0 0% 5%);
-}
-
-/* For better scrollbar visibility on dark backgrounds */
-html {
-  scrollbar-color: hsl(270 100% 60%) hsl(0 0% 5%);
-  scrollbar-width: thin;
 }
 
 /* Mobile scrollbar styling (for touch devices that show scrollbars) */
