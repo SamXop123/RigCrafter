@@ -55,6 +55,7 @@ RigCrafter is a modern, interactive web application that helps users build custo
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
 
+
 ## 📁 Project Structure
 
 ```

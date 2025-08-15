@@ -53,6 +53,7 @@
     "next-themes": "^0.4.4",
     "react": "^19",
     "react-day-picker": "^9.2.2",
+    "react-day-picker": "^9.8.1",
     "react-dom": "^19",
     "react-hook-form": "^7.54.1",
     "react-intersection-observer": "latest",
@@ -61,13 +62,13 @@
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.6",
+    "vaul": "^1.1.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
@@ -87,5 +88,5 @@
     "url": "https://github.com/SamXop123/Rig-Crafter---Typescript/issues"
   },
   "homepage": "https://github.com/SamXop123/Rig-Crafter---Typescript#readme",
-  "description": ""
+  "description": "**Build your dream gaming PC with our interactive component selector**"
 }
