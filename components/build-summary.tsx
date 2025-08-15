@@ -22,6 +22,8 @@ import {
 import type { Component, ComponentType } from "@/lib/types"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
+import { useAuth } from "@/lib/auth-context"
+import AuthModal from "@/components/auth-modal"
 
 interface BuildSummaryProps {
   selectedComponents: Record<ComponentType, Component | null>
@@ -35,6 +37,9 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
   const [buildMode, setBuildMode] = useState<"custom" | "saved">("custom")
   const [savedBuilds, setSavedBuilds] = useState<any[]>([])
   const [selectedSavedBuild, setSelectedSavedBuild] = useState("")
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  
+  const { user } = useAuth()
 
   const componentIcons: Record<ComponentType, JSX.Element> = {
     cpu: <Cpu className="w-4 h-4" />,
@@ -120,6 +125,15 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
     Object.entries(selected.selectedComponents).forEach(([type, comp]) => {
       onRemoveComponent(type as ComponentType, comp as Component)
     })
+  }
+
+  const handleCompleteBuild = () => {
+    if (!user) {
+      setShowAuthModal(true)
+      return
+    }
+    // TODO: Implement complete build functionality for logged-in users
+    alert("Build completed! This feature will be implemented soon.")
   }
 
   return (
@@ -236,7 +250,11 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
         </div>
 
         <div className="space-y-3">
-          <Button className="w-full bg-purple-600 hover:bg-purple-700" disabled={selectedComponentsCount === 0}>
+          <Button 
+            className="w-full bg-purple-600 hover:bg-purple-700" 
+            disabled={selectedComponentsCount === 0}
+            onClick={handleCompleteBuild}
+          >
             Complete Build
           </Button>
 
@@ -298,6 +316,12 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
           </div>
         </div>
       </CardContent>
+
+      {/* Authentication Modal */}
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+      />
     </Card>
   )
 }
