@@ -11,6 +11,16 @@ import type { Component, ComponentType } from "@/lib/types"
 import { getComponents } from "@/lib/data"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { toast } from "sonner";
+// Import Dialog components
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 interface ComponentSelectorProps {
   type: ComponentType
@@ -95,35 +105,31 @@ export default function ComponentSelector({ type, selectedComponent, onSelect, s
               : (sortOrder === "asc" ? "↑" : "↓")}
           </Button>
         <TooltipProvider>
-  <Tooltip>
-    <TooltipTrigger asChild>
-      <Button
-        onClick={() => {
-          const validComponents = filteredComponents.filter(
-            (c) => !c.tags.includes("unsupported") && c.rating > 2
-          );
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                onClick={() => {
+                  const validComponents = filteredComponents.filter(
+                    (c) => !c.tags.includes("unsupported") && c.rating > 2
+                  );
 
-          if (validComponents.length === 0) return;
-          const randomIndex = Math.floor(Math.random() * validComponents.length);
-          const randomComponent = validComponents[randomIndex];
-          onSelect(randomComponent);
-          toast.success(`🎉 You got: ${randomComponent.name}`);
-        }}
-        disabled={filteredComponents.length === 0}
-        className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded disabled:opacity-50"
-      >
-        🎲 Surprise Me!
-      </Button>
-    </TooltipTrigger>
-    <TooltipContent>
-      <p>Feeling Lucky?</p>
-    </TooltipContent>
-  </Tooltip>
-</TooltipProvider>
-
-
-
-
+                  if (validComponents.length === 0) return;
+                  const randomIndex = Math.floor(Math.random() * validComponents.length);
+                  const randomComponent = validComponents[randomIndex];
+                  onSelect(randomComponent);
+                  toast.success(`🎉 You got: ${randomComponent.name}`);
+                }}
+                disabled={filteredComponents.length === 0}
+                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded disabled:opacity-50"
+              >
+                🎲 Surprise Me!
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Feeling Lucky?</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
         </div>
       </div>
 
@@ -203,29 +209,35 @@ function ComponentCard({ component, isSelected, onSelect, isSuggested }: Compone
 
             <div className="flex justify-between items-center mb-3">
               <span className="text-2xl font-bold">${component.price.toFixed(2)}</span>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
-                      <Info className="h-4 w-4" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <div className="max-w-xs">
-                      <p className="font-semibold mb-1">{component.name}</p>
-                      <p className="text-sm text-zinc-400">{component.description}</p>
-                      <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
-                        {Object.entries(component.specs).map(([key, value]) => (
-                          <div key={key}>
-                            <span className="text-zinc-500">{key}: </span>
-                            <span>{value}</span>
-                          </div>
-                        ))}
-                      </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Info className="h-4 w-4" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="bg-zinc-900 border-zinc-700 text-white sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="text-purple-400 text-xl">{component.name}</DialogTitle>
+                  </DialogHeader>
+                  <div className="flex flex-col gap-4">
+                    {component.imageUrl && (
+                        <div className="flex justify-center my-4">
+                           {/* THIS IS THE CORRECTED LINE */}
+                           <img src={component.imageUrl} alt={component.name} className="rounded-lg h-48 w-48 object-contain" />
+                        </div>
+                    )}
+                    <p className="text-sm text-zinc-400">{component.description}</p>
+                    <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                      {Object.entries(component.specs).map(([key, value]) => (
+                        <div key={key} className="flex flex-col">
+                          <span className="text-zinc-500 font-medium">{key}</span>
+                          <span>{value}</span>
+                        </div>
+                      ))}
                     </div>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
 
             <div className="flex flex-wrap gap-2 mb-4">
@@ -256,5 +268,3 @@ function ComponentCard({ component, isSelected, onSelect, isSuggested }: Compone
     </motion.div>
   )
 }
-
-

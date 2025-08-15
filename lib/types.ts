@@ -3,6 +3,7 @@ export type ComponentType = "cpu" | "gpu" | "ram" | "storage" | "motherboard" | 
 export interface Component {
   id: string
   type: ComponentType
+  imageUrl: string
   name: string
   brand: string
   price: number
