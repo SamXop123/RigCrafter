@@ -13,7 +13,11 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [showAuthModal, setShowAuthModal] = useState(false)
+  
+  // Refs for the menu panel and the toggle button
   const menuRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null) // Create a ref for the button
+  
   const { user, logout } = useAuth()
 
   useEffect(() => {
@@ -22,10 +26,9 @@ export default function Header() {
       
       setIsScrolled(currentScrollY > 0)
       
-      // Auto-hide logic
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false)
-        setIsMenuOpen(false) // Close menu when header hides
+        setIsMenuOpen(false) 
       } else {
         setIsVisible(true)
       }
@@ -37,10 +40,16 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [lastScrollY])
 
-  // Close menu when clicking outside
+  // UPDATED: Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      // If the click is outside the menu AND not on the toggle button, then close the menu
+      if (
+        menuRef.current && 
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+        ) {
         setIsMenuOpen(false)
       }
     }
@@ -54,7 +63,6 @@ export default function Header() {
     }
   }, [isMenuOpen])
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden"
@@ -91,8 +99,9 @@ export default function Header() {
             </span>
           </Link>
           
-          <div className="md:hidden z-10">
-            <Button 
+          <div className="md:hidden z-50">
+            <Button
+              ref={buttonRef} // Attach the ref to the button
               variant="ghost" 
               size="icon" 
               onClick={toggleMenu}
@@ -295,4 +304,3 @@ export default function Header() {
     </>
   )
 }
-
