@@ -95,7 +95,6 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
     // TODO: Implement build completion logic (save to database, redirect, etc.)
   };
 
-
   const handleSaveBuild = () => {
     const savedBuilds = JSON.parse(localStorage.getItem("savedBuilds") || "[]");
 
@@ -316,6 +315,12 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
           </div>
         </div>
       </CardContent>
+
+      {/* Authentication Modal */}
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+      />
     </Card>
 
     <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
