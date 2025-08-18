@@ -86,16 +86,6 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  const handleCompleteBuild = () => {
-    if (!user) {
-      setShowAuthModal(true);
-      return;
-    }
-    // Handle authenticated user's build completion
-    console.log("Build completed for authenticated user:", user);
-  };
-
-
   const handleSaveBuild = () => {
     const savedBuilds = JSON.parse(localStorage.getItem("savedBuilds") || "[]");
 
