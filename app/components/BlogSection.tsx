@@ -9,7 +9,7 @@ const blogPosts = [
     id: 1,
     title: "The Future of PC Building: Trends to Watch in 2025",
     excerpt: "Explore upcoming technologies and trends that will shape the PC building landscape in the coming year, including DDR5 adoption, AI-powered components, and sustainable building practices.",
-    image: "/blog/pc-building-trends-2025.jpg",
+    image: "/blog/pc-future.webp",
     author: "Alex Chen",
     date: "2025-01-20",
     readTime: "8 min read",
@@ -21,7 +21,7 @@ const blogPosts = [
     id: 2,
     title: "RTX 5080 vs RTX 4090: The Ultimate GPU Showdown",
     excerpt: "A comprehensive comparison of NVIDIA's latest flagship graphics cards to help you decide which offers the best value for your gaming setup.",
-    image: "/blog/rtx-5080-vs-4090-comparison.jpg",
+    image: "/blog/rtx4090.avif",
     author: "Sarah Johnson",
     date: "2025-01-18",
     readTime: "12 min read",
@@ -33,7 +33,7 @@ const blogPosts = [
     id: 3,
     title: "Building Your First Gaming PC: 2025 Complete Guide",
     excerpt: "Learn from the most common first-time builder mistakes and how to avoid them in your build. Updated for 2025 with latest components and best practices.",
-    image: "/blog/first-gaming-pc-build-guide.jpg",
+    image: "/blog/first-gaming-pc.webp",
     author: "Mike Rodriguez",
     date: "2025-01-15",
     readTime: "15 min read",
@@ -45,7 +45,7 @@ const blogPosts = [
     id: 4,
     title: "AMD Ryzen 8000 Series: Performance Deep Dive",
     excerpt: "An in-depth analysis of AMD's latest Ryzen processors and how they stack up against Intel's 14th gen offerings for gaming and productivity.",
-    image: "/blog/amd-ryzen-8000-performance-review.jpg",
+    image: "/blog/amd-8000.png",
     author: "Emma Davis",
     date: "2025-01-12",
     readTime: "10 min read",
@@ -57,7 +57,7 @@ const blogPosts = [
     id: 5,
     title: "The Rise of OLED Gaming Monitors: Worth the Upgrade?",
     excerpt: "Discover how OLED gaming monitors are changing the game for competitive and immersive gaming experiences, plus our top recommendations.",
-    image: "/blog/oled-gaming-monitors-review.jpg",
+    image: "/blog/oled.png",
     author: "David Kim",
     date: "2025-01-10",
     readTime: "9 min read",
@@ -69,7 +69,7 @@ const blogPosts = [
     id: 6,
     title: "DDR5-7200 vs DDR5-6000: Does Speed Matter?",
     excerpt: "A comprehensive look at the latest high-speed memory and whether paying for faster RAM actually improves gaming and productivity performance.",
-    image: "/blog/ddr5-memory-speed-comparison.jpg",
+    image: "/blog/ddr5.avif",
     author: "Lisa Thompson",
     date: "2025-01-08",
     readTime: "11 min read",
@@ -81,7 +81,7 @@ const blogPosts = [
     id: 7,
     title: "Custom Loop vs AIO: Which Cooling Solution is Right for You?",
     excerpt: "Break down the pros and cons of custom liquid cooling loops versus all-in-one coolers to help you make the best choice for your build.",
-    image: "/blog/custom-loop-vs-aio-cooling.jpg",
+    image: "/blog/custom vs aio.webp",
     author: "James Wilson",
     date: "2025-01-05",
     readTime: "13 min read",
@@ -93,7 +93,7 @@ const blogPosts = [
     id: 8,
     title: "PCIe 5.0 SSDs: The Future of Storage is Here",
     excerpt: "Explore the benefits of PCIe 5.0 NVMe SSDs and whether they're worth the premium for gaming, content creation, and everyday computing.",
-    image: "/blog/pcie-5-nvme-ssd-review.jpg",
+    image: "/blog/pcie-5-nvme-ssd-review.png",
     author: "Maria Garcia",
     date: "2025-01-03",
     readTime: "7 min read",
@@ -184,14 +184,16 @@ export default function BlogSection() {
           viewport={{ once: true }}
         >
           <div className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer">
-            <div className="grid md:grid-cols-2 gap-0">
-              <div className="relative overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-0 h-96 md:h-[500px]">
+              <div className="relative overflow-hidden h-80 md:h-full">
                 <Image
                   src={featuredPost.image}
                   alt={featuredPost.title}
-                  width={600}
-                  height={400}
-                  className="w-full h-64 md:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={800}
+                  height={600}
+                  priority={true}
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-purple-500 text-white text-sm rounded-full flex items-center">
@@ -243,22 +245,24 @@ export default function BlogSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
         >
           {regularPosts.map((post) => (
             <motion.div
               key={post.id}
               variants={itemVariants}
-              className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer"
+              className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer flex flex-col min-h-[420px]"
               whileHover={{ y: -5 }}
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden h-56 sm:h-64 flex-shrink-0">
                 <Image
                   src={post.image}
                   alt={post.title}
-                  width={400}
-                  height={200}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={500}
+                  height={300}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded text-xs text-white">
@@ -267,12 +271,12 @@ export default function BlogSection() {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-6 flex-grow flex flex-col">
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
                   {post.title}
                 </h3>
 
-                <p className="text-zinc-400 text-sm mb-4 leading-relaxed line-clamp-3">
+                <p className="text-zinc-400 text-sm mb-4 leading-relaxed line-clamp-3 flex-grow">
                   {post.excerpt}
                 </p>
 

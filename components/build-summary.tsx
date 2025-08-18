@@ -22,6 +22,8 @@ import {
 import type { Component, ComponentType } from "@/lib/types"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
+import { useAuth } from "@/lib/auth-context"
+import AuthModal from "@/components/auth-modal"
 
 interface BuildSummaryProps {
   selectedComponents: Record<ComponentType, Component | null>
@@ -35,6 +37,8 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
   const [buildMode, setBuildMode] = useState<"custom" | "saved">("custom")
   const [savedBuilds, setSavedBuilds] = useState<any[]>([])
   const [selectedSavedBuild, setSelectedSavedBuild] = useState("")
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const { user } = useAuth()
 
   const componentIcons: Record<ComponentType, JSX.Element> = {
     cpu: <Cpu className="w-4 h-4" />,
@@ -82,6 +86,15 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
     setTimeout(() => setIsCopied(false), 2000);
   };
 
+  const handleCompleteBuild = () => {
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+    // Handle authenticated user's build completion
+    console.log("Build completed for authenticated user:", user);
+  };
+
 
   const handleSaveBuild = () => {
     const savedBuilds = JSON.parse(localStorage.getItem("savedBuilds") || "[]");
@@ -123,6 +136,7 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
   }
 
   return (
+    <>
     <Card className="bg-zinc-900/50 border-zinc-800 sticky top-4">
       <CardHeader className="pb-3">
         <CardTitle className="flex justify-between items-center pb-4">
@@ -236,7 +250,11 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
         </div>
 
         <div className="space-y-3">
-          <Button className="w-full bg-purple-600 hover:bg-purple-700" disabled={selectedComponentsCount === 0}>
+          <Button 
+            className="w-full bg-purple-600 hover:bg-purple-700" 
+            disabled={selectedComponentsCount === 0}
+            onClick={handleCompleteBuild}
+          >
             Complete Build
           </Button>
 
@@ -299,6 +317,9 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
         </div>
       </CardContent>
     </Card>
+
+    <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+  </>
   )
 }
 
