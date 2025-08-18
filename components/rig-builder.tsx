@@ -26,6 +26,8 @@ import {
   Zap,
 
   Save,
+    ChevronLeft,
+  ChevronRight,
 } from "lucide-react"
 import type { Component, ComponentType } from "@/lib/types"
 import { getCompatibilityIssues } from "@/lib/compatibility"
@@ -121,6 +123,12 @@ export default function RigBuilder() {
 
     if (!buildName.trim()) {
       alert("Please enter a name for your build")
+      return
+    }
+
+    // Check if Firebase is available
+    if (!db) {
+      alert("Firebase is not available. Cannot save build.")
       return
     }
 
@@ -252,26 +260,62 @@ export default function RigBuilder() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <div className="mb-6 overflow-x-auto">
-              <div className="flex space-x-2 min-w-max">
-                {componentTabs.map((tab) => (
-                  <Button
-                    key={tab.type}
-                    variant={activeTab === tab.type ? "default" : "outline"}
-                    className={`flex items-center ${
-                      activeTab === tab.type
-                        ? "bg-purple-600 hover:bg-purple-700"
-                        : "hover:bg-zinc-800"
-                    }`}
-                    onClick={() => setActiveTab(tab.type)}
-                  >
-                    {tab.icon}
-                    <span className="ml-2">{tab.label}</span>
-                    {selectedComponents[tab.type] && (
-                      <span className="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                    )}
-                  </Button>
-                ))}
+            {/* Scroll Navigation Container */}
+            <div className="mb-6 relative">
+              <div className="flex items-center">
+                {/* Left Scroll Button - Hidden on desktop (≥1024px) */}
+                <Button
+                  variant="ghost"
+                  size="default"
+                  className="lg:hidden bg-purple-600 hover:bg-purple-700 border-none text-white shadow-lg px-3 rounded-lg mr-2 h-10"
+                  onClick={() => {
+                    const container = document.getElementById('component-tabs');
+                    if (container) {
+                      container.scrollBy({ left: -200, behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  <ChevronLeft className="w-4 h-4 text-white" />
+                </Button>
+
+                {/* Original tabs container structure */}
+                <div id="component-tabs" className="overflow-x-auto flex-1 component-tabs-scroll">
+                  <div className="flex space-x-2 min-w-max">
+                    {componentTabs.map((tab) => (
+                      <Button
+                        key={tab.type}
+                        variant={activeTab === tab.type ? "default" : "outline"}
+                        className={`flex items-center ${
+                          activeTab === tab.type
+                            ? "bg-purple-600 hover:bg-purple-700"
+                            : "hover:bg-zinc-800"
+                        }`}
+                        onClick={() => setActiveTab(tab.type)}
+                      >
+                        {tab.icon}
+                        <span className="ml-2">{tab.label}</span>
+                        {selectedComponents[tab.type] && (
+                          <span className="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
+                        )}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right Scroll Button - Hidden on desktop (≥1024px) */}
+                <Button
+                  variant="ghost"
+                  size="default"
+                  className="lg:hidden bg-purple-600 hover:bg-purple-700 border-none text-white shadow-lg px-3 rounded-lg ml-2 h-10"
+                  onClick={() => {
+                    const container = document.getElementById('component-tabs');
+                    if (container) {
+                      container.scrollBy({ left: 200, behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  <ChevronRight className="w-4 h-4 text-white" />
+                </Button>
               </div>
             </div>
 

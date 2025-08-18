@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Book, Code, Users, Zap, Github, ExternalLink, ArrowRight, FileText, Terminal, Puzzle } from "lucide-react"
+import { Book, Code, Users, Zap, Github, ExternalLink, ArrowRight, FileText, Terminal, Puzzle, AlertTriangle, UploadCloud, AlertCircle } from "lucide-react"
 
 const docSections = [
   {
@@ -12,8 +12,78 @@ const docSections = [
       { name: "Installation & Setup", href: "#installation" },
       { name: "Your First Build", href: "#first-build" },
       { name: "Understanding Components", href: "#components" },
-      { name: "Basic Navigation", href: "#navigation" }
-    ]
+      { name: "Basic Navigation", href: "#navigation" },
+    ],
+  },
+  {
+    title: "Core Features",
+    icon: <Zap className="w-6 h-6" />,
+    description: "Main features of RigCrafter",
+    items: [
+      { name: "Component Selector", href: "#core-features" },
+      { name: "Smart Recommendations", href: "#core-features" },
+      { name: "Live Price Optimization", href: "#core-features" },
+    ],
+  },
+  {
+    title: "Run Locally",
+    icon: <Terminal className="w-6 h-6" />,
+    description: "Steps to clone, install, and run the project on your machine",
+    items: [
+      { name: "Clone the Repository", href: "#clone-repo" },
+      { name: "Install Dependencies", href: "#install-dependencies" },
+      { name: "Run Development Server", href: "#run-dev" },
+      { name: "Open in Browser", href: "#open-browser" },
+    ],
+  },
+  {
+    title: "User Guide",
+    icon: <Zap className="w-6 h-6" />,
+    description: "Master RigCrafter's features",
+    items: [
+      { name: "Build Configuration", href: "#build-config" },
+      { name: "Compatibility Checker", href: "#compatibility" },
+      { name: "Performance Estimates", href: "#performance" },
+      { name: "Export & Sharing", href: "#export-share" },
+      { name: "Troubleshooting", href: "#troubleshooting" },
+      { name: "Best Practices", href: "#best-practices" },
+    ],
+  },
+  {
+    title: "Project Structure",
+    icon: <Code className="w-6 h-6" />,
+    description: "Understanding the codebase",
+    items: [
+      { name: "Frontend Architecture", href: "#frontend" },
+      { name: "Component System", href: "#component-system" },
+      { name: "Data Management", href: "#data-management" },
+      { name: "Build System", href: "#build-system" },
+    ],
+  },
+  {
+    title: "Firebase Integration",
+    icon: <Zap className="w-6 h-6" />,
+    description: "How to set up Firebase for authentication and Firestore",
+    items: [
+      { name: "Firebase Project Setup", href: "#firebase-setup" },
+      { name: "Enable Authentication", href: "#firebase-auth" },
+      { name: "Enable Firestore", href: "#firebase-firestore" },
+      { name: ".env.local Configuration", href: "#firebase-env" },
+      { name: "Data Structure", href: "#firebase-data" },
+      { name: "Manual Testing", href: "#manual-testing" },
+    ],
+  },
+  {
+    title: "Common Errors & Fixes",
+    icon: <AlertCircle className="w-6 h-6" />,
+    description: "Resolve frequent issues faced during setup and usage",
+    items: [
+      { name: "npm install --legacy-peer-deps", href: "#legacy-peer-deps" },
+      { name: "Firebase Permission Denied Error", href: "#firebase-permission" },
+      { name: "Module Not Found Error", href: "#module-not-found" },
+      { name: "React Version Conflict with Dependencies", href: "#react-version-conflict" },
+      { name: "ESLint Plugin Import Errors", href: "#eslint-errors" },
+    ],
   },
   {
     title: "Contributing",
@@ -27,34 +97,23 @@ const docSections = [
       { name: "Code Style Guide", href: "#style-guide" },
       { name: "Component Data Updates", href: "#component-data" },
       { name: "Testing Guidelines", href: "#testing" },
-      { name: "Documentation Updates", href: "#docs-updates" }
-    ]
+      { name: "Documentation Updates", href: "#docs-updates" },
+    ],
   },
   {
-    title: "User Guide",
-    icon: <Zap className="w-6 h-6" />,
-    description: "Master RigCrafter's features",
+    title: "Deployment Guide",
+    icon: <UploadCloud className="w-6 h-6" />,
+    description: "Steps to deploy RigCrafter to production",
     items: [
-      { name: "Build Configuration", href: "#build-config" },
-      { name: "Compatibility Checker", href: "#compatibility" },
-      { name: "Performance Estimates", href: "#performance" },
-      { name: "Export & Sharing", href: "#export-share" },
-      { name: "Troubleshooting", href: "#troubleshooting" },
-      { name: "Best Practices", href: "#best-practices" }
-    ]
+      { name: "Build the Project", href: "#build-project" },
+      { name: "Set Environment Variables", href: "#env-setup" },
+      { name: "Choose a Hosting Platform", href: "#choose-host" },
+      { name: "Deploy to Vercel", href: "#vercel-deploy" },
+      { name: "Deploy to Netlify", href: "#netlify-deploy" },
+      { name: "Post Deployment Checks", href: "#post-deploy" },
+    ],
   },
-  {
-    title: "Project Structure",
-    icon: <Code className="w-6 h-6" />,
-    description: "Understanding the codebase",
-    items: [
-      { name: "Frontend Architecture", href: "#frontend" },
-      { name: "Component System", href: "#component-system" },
-      { name: "Data Management", href: "#data-management" },
-      { name: "Build System", href: "#build-system" }
-    ]
-  }
-]
+];
 
 const quickLinks = [
   {
@@ -62,28 +121,28 @@ const quickLinks = [
     description: "View source code and contribute",
     icon: <Github className="w-5 h-5" />,
     href: "https://github.com/SamXop123/RigCrafter",
-    external: true
+    external: true,
   },
   {
     title: "Contribution Guide",
     description: "Step-by-step guide to contributing",
     icon: <FileText className="w-5 h-5" />,
-    href: "#contribution-guide"
+    href: "#contribution-guide",
   },
   {
     title: "Issue Tracker",
     description: "Report bugs and request features",
     icon: <Terminal className="w-5 h-5" />,
     href: "https://github.com/SamXop123/RigCrafter/issues",
-    external: true
+    external: true,
   },
   {
     title: "Component Database",
     description: "Understand the component data structure",
     icon: <Puzzle className="w-5 h-5" />,
-    href: "#component-database"
-  }
-]
+    href: "#component-database",
+  },
+];
 
 export default function DocumentationSection() {
   const containerVariants = {
@@ -105,7 +164,7 @@ export default function DocumentationSection() {
   }
 
   return (
-    <section className="min-h-screen py-32 relative overflow-hidden">
+    <section className="min-h-screen py-32 relative overflow-auto">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="text-center mb-16"
@@ -243,4 +302,4 @@ export default function DocumentationSection() {
       </div>
     </section>
   )
-}
+};

@@ -1,8 +1,44 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
+import { useRef, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Cpu, CpuIcon as Gpu, HardDrive, Layers } from "lucide-react"
+
+function AnimatedCounter({ value, duration = 2 }: { value: string; duration?: number }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  
+  // Extract number from value string (e.g., "50+" -> 50)
+  const targetNumber = parseInt(value.replace(/[^0-9]/g, ''))
+  const suffix = value.replace(/[0-9]/g, '')
+
+  useEffect(() => {
+    if (isInView) {
+      let startTime: number
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime
+        const progress = Math.min((currentTime - startTime) / (duration * 1000), 1)
+        
+        // Easing function for smooth animation
+        const easeOut = 1 - Math.pow(1 - progress, 3)
+        setCount(Math.floor(easeOut * targetNumber))
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
+      }
+      requestAnimationFrame(animate)
+    }
+  }, [isInView, targetNumber, duration])
+
+  return (
+    <span ref={ref}>
+      {count}{suffix}
+    </span>
+  )
+}
 
 export default function HeroSection() {
   return (
@@ -76,7 +112,7 @@ export default function HeroSection() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} />
                 </motion.div>
                 <div className="text-sm text-zinc-400">{stat.label}</div>
               </motion.div>
@@ -87,4 +123,3 @@ export default function HeroSection() {
     </section>
   )
 }
-

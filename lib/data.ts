@@ -10,6 +10,7 @@ const cpus: Component[] = [
     price: 699.99,
     rating: 4.9,
     description: "16-core, 32-thread processor with high clock speeds for gaming and content creation",
+    imageUrl: "https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2613900-ryzen-9-9950x.jpg",
     specs: {
       Cores: "16",
       Threads: "32",
@@ -32,6 +33,7 @@ const cpus: Component[] = [
     price: 589.99,
     rating: 4.8,
     description: "24-core, 32-thread processor with excellent single-core performance",
+    imageUrl: "https://tpucdn.com/cpu-specs/images/chips/2817-front.jpg",
     specs: {
       Cores: "24 (8P+16E)",
       Threads: "32",
@@ -54,6 +56,7 @@ const cpus: Component[] = [
     price: 449.99,
     rating: 4.9,
     description: "8-core, 16-thread processor with 3D V-Cache technology for gaming",
+    imageUrl: "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/24551815/236593_AMD_Ryzen_7_7800X3D_TWarren_0004.jpg?quality=90&strip=all&crop=0,10.471397956139,100,79.057204087722",
     specs: {
       Cores: "8",
       Threads: "16",
@@ -76,6 +79,7 @@ const cpus: Component[] = [
     price: 409.99,
     rating: 4.7,
     description: "16-core, 24-thread processor with great gaming and multitasking performance",
+    imageUrl: "https://www.techspot.com/articles-info/2554/images/2022-10-21-image-12.jpg",
     specs: {
       Cores: "16 (8P+8E)",
       Threads: "24",
@@ -98,6 +102,7 @@ const cpus: Component[] = [
     price: 299.99,
     rating: 4.6,
     description: "6-core, 12-thread processor with excellent gaming performance",
+    imageUrl: "https://m.media-amazon.com/images/I/61Lk7jSzOsL.jpg",
     specs: {
       Cores: "6",
       Threads: "12",
@@ -123,6 +128,7 @@ const gpus: Component[] = [
     price: 1599.99,
     rating: 4.9,
     description: "Flagship GPU with exceptional performance for 4K and 8K gaming",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=RTX+4090",
     specs: {
       VRAM: "24GB GDDR6X",
       Boost: "2.52 GHz",
@@ -143,6 +149,7 @@ const gpus: Component[] = [
     price: 999.99,
     rating: 4.7,
     description: "High-end GPU with excellent performance for 4K gaming",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=RX+7900+XTX",
     specs: {
       VRAM: "24GB GDDR6",
       Boost: "2.5 GHz",
@@ -163,6 +170,7 @@ const gpus: Component[] = [
     price: 1199.99,
     rating: 4.8,
     description: "High-end GPU with excellent performance for 4K gaming",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=RTX+4080",
     specs: {
       VRAM: "16GB GDDR6X",
       Boost: "2.51 GHz",
@@ -183,6 +191,7 @@ const gpus: Component[] = [
     price: 499.99,
     rating: 4.6,
     description: "Mid-range GPU with great performance for 1440p gaming",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=RX+7800+XT",
     specs: {
       VRAM: "16GB GDDR6",
       Boost: "2.4 GHz",
@@ -203,6 +212,7 @@ const gpus: Component[] = [
     price: 599.99,
     rating: 4.7,
     description: "Mid-range GPU with great performance for 1440p gaming",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=RTX+4070",
     specs: {
       VRAM: "12GB GDDR6X",
       Boost: "2.48 GHz",
@@ -226,6 +236,7 @@ const ram: Component[] = [
     price: 159.99,
     rating: 4.8,
     description: "High-performance DDR5 memory with RGB lighting",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Vengeance+DDR5",
     specs: {
       Capacity: "32GB (2x16GB)",
       Speed: "6000MHz",
@@ -245,6 +256,7 @@ const ram: Component[] = [
     price: 219.99,
     rating: 4.9,
     description: "Ultra-fast DDR5 memory with RGB lighting",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Trident+Z5+DDR5",
     specs: {
       Capacity: "32GB (2x16GB)",
       Speed: "7200MHz",
@@ -264,6 +276,7 @@ const ram: Component[] = [
     price: 129.99,
     rating: 4.7,
     description: "Reliable DDR5 memory with good performance",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Fury+Beast+DDR5",
     specs: {
       Capacity: "32GB (2x16GB)",
       Speed: "5200MHz",
@@ -283,6 +296,7 @@ const ram: Component[] = [
     price: 109.99,
     rating: 4.8,
     description: "High-performance DDR4 memory with low profile design",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Vengeance+DDR4",
     specs: {
       Capacity: "32GB (2x16GB)",
       Speed: "3600MHz",
@@ -302,6 +316,7 @@ const ram: Component[] = [
     price: 89.99,
     rating: 4.7,
     description: "Reliable DDR4 memory with good performance",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Ripjaws+V+DDR4",
     specs: {
       Capacity: "32GB (2x16GB)",
       Speed: "3200MHz",
@@ -324,6 +339,7 @@ const storage: Component[] = [
     price: 199.99,
     rating: 4.9,
     description: "Ultra-fast PCIe 4.0 NVMe SSD with excellent performance",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Samsung+990+Pro",
     specs: {
       Capacity: "2TB",
       Interface: "PCIe 4.0 x4",
@@ -343,6 +359,7 @@ const storage: Component[] = [
     price: 149.99,
     rating: 4.8,
     description: "High-performance PCIe 4.0 NVMe SSD for gaming",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=WD+Black+SN850X",
     specs: {
       Capacity: "1TB",
       Interface: "PCIe 4.0 x4",
@@ -362,6 +379,7 @@ const storage: Component[] = [
     price: 129.99,
     rating: 4.6,
     description: "Good value PCIe 4.0 NVMe SSD with decent performance",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Crucial+P3+Plus",
     specs: {
       Capacity: "2TB",
       Interface: "PCIe 4.0 x4",
@@ -381,6 +399,7 @@ const storage: Component[] = [
     price: 159.99,
     rating: 4.8,
     description: "Reliable SATA SSD with good performance",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Samsung+870+EVO",
     specs: {
       Capacity: "2TB",
       Interface: "SATA III",
@@ -400,6 +419,7 @@ const storage: Component[] = [
     price: 89.99,
     rating: 4.5,
     description: "High-capacity HDD for mass storage",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Barracuda+4TB",
     specs: {
       Capacity: "4TB",
       Interface: "SATA III",
@@ -422,6 +442,7 @@ const motherboards: Component[] = [
     price: 629.99,
     rating: 4.8,
     description: "High-end Z790 motherboard with excellent features and overclocking capabilities",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Z790+Hero",
     specs: {
       Socket: "LGA1700",
       Chipset: "Z790",
@@ -447,6 +468,7 @@ const motherboards: Component[] = [
     price: 479.99,
     rating: 4.7,
     description: "Feature-rich X670E motherboard for AMD Ryzen 7000 series processors",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=X670E+Carbon",
     specs: {
       Socket: "AM5",
       Chipset: "X670E",
@@ -472,6 +494,7 @@ const motherboards: Component[] = [
     price: 229.99,
     rating: 4.6,
     description: "Mid-range B650 motherboard with good features for AMD Ryzen 7000 series",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=B650+AORUS+Elite",
     specs: {
       Socket: "AM5",
       Chipset: "B650",
@@ -497,6 +520,7 @@ const motherboards: Component[] = [
     price: 139.99,
     rating: 4.5,
     description: "Budget-friendly B760 motherboard with DDR4 support for Intel 13th gen",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=B760M+Pro",
     specs: {
       Socket: "LGA1700",
       Chipset: "B760",
@@ -522,6 +546,7 @@ const motherboards: Component[] = [
     price: 289.99,
     rating: 4.7,
     description: "Feature-rich B650E motherboard with excellent gaming features",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=B650E-F+Gaming",
     specs: {
       Socket: "AM5",
       Chipset: "B650E",
@@ -550,6 +575,7 @@ const powerSupplies: Component[] = [
     price: 189.99,
     rating: 4.9,
     description: "High-quality 1000W power supply with 80+ Gold certification and fully modular cables",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=RM1000x",
     specs: {
       Wattage: "1000W",
       Certification: "80+ Gold",
@@ -569,6 +595,7 @@ const powerSupplies: Component[] = [
     price: 149.99,
     rating: 4.8,
     description: "Reliable 850W power supply with 80+ Gold certification and fully modular cables",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=SuperNOVA+850",
     specs: {
       Wattage: "850W",
       Certification: "80+ Gold",
@@ -588,6 +615,7 @@ const powerSupplies: Component[] = [
     price: 139.99,
     rating: 4.7,
     description: "Silent 750W power supply with 80+ Gold certification and fully modular cables",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Straight+Power+11",
     specs: {
       Wattage: "750W",
       Certification: "80+ Gold",
@@ -607,6 +635,7 @@ const powerSupplies: Component[] = [
     price: 109.99,
     rating: 4.8,
     description: "High-quality 650W power supply with 80+ Gold certification and fully modular cables",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=FOCUS+GX-650",
     specs: {
       Wattage: "650W",
       Certification: "80+ Gold",
@@ -626,6 +655,7 @@ const powerSupplies: Component[] = [
     price: 69.99,
     rating: 4.6,
     description: "Budget-friendly 550W power supply with 80+ Bronze certification and semi-modular cables",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=CX550M",
     specs: {
       Wattage: "550W",
       Certification: "80+ Bronze",
@@ -648,6 +678,7 @@ const cases: Component[] = [
     price: 169.99,
     rating: 4.9,
     description: "Premium mid-tower case with excellent airflow and build quality",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=O11+Dynamic+EVO",
     specs: {
       FormFactor: "Mid Tower",
       Motherboard: "E-ATX, ATX, Micro-ATX, Mini-ITX",
@@ -667,6 +698,7 @@ const cases: Component[] = [
     price: 174.99,
     rating: 4.8,
     description: "High-airflow mid-tower case with excellent cable management",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=5000D+Airflow",
     specs: {
       FormFactor: "Mid Tower",
       Motherboard: "ATX, Micro-ATX, Mini-ITX",
@@ -686,6 +718,7 @@ const cases: Component[] = [
     price: 139.99,
     rating: 4.8,
     description: "Compact mid-tower case with excellent airflow and minimalist design",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Meshify+2",
     specs: {
       FormFactor: "Mid Tower",
       Motherboard: "ATX, Micro-ATX, Mini-ITX",
@@ -705,6 +738,7 @@ const cases: Component[] = [
     price: 129.99,
     rating: 4.7,
     description: "Clean and minimalist mid-tower case with good airflow",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=H7+Flow",
     specs: {
       FormFactor: "Mid Tower",
       Motherboard: "E-ATX, ATX, Micro-ATX, Mini-ITX",
@@ -724,6 +758,7 @@ const cases: Component[] = [
     price: 99.99,
     rating: 4.8,
     description: "Compact mini-ITX case with excellent hardware compatibility",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=NR200P",
     specs: {
       FormFactor: "Mini Tower",
       Motherboard: "Mini-ITX",
@@ -746,6 +781,7 @@ const cooling: Component[] = [
     price: 199.99,
     rating: 4.8,
     description: "Premium 360mm AIO liquid cooler with RGB lighting",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Kraken+X73",
     specs: {
       Type: "Liquid Cooler",
       Radiator: "360mm",
@@ -765,6 +801,7 @@ const cooling: Component[] = [
     price: 189.99,
     rating: 4.8,
     description: "High-performance 360mm AIO liquid cooler with vibrant RGB lighting",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=H150i+ELITE",
     specs: {
       Type: "Liquid Cooler",
       Radiator: "360mm",
@@ -784,6 +821,7 @@ const cooling: Component[] = [
     price: 99.99,
     rating: 4.9,
     description: "Premium dual-tower air cooler with excellent cooling performance",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Noctua+NH-D15",
     specs: {
       Type: "Air Cooler",
       Fans: "2x 140mm",
@@ -803,6 +841,7 @@ const cooling: Component[] = [
     price: 89.99,
     rating: 4.8,
     description: "Silent dual-tower air cooler with excellent cooling performance",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Dark+Rock+Pro+4",
     specs: {
       Type: "Air Cooler",
       Fans: "2x 135mm",
@@ -822,6 +861,7 @@ const cooling: Component[] = [
     price: 99.99,
     rating: 4.7,
     description: "Value-oriented 240mm AIO liquid cooler with excellent performance",
+    imageUrl: "https://placehold.co/400x400/18181b/f4f4f5?text=Liquid+Freezer+II",
     specs: {
       Type: "Liquid Cooler",
       Radiator: "240mm",
@@ -858,4 +898,3 @@ export function getComponents(type: ComponentType): Component[] {
       return []
   }
 }
-
