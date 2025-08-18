@@ -184,33 +184,6 @@ export default function BlogSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-
-          <div className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer">
-            <div className="grid md:grid-cols-2 gap-0 h-96 md:h-[500px]">
-              <div className="relative overflow-hidden h-80 md:h-full">
-                <Image
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  width={800}
-                  height={600}
-                  priority={true}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-purple-500 text-white text-sm rounded-full flex items-center">
-                    <TrendingUp className="w-3 h-3 mr-1" />
-                    Featured
-                  </span>
-                </div>
-              </div>
-              
-              <div className="p-8 flex flex-col justify-center">
-                <div className="flex items-center mb-3">
-                  <span className="text-sm text-purple-400 font-medium">{featuredPost.category}</span>
-                  <span className="mx-2 text-zinc-500">•</span>
-                  <span className="text-sm text-zinc-400">{featuredPost.readTime}</span>
-
           <Link href={`/blog/${featuredPost.id}`}>
             <div className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer">
               <div className="grid md:grid-cols-2 gap-0">
@@ -228,7 +201,6 @@ export default function BlogSection() {
                       Featured
                     </span>
                   </div>
-
                 </div>
                 
                 <div className="p-8 flex flex-col justify-center">
@@ -274,42 +246,12 @@ export default function BlogSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {regularPosts.map((post) => (
             <motion.div
               key={post.id}
               variants={itemVariants}
-
-              className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer flex flex-col min-h-[420px]"
-              whileHover={{ y: -5 }}
-            >
-              <div className="relative overflow-hidden h-56 sm:h-64 flex-shrink-0">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  width={500}
-                  height={300}
-                  loading="lazy"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded text-xs text-white">
-                    {post.category}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6 flex-grow flex flex-col">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
-                  {post.title}
-                </h3>
-
-                <p className="text-zinc-400 text-sm mb-4 leading-relaxed line-clamp-3 flex-grow">
-                  {post.excerpt}
-                </p>
-
               whileHover={{ y: -5 }}
             >
               <Link href={`/blog/${post.id}`}>
@@ -337,7 +279,6 @@ export default function BlogSection() {
                     <p className="text-zinc-400 text-sm mb-4 leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </p>
-
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {post.tags.map((tag, index) => (
