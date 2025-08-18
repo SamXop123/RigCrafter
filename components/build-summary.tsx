@@ -92,7 +92,7 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
       return;
     }
     // Handle authenticated user's build completion
-    console.log("Build completed for authenticated user:", user);
+    // TODO: Implement build completion logic (save to database, redirect, etc.)
   };
 
 
