@@ -1,129 +1,158 @@
-import type { Component, ComponentType } from "./types"
-import { getComponents } from "./data"
+import type { Component, ComponentType } from "./types";
+import { getComponents } from "./data";
+
+// --- Constants for better maintainability ---
+const SUGGESTION_COUNT = 3;
+const BASE_WATTAGE = 300;
+const PSU_RESERVE_WATTAGE = 200;
+
+// --- Helper Functions for each suggestion type ---
+
+function suggestCpus(motherboard: Component): Component[] {
+  const cpus = getComponents("cpu");
+  const mbSocket = motherboard.compatibility.socket;
+  if (!mbSocket) return [];
+  
+  return cpus
+    .filter((cpu) => cpu.compatibility.socket === mbSocket)
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, SUGGESTION_COUNT);
+}
+
+function suggestMotherboards(cpu: Component): Component[] {
+  const motherboards = getComponents("motherboard");
+  const cpuSocket = cpu.compatibility.socket;
+  if (!cpuSocket) return [];
+
+  return motherboards
+    .filter((mb) => mb.compatibility.socket === cpuSocket)
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, SUGGESTION_COUNT);
+}
+
+function suggestRam(motherboard: Component): Component[] {
+  const rams = getComponents("ram");
+  const mbMemoryType = motherboard.compatibility.memoryType;
+  if (!mbMemoryType) return [];
+
+  return rams
+    .filter((ram) => ram.compatibility.memoryType === mbMemoryType)
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, SUGGESTION_COUNT);
+}
+
+function suggestPowerSupplies(cpu: Component | null, gpu: Component | null): Component[] {
+  const powerSupplies = getComponents("powerSupply");
+  let requiredWattage = BASE_WATTAGE;
+
+  if (cpu && typeof cpu.compatibility.tdp === "number") {
+    requiredWattage += cpu.compatibility.tdp;
+  }
+  if (gpu && typeof gpu.compatibility.tdp === "number") {
+    requiredWattage += gpu.compatibility.tdp;
+  }
+
+  requiredWattage = Math.ceil(requiredWattage * 1.2); // Add 20% overhead
+
+  return powerSupplies
+    .filter((psu) => typeof psu.compatibility.wattage === "number" && psu.compatibility.wattage >= requiredWattage)
+    .sort((a, b) => (a.compatibility.wattage ?? 0) - (b.compatibility.wattage ?? 0))
+    .slice(0, SUGGESTION_COUNT);
+}
+
+function suggestCases(motherboard: Component): Component[] {
+    const cases = getComponents("case");
+    const mbFormFactor = motherboard.compatibility.formFactor;
+
+    if (mbFormFactor === "ATX") {
+      return cases.filter((c) => c.compatibility.formFactor === "ATX").sort((a, b) => b.rating - a.rating).slice(0, SUGGESTION_COUNT);
+    }
+    if (mbFormFactor === "Micro-ATX") {
+      return cases
+        .filter((c) => c.compatibility.formFactor === "ATX" || c.compatibility.formFactor === "Micro-ATX")
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, SUGGESTION_COUNT);
+    }
+    if (mbFormFactor === "Mini-ITX") {
+        return cases
+            .sort((a, b) => {
+                const order: { [key: string]: number } = {
+                    "Mini-ITX": 1,
+                    "Micro-ATX": 2,
+                    "ATX": 3
+                };
+                const formFactorA = a.compatibility.formFactor;
+                const formFactorB = b.compatibility.formFactor;
+
+                if (!formFactorA || !formFactorB) {
+                    return 0; 
+                }
+
+                const orderA = order[formFactorA] ?? 99;
+                const orderB = order[formFactorB] ?? 99;
+
+                return orderA - orderB;
+            })
+            .slice(0, SUGGESTION_COUNT);
+    }
+    return [];
+}
+
+function suggestCooling(cpu: Component): Component[] {
+  const coolers = getComponents("cooling");
+  const cpuTdp = cpu.compatibility.tdp;
+
+  if (typeof cpuTdp !== "number") return [];
+
+  return coolers
+    .filter((cooler) => typeof cooler.compatibility.tdp === "number" && cooler.compatibility.tdp >= cpuTdp)
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, SUGGESTION_COUNT);
+}
+
+function suggestGpus(powerSupply: Component): Component[] {
+  const gpus = getComponents("gpu");
+  const psuWattage = powerSupply.compatibility.wattage;
+
+  if (typeof psuWattage !== "number") return [];
+
+  const availableWattage = psuWattage - PSU_RESERVE_WATTAGE;
+
+  return gpus
+    .filter((gpu) => typeof gpu.compatibility.tdp === "number" && gpu.compatibility.tdp <= availableWattage)
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, SUGGESTION_COUNT);
+}
+
+function suggestStorage(motherboard: Component): Component[] {
+    const storages = getComponents("storage");
+    const hasPcie4 = motherboard.compatibility.storageInterface?.includes("PCIe 4.0");
+
+    return storages
+        .filter((storage) => {
+            const hasInterface = (s_interface: string) => storage.compatibility.storageInterface?.includes(s_interface);
+            return hasPcie4 ? hasInterface("PCIe 4.0") : hasInterface("SATA");
+        })
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, SUGGESTION_COUNT);
+}
+
+
+// --- Main Function ---
 
 export function getComponentSuggestions(
   selectedComponents: Record<ComponentType, Component | null>,
 ): Record<ComponentType, Component[]> {
-  const suggestions: Record<ComponentType, Component[]> = {
-    cpu: [],
-    gpu: [],
-    ram: [],
-    storage: [],
-    motherboard: [],
-    powerSupply: [],
-    case: [],
-    cooling: [],
-  }
+  const { cpu, motherboard, ram, gpu, powerSupply, case: pcCase, cooling, storage } = selectedComponents;
 
-  // CPU suggestions based on selected motherboard
-  if (selectedComponents.motherboard && !selectedComponents.cpu) {
-    const motherboard = selectedComponents.motherboard
-    const cpus = getComponents("cpu")
-    suggestions.cpu = cpus.filter((cpu) => cpu.compatibility.socket === motherboard.compatibility.socket).slice(0, 3)
-  }
-
-  // Motherboard suggestions based on selected CPU
-  if (selectedComponents.cpu && !selectedComponents.motherboard) {
-    const cpu = selectedComponents.cpu
-    const motherboards = getComponents("motherboard")
-    suggestions.motherboard = motherboards
-      .filter((mb) => mb.compatibility.socket === cpu.compatibility.socket)
-      .slice(0, 3)
-  }
-
-  // RAM suggestions based on selected motherboard
-  if (selectedComponents.motherboard && !selectedComponents.ram) {
-    const motherboard = selectedComponents.motherboard
-    const rams = getComponents("ram")
-    suggestions.ram = rams
-      .filter((ram) => ram.compatibility.memoryType === motherboard.compatibility.memoryType)
-      .slice(0, 3)
-  }
-
-  // Power supply suggestions based on selected GPU and CPU
-  if ((selectedComponents.gpu || selectedComponents.cpu) && !selectedComponents.powerSupply) {
-    const powerSupplies = getComponents("powerSupply")
-    let requiredWattage = 300 // Base wattage
-
-    if (selectedComponents.cpu) {
-      requiredWattage += selectedComponents.cpu.compatibility.tdp || 0
-    }
-
-    if (selectedComponents.gpu) {
-      requiredWattage += selectedComponents.gpu.compatibility.tdp || 0
-    }
-
-    // Add 20% overhead
-    requiredWattage = Math.ceil(requiredWattage * 1.2)
-
-    suggestions.powerSupply = powerSupplies
-      .filter((psu) => psu.compatibility.wattage >= requiredWattage)
-      .sort((a, b) => a.compatibility.wattage - b.compatibility.wattage)
-      .slice(0, 3)
-  }
-
-  // Case suggestions based on selected motherboard
-  if (selectedComponents.motherboard && !selectedComponents.case) {
-    const motherboard = selectedComponents.motherboard
-    const cases = getComponents("case")
-
-    // Filter cases that can fit the motherboard
-    if (motherboard.compatibility.formFactor === "ATX") {
-      // ATX motherboards need ATX cases
-      suggestions.case = cases.filter((c) => c.compatibility.formFactor === "ATX").slice(0, 3)
-    } else if (motherboard.compatibility.formFactor === "Micro-ATX") {
-      // Micro-ATX motherboards can fit in ATX or Micro-ATX cases
-      suggestions.case = cases
-        .filter((c) => c.compatibility.formFactor === "ATX" || c.compatibility.formFactor === "Micro-ATX")
-        .slice(0, 3)
-    } else if (motherboard.compatibility.formFactor === "Mini-ITX") {
-      // Mini-ITX motherboards can fit in any case
-      suggestions.case = cases.slice(0, 3)
-    }
-  }
-
-  // Cooling suggestions based on selected CPU
-  if (selectedComponents.cpu && !selectedComponents.cooling) {
-    const cpu = selectedComponents.cpu
-    const coolers = getComponents("cooling")
-
-    suggestions.cooling = coolers
-      .filter((cooler) => cooler.compatibility.tdp >= (cpu.compatibility.tdp || 0))
-      .slice(0, 3)
-  }
-
-  // GPU suggestions based on selected power supply
-  if (selectedComponents.powerSupply && !selectedComponents.gpu) {
-    const powerSupply = selectedComponents.powerSupply
-    const gpus = getComponents("gpu")
-
-    // Reserve 200W for other components
-    const availableWattage = powerSupply.compatibility.wattage - 200
-
-    suggestions.gpu = gpus
-      .filter((gpu) => (gpu.compatibility.tdp || 0) <= availableWattage)
-      .sort((a, b) => b.compatibility.tdp - a.compatibility.tdp)
-      .slice(0, 3)
-  }
-
-  // Storage suggestions based on selected motherboard
-  if (selectedComponents.motherboard && !selectedComponents.storage) {
-    const motherboard = selectedComponents.motherboard
-    const storages = getComponents("storage")
-
-    if (motherboard.compatibility.storageInterface?.includes("PCIe 4.0")) {
-      // Suggest PCIe 4.0 NVMe SSDs for modern motherboards
-      suggestions.storage = storages
-        .filter((storage) => storage.compatibility.storageInterface?.includes("PCIe 4.0"))
-        .slice(0, 3)
-    } else {
-      // Suggest SATA SSDs for older motherboards
-      suggestions.storage = storages
-        .filter((storage) => storage.compatibility.storageInterface?.includes("SATA"))
-        .slice(0, 3)
-    }
-  }
-
-  return suggestions
+  return {
+    cpu: motherboard && !cpu ? suggestCpus(motherboard) : [],
+    motherboard: cpu && !motherboard ? suggestMotherboards(cpu) : [],
+    ram: motherboard && !ram ? suggestRam(motherboard) : [],
+    powerSupply: (cpu || gpu) && !powerSupply ? suggestPowerSupplies(cpu, gpu) : [],
+    case: motherboard && !pcCase ? suggestCases(motherboard) : [],
+    cooling: cpu && !cooling ? suggestCooling(cpu) : [],
+    gpu: powerSupply && !gpu ? suggestGpus(powerSupply) : [],
+    storage: motherboard && !storage ? suggestStorage(motherboard) : [],
+  };
 }
-
