@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Play, Disc3, Music2, AudioWaveformIcon as Waveform } from "lucide-react"
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -18,10 +17,10 @@ export default function HeroSection() {
   const [isHovered, setIsHovered] = useState(false)
 
   const stats = [
-    { icon: <Play className="w-6 h-6" />, label: "Beats Sold", value: "500+" },
-    { icon: <Disc3 className="w-6 h-6" />, label: "Unique Tracks", value: "1000+" },
-    { icon: <Music2 className="w-6 h-6" />, label: "Happy Artists", value: "200+" },
-    { icon: <Waveform className="w-6 h-6" />, label: "Genres", value: "10+" },
+    { label: "CPUs", value: "50+" },
+    { label: "GPUs", value: "40+" },
+    { label: "Storage", value: "30+" },
+    { label: "Configurations", value: "1000+" },
   ]
 
   return (
@@ -40,18 +39,14 @@ export default function HeroSection() {
           >
             <h1 className="text-7xl md:text-8xl font-bold mb-6 tracking-tight relative">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">
-                Elevate Your Sound
+                Build your dream gaming PC with our interactive component selector.
               </span>
-              <motion.span
-                className="absolute -inset-1 bg-white rounded-full blur-3xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 0.1, 0] }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-              />
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-zinc-400 max-w-3xl mx-auto">
-              Crafting unique beats that help artists stand out. From trap to lo-fi, find your perfect sound and take
-              your music to the next level.
+              RigCrafter is a modern, interactive web application that helps users build custom gaming PCs by selecting compatible components, checking compatibility issues, and optimizing their budget. Built with Next.js 15, TypeScript, and Tailwind CSS.
+            </p>
+            <p className="text-lg md:text-xl mb-8 text-zinc-300 max-w-2xl mx-auto">
+              Choose compatible parts, optimize your budget, and craft the perfect rig.
             </p>
             <div className="relative inline-block">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative z-10">
@@ -62,8 +57,8 @@ export default function HeroSection() {
                   onMouseLeave={() => setIsHovered(false)}
                   asChild
                 >
-                  <a href="https://drqnnel.beatstars.com" target="_blank" rel="noopener noreferrer">
-                    <span className="relative z-10">Visit BeatStars</span>
+                  <a href="#components" rel="noopener noreferrer">
+                    <span className="relative z-10">Start Building</span>
                     <motion.span
                       className="absolute inset-0 bg-gradient-to-r from-zinc-200 to-white"
                       initial={{ x: "100%" }}
@@ -96,7 +91,6 @@ export default function HeroSection() {
                   whileHover={{ scale: 1.05 }}
                   className="bg-zinc-900/50 rounded-xl p-6 backdrop-blur-lg border border-white/10 transition-colors hover:border-white/20"
                 >
-                  <div className="mb-2 text-white/70 flex justify-center">{stat.icon}</div>
                   <motion.div
                     className="text-3xl font-bold mb-1"
                     initial={{ opacity: 0 }}
