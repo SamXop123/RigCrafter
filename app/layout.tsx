@@ -6,8 +6,9 @@ import { AuthProvider } from "@/lib/auth-context";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 import type React from "react";
-import { Inter } from "next/font/google";
-import { BackToTopButton } from "@/components/back-to-top-button"; // <-- IMPORT
+import { BackToTopButton } from "@/components/back-to-top-button";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -36,6 +37,7 @@ export default function RootLayout({
           <AuthProvider>
             {children}
             <Toaster richColors position="top-center" />
+            <ToastContainer />
           </AuthProvider>
         </ThemeProvider>
         <Analytics />

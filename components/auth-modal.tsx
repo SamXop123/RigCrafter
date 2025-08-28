@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useAuth } from "@/lib/auth-context" // Make sure to add 'resetPassword' to this context
 import { Lock, Mail } from "lucide-react"
-
+import { toast } from 'react-toastify' // Importing toast for notifications
 interface AuthModalProps {
   isOpen: boolean
   onClose: () => void
@@ -45,48 +45,55 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setPassword("")
   }
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
-    setMessage("")
-    setLoading(true)
+      const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setError("")
+        setMessage("")
+        setLoading(true)
 
-    try {
-      if (mode === 'login') {
-        await signIn(email, password)
-      } else {
-        await signUp(email, password)
+        try {
+          if (mode === 'login') {
+            await signIn(email, password)
+            toast.success('Successfully logged in!')
+          } else {
+            await signUp(email, password)
+            toast.success('Account created successfully!')
+          }
+          handleClose()
+        } catch (error: any) {
+          setError(error.message || "An error occurred")
+          toast.error(`Error: ${error.message}`)
+        } finally {
+          setLoading(false)
+        }
       }
-      handleClose()
-    } catch (error: any) {
-      setError(error.message || "An error occurred")
-    } finally {
-      setLoading(false)
-    }
-  }
 
-  const handlePasswordReset = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
-    setLoading(true)
-    try {
-      await resetPassword(email)
-      setMessage("Password reset link sent! Please check your email.")
-    } catch (error: any) {
-      setError(error.message || "Failed to send reset email.")
-    } finally {
-      setLoading(false)
-    }
-  }
+      const handlePasswordReset = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setError("")
+        setLoading(true)
+        try {
+          await resetPassword(email)
+          setMessage("Password reset link sent! Please check your email.")
+          toast.success('Password reset email sent!')
+        } catch (error: any) {
+          setError(error.message || "Failed to send reset email.")
+          toast.error(`Error: ${error.message}`)
+        } finally {
+          setLoading(false)
+        }
+      }
 
   const handleGoogleSignIn = async () => {
     setError("")
     setLoading(true)
     try {
       await signInWithGoogle()
+      toast.success('Successfully signed in with Google!')
       handleClose()
     } catch (error: any) {
       setError(error.message || "An error occurred with Google Sign-In")
+      toast.error(`Google Sign-In failed: ${error.message}`)
     } finally {
       setLoading(false)
     }

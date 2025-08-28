@@ -24,6 +24,7 @@ import {
   LogOut
 } from "lucide-react"
 import type { Component, ComponentType } from "@/lib/types"
+import { toast } from 'react-toastify'
 
 interface SavedBuild {
   id: string
@@ -99,10 +100,11 @@ export default function UserDashboard() {
   const handleLogout = async () => {
     try {
       await logout()
+      toast.success('Successfully logged out!')
       router.push("/")
-      
     } catch (error) {
       console.error("Error logging out:", error)
+      toast.error(`Logout failed: ${error.message}`)
     }
   }
 

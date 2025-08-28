@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useAuth } from "@/lib/auth-context"
 import { db } from "@/lib/firebase"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+import { toast } from 'react-toastify'
 
 import {
   Cpu,
@@ -98,6 +99,7 @@ export default function RigBuilder() {
     setSelectedComponents(randomBuild);
 
     setIsRandomizing(false);
+    toast.success("Build randomized successfully!");
   };
 
   const handleRandomizeByBudget = async (budget: number) => {
@@ -113,22 +115,23 @@ export default function RigBuilder() {
     }
 
     setIsRandomizing(false);
+    toast.success(`Build randomized for $${budget} budget!`);
   };
 
   const handleSaveBuild = async () => {
     if (!user) {
-      alert("Please sign in to save your build")
+      toast.error("Please sign in to save your build")
       return
     }
 
     if (!buildName.trim()) {
-      alert("Please enter a name for your build")
+      toast.error("Please enter a name for your build")
       return
     }
 
     // Check if Firebase is available
     if (!db) {
-      alert("Firebase is not available. Cannot save build.")
+      toast.error("Firebase is not available. Cannot save build.")
       return
     }
 
@@ -144,10 +147,10 @@ export default function RigBuilder() {
       
       setBuildName("")
       setShowSaveDialog(false)
-      alert("Build saved successfully!")
+      toast.success("Build saved successfully!")
     } catch (error) {
       console.error("Error saving build:", error)
-      alert("Failed to save build. Please try again.")
+      toast.error("Failed to save build. Please try again.")
     } finally {
       setIsSaving(false)
     }
