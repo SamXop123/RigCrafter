@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 // Star SVG component with your app's purple theme
 const StarIcon = ({ filled }: { filled: boolean }) => (
@@ -44,9 +45,11 @@ const ReviewForm: React.FC = () => {
       setRating(0);
       setComment('');
       setSubmitted(true);
+      toast.success('Review submitted successfully!');
       setTimeout(() => setSubmitted(false), 3000);
-    } catch (err) {
+    } catch (err: any) {
       setError('Failed to submit review. Please try again.');
+      toast.error(`Error: ${err.message}`);
     } finally {
       setIsSubmitting(false);
     }

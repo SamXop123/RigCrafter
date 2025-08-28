@@ -12,6 +12,7 @@ import {
   sendPasswordResetEmail // 1. Import the password reset function
 } from 'firebase/auth';
 import { auth } from './firebase';
+import { toast } from 'react-toastify';
 
 interface AuthContextType {
   user: User | null;
@@ -45,7 +46,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!auth) throw new Error("Firebase authentication is not available");
     try {
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
+      toast.success('Successfully logged in!');
+    } catch (error: any) {
+      toast.error(`Login failed: ${error.message}`);
       throw error;
     }
   };
@@ -54,7 +57,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!auth) throw new Error("Firebase authentication is not available");
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-    } catch (error) {
+      toast.success('Account created successfully!');
+    } catch (error: any) {
+      toast.error(`Sign up failed: ${error.message}`);
       throw error;
     }
   };
@@ -64,7 +69,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-    } catch (error) {
+      toast.success('Successfully signed in with Google!');
+    } catch (error: any) {
+      toast.error(`Google sign in failed: ${error.message}`);
       throw error;
     }
   };
@@ -73,7 +80,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!auth) throw new Error("Firebase authentication is not available");
     try {
       await signOut(auth);
-    } catch (error) {
+      toast.success('Successfully logged out!');
+    } catch (error: any) {
+      toast.error(`Logout failed: ${error.message}`);
       throw error;
     }
   };
@@ -83,7 +92,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!auth) throw new Error("Firebase authentication is not available");
     try {
       await sendPasswordResetEmail(auth, email);
-    } catch (error) {
+      toast.success('Password reset email sent!');
+    } catch (error: any) {
+      toast.error(`Password reset failed: ${error.message}`);
       throw error;
     }
   };
