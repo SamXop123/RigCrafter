@@ -38,7 +38,6 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
   const [savedBuilds, setSavedBuilds] = useState<any[]>([])
   const [selectedSavedBuild, setSelectedSavedBuild] = useState("")
   const [showAuthModal, setShowAuthModal] = useState(false)
-  
   const { user } = useAuth()
 
   const componentIcons: Record<ComponentType, JSX.Element> = {
@@ -87,6 +86,14 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
     setTimeout(() => setIsCopied(false), 2000);
   };
 
+  const handleCompleteBuild = () => {
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+    // Handle authenticated user's build completion
+    // TODO: Implement build completion logic (save to database, redirect, etc.)
+  };
 
   const handleSaveBuild = () => {
     const savedBuilds = JSON.parse(localStorage.getItem("savedBuilds") || "[]");
@@ -127,16 +134,8 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
     })
   }
 
-  const handleCompleteBuild = () => {
-    if (!user) {
-      setShowAuthModal(true)
-      return
-    }
-    // TODO: Implement complete build functionality for logged-in users
-    alert("Build completed! This feature will be implemented soon.")
-  }
-
   return (
+    <>
     <Card className="bg-zinc-900/50 border-zinc-800 sticky top-4">
       <CardHeader className="pb-3">
         <CardTitle className="flex justify-between items-center pb-4">
@@ -323,6 +322,9 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
         onClose={() => setShowAuthModal(false)} 
       />
     </Card>
+
+    <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+  </>
   )
 }
 
