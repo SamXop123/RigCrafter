@@ -37,7 +37,19 @@ export default function RootLayout({
           <AuthProvider>
             {children}
             <Toaster richColors position="top-center" />
-            <ToastContainer />
+            <ToastContainer
+              position="top-center"
+              autoClose={4000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              toastClassName="text-sm"
+            />
           </AuthProvider>
         </ThemeProvider>
         <Analytics />
