@@ -136,6 +136,7 @@ const gpus: Component[] = [
       pciSlots: 4,
     },
   },
+
   {
     id: "gpu-2",
     type: "gpu",
@@ -220,6 +221,31 @@ const gpus: Component[] = [
       pciSlots: 2,
     },
   },
+{
+  id: "gpu-6",
+  type: "gpu",
+  name: "NVIDIA GeForce RTX 4060 Ti",
+  brand: "NVIDIA",
+  price: 399.99,
+  rating: 4.6,
+  description: "A budget-friendly yet capable GPU, perfect for 1080p and entry-level 1440p gaming with DLSS 3 support.",
+  imageUrl: "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/40-series/rtx-4060-ti/rtx-4060-ti-shop-600-p.jpg",
+  specs: {
+    VRAM: "8GB GDDR6",
+    "Boost Clock": "2.54 GHz",
+    "CUDA Cores": "4352",
+    TDP: "160W",
+  },
+  tags: ["NVIDIA", "RTX 4060 Ti", "1080p", "Budget", "Ray Tracing", "DLSS 3"],
+  compatibility: {
+    tdp: 160,
+    pciSlots: 2,
+  },
+}
+
+
+
+
 ]
 
 const ram: Component[] = [
@@ -848,6 +874,8 @@ const cooling: Component[] = [
       tdp: 250,
     },
   },
+  
+  
 ]
 
 // Function to get components by type
