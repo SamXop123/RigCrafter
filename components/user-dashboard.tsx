@@ -51,15 +51,16 @@ export default function UserDashboard() {
   const loadSavedBuilds = async () => {
     if (!user) return
 
-    // Check if Firebase is available
-    if (!db) {
+    // Check if Firebase is available and narrow the type locally
+    const dbInstance = db;
+    if (!dbInstance) {
       console.warn("Firebase is not available. Running in demo mode.");
       setLoading(false);
       return;
     }
 
     try {
-      const buildsRef = collection(db, "builds")
+      const buildsRef = collection(dbInstance, "builds")
       const q = query(buildsRef, where("userId", "==", user.uid))
       const querySnapshot = await getDocs(q)
       
@@ -84,13 +85,14 @@ export default function UserDashboard() {
   }
 
   const deleteBuild = async (buildId: string) => {
-    if (!db) {
+    const dbInstance = db
+    if (!dbInstance) {
       console.warn("Firebase is not available. Cannot delete build.");
       return;
     }
     
     try {
-      await deleteDoc(doc(db, "builds", buildId))
+      await deleteDoc(doc(dbInstance, "builds", buildId))
       setSavedBuilds(prev => prev.filter(build => build.id !== buildId))
     } catch (error) {
       console.error("Error deleting build:", error)
