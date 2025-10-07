@@ -42,7 +42,28 @@ function AnimatedCounter({ value, duration = 2 }: { value: string; duration?: nu
 
 export default function HeroSection() {
   return (
-    <section className="py-20 relative overflow-hidden">
+    // <section className="py-20 relative overflow-hidden">
+    // ...existing code...
+<section 
+        className={`
+            py-20 
+            relative 
+            overflow-hidden 
+            
+            // 1. Dark Gradient Background (Radial)
+            bg-[radial-gradient(ellipse_at_top,_var(--tw-color-zinc-900)_0%,_var(--tw-color-black)_80%)]
+            
+            // 2. Geometric Wireframe Details (Pseudo-element + SVG)
+            before:content-['']
+            before:absolute
+            before:inset-0
+            
+            // Faint grid pattern
+            before:bg-[url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="%23FFFFFF" stroke-opacity="0.02" stroke-width="0.5"><path d="M0 20L20 0ZM0 0L20 20Z" /></g></svg>')]
+            before:bg-repeat
+            before:z-0
+        `} 
+    >
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -123,3 +144,5 @@ export default function HeroSection() {
     </section>
   )
 }
+
+// UPDATED Code Snippet:
