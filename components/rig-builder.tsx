@@ -152,15 +152,16 @@ export default function RigBuilder() {
       return
     }
 
-    // Check if Firebase is available
-    if (!db) {
+    // Check if Firebase is available and narrow the type locally
+    const dbInstance = db;
+    if (!dbInstance) {
       toast.error("Firebase is not available. Cannot save build.")
       return
     }
 
     setIsSaving(true)
     try {
-      await addDoc(collection(db, "builds"), {
+      await addDoc(collection(dbInstance, "builds"), {
         userId: user.uid,
         name: buildName.trim(),
         components: selectedComponents,
