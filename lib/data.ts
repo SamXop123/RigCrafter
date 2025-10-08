@@ -875,8 +875,319 @@ const cooling: Component[] = [
     },
   },
   
-  
 ]
+const keyboards: Component[] = [
+  {
+    id: "keyboard-1",
+    type: "keyboard",
+    name: "Corsair K95 RGB Platinum XT",
+    brand: "Corsair",
+    price: 199.99,
+    rating: 4.9,
+    description:
+      "A premium mechanical keyboard featuring Cherry MX switches, per-key RGB, and dedicated macro keys for gamers and creators.",
+    imageUrl: "https://m.media-amazon.com/images/I/81T8Fv98P-L._SL1500_.jpg",
+    specs: {
+      Switches: "Cherry MX Speed",
+      Backlight: "RGB",
+      Connectivity: "Wired USB",
+    },
+    tags: ["Corsair", "Mechanical", "RGB", "Gaming", "Macro"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-2",
+    type: "keyboard",
+    name: "Logitech G Pro X",
+    brand: "Logitech",
+    price: 149.99,
+    rating: 4.8,
+    description:
+      "Compact tenkeyless keyboard designed for esports professionals with swappable GX mechanical switches.",
+    imageUrl: "https://m.media-amazon.com/images/I/71kaE1YdSBL._SL1500_.jpg",
+    specs: {
+      Switches: "GX Blue",
+      Backlight: "RGB",
+      Connectivity: "Wired USB",
+    },
+    tags: ["Logitech", "Mechanical", "Tenkeyless", "Esports"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+const mice: Component[] = [
+  {
+    id: "mouse-1",
+    type: "mouse",
+    name: "Logitech G502 HERO",
+    brand: "Logitech",
+    price: 79.99,
+    rating: 4.9,
+    description:
+      "High-performance gaming mouse with 11 programmable buttons and HERO 25K sensor for extreme precision.",
+    imageUrl: "https://m.media-amazon.com/images/I/61mpMH5TzkL._SL1500_.jpg",
+    specs: {
+      Sensor: "HERO 25K",
+      DPI: "25,600",
+      Buttons: "11",
+      Connectivity: "Wired",
+    },
+    tags: ["Logitech", "Gaming", "Ergonomic", "RGB"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-2",
+    type: "mouse",
+    name: "Razer DeathAdder V3 Pro",
+    brand: "Razer",
+    price: 149.99,
+    rating: 4.8,
+    description:
+      "Lightweight wireless gaming mouse featuring Focus Pro 30K optical sensor and 90 hours of battery life.",
+    imageUrl: "https://m.media-amazon.com/images/I/61cTBUo+HqL._SL1500_.jpg",
+    specs: {
+      Sensor: "Focus Pro 30K",
+      DPI: "30,000",
+      Weight: "63g",
+      Connectivity: "Wireless",
+    },
+    tags: ["Razer", "Wireless", "Lightweight", "Gaming"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+]
+
+const headsets: Component[] = [
+  {
+    id: "headset-1",
+    type: "headset",
+    name: "SteelSeries Arctis Nova Pro Wireless",
+    brand: "SteelSeries",
+    price: 349.99,
+    rating: 4.9,
+    description:
+      "Premium wireless gaming headset with dual battery system, Hi-Res audio, and active noise cancellation.",
+    imageUrl: "https://m.media-amazon.com/images/I/71UnZBP0EWL._SL1500_.jpg",
+    specs: {
+      Type: "Wireless",
+      Drivers: "40mm Neodymium",
+      NoiseCancelling: "Active",
+    },
+    tags: ["SteelSeries", "Wireless", "ANC", "Hi-Res Audio"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "headset-2",
+    type: "headset",
+    name: "HyperX Cloud II",
+    brand: "HyperX",
+    price: 99.99,
+    rating: 4.8,
+    description:
+      "Legendary comfort and 7.1 virtual surround sound make this a fan-favorite for gamers.",
+    imageUrl: "https://m.media-amazon.com/images/I/71nbfl-JklL._SL1500_.jpg",
+    specs: {
+      Type: "Wired",
+      Drivers: "53mm",
+      Surround: "7.1 Virtual",
+    },
+    tags: ["HyperX", "Wired", "7.1", "Comfort"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+const operatingSystems: Component[] = [
+  {
+    id: "os-1",
+    type: "operatingSystem",
+    name: "Windows 11 Pro",
+    brand: "Microsoft",
+    price: 199.99,
+    rating: 4.7,
+    description:
+      "The latest Windows OS with productivity, gaming, and security enhancements for modern PCs.",
+    imageUrl: "https://m.media-amazon.com/images/I/71eo5Xy3pBL._SL1500_.jpg",
+    specs: {
+      Version: "Windows 11 Pro",
+      Architecture: "64-bit",
+      LicenseType: "Retail",
+    },
+    tags: ["Microsoft", "Windows", "64-bit", "Productivity"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "os-2",
+    type: "operatingSystem",
+    name: "Ubuntu 24.04 LTS",
+    brand: "Canonical",
+    price: 0,
+    rating: 4.9,
+    description:
+      "Free and open-source Linux-based OS designed for developers and professionals.",
+    imageUrl: "https://assets.ubuntu.com/v1/8dd99b80-ubuntu-logo32.png",
+    specs: {
+      Version: "24.04 LTS",
+      Architecture: "64-bit",
+      LicenseType: "Open Source",
+    },
+    tags: ["Linux", "Ubuntu", "Free", "Open Source"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+const networkCards: Component[] = [
+  {
+    id: "net-1",
+    type: "networkCard",
+    name: "TP-Link Archer TX3000E Wi-Fi 6 PCIe",
+    brand: "TP-Link",
+    price: 49.99,
+    rating: 4.7,
+    description:
+      "Wi-Fi 6 adapter providing ultra-low latency and Bluetooth 5.0 connectivity.",
+    imageUrl: "https://m.media-amazon.com/images/I/71WHTNMLlUL._SL1500_.jpg",
+    specs: {
+      Standard: "Wi-Fi 6 (802.11ax)",
+      Band: "Dual-band 2.4GHz/5GHz",
+      Bluetooth: "5.0",
+    },
+    tags: ["Wi-Fi 6", "Bluetooth", "PCIe", "Low Latency"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+const soundCards: Component[] = [
+  {
+    id: "sound-1",
+    type: "soundCard",
+    name: "Creative Sound BlasterX AE-5 Plus",
+    brand: "Creative",
+    price: 129.99,
+    rating: 4.8,
+    description:
+      "PCIe sound card delivering pristine 32-bit/384kHz audio with customizable RGB lighting.",
+    imageUrl: "https://m.media-amazon.com/images/I/71PhH5R7KfL._SL1500_.jpg",
+    specs: {
+      AudioQuality: "32-bit / 384kHz",
+      SNR: "122dB",
+      Interface: "PCIe",
+    },
+    tags: ["Creative", "Sound Blaster", "Hi-Fi", "RGB"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+const fans: Component[] = [
+  {
+    id: "fan-1",
+    type: "fan",
+    name: "Noctua NF-A12x25 PWM",
+    brand: "Noctua",
+    price: 29.99,
+    rating: 4.9,
+    description:
+      "Legendary 120mm fan known for near-silent operation and outstanding static pressure performance.",
+    imageUrl: "https://m.media-amazon.com/images/I/81rjZ7j1JcL._SL1500_.jpg",
+    specs: {
+      Size: "120mm",
+      RPM: "2000",
+      NoiseLevel: "22.6 dBA",
+    },
+    tags: ["Noctua", "Cooling", "Silent", "PWM"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+const thermalPastes: Component[] = [
+  {
+    id: "tp-1",
+    type: "thermalPaste",
+    name: "Arctic MX-6",
+    brand: "Arctic",
+    price: 9.99,
+    rating: 4.8,
+    description:
+      "High-performance thermal compound offering excellent conductivity and easy application.",
+    imageUrl: "https://m.media-amazon.com/images/I/71xI-2gKACL._SL1500_.jpg",
+    specs: {
+      ThermalConductivity: "7.5 W/mK",
+      Volume: "4g",
+    },
+    tags: ["Thermal Paste", "Cooling", "Arctic"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+const upsUnits: Component[] = [
+  {
+    id: "ups-1",
+    type: "ups",
+    name: "APC Back-UPS Pro 1500VA",
+    brand: "APC",
+    price: 249.99,
+    rating: 4.8,
+    description:
+      "Reliable UPS with LCD display and automatic voltage regulation, ideal for gaming PCs and workstations.",
+    imageUrl: "https://m.media-amazon.com/images/I/81Qw+Q0ZLrL._SL1500_.jpg",
+    specs: {
+      Capacity: "1500VA / 900W",
+      Outlets: "10 (5 Battery + 5 Surge)",
+      Type: "Line-Interactive",
+    },
+    tags: ["APC", "UPS", "Backup", "Power Protection"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+const controllers: Component[] = [
+  {
+    id: "controller-1",
+    type: "controller",
+    name: "Xbox Wireless Controller",
+    brand: "Microsoft",
+    price: 59.99,
+    rating: 4.9,
+    description:
+      "Ergonomic wireless controller compatible with PC, Xbox, and mobile devices via Bluetooth.",
+    imageUrl: "https://m.media-amazon.com/images/I/61O8WeGKNbL._SL1500_.jpg",
+    specs: {
+      Connectivity: "Bluetooth / USB-C",
+      BatteryLife: "Up to 30 hours",
+    },
+    tags: ["Xbox", "Wireless", "Bluetooth", "Gaming"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+];
+
+
+
 
 // Function to get components by type
 export function getComponents(type: ComponentType): Component[] {
@@ -897,6 +1208,26 @@ export function getComponents(type: ComponentType): Component[] {
       return cases
     case "cooling":
       return cooling
+    case "keyboard":
+      return keyboards
+    case "mouse":
+      return mice
+    case "headset":
+      return headsets
+    case "operatingSystem":
+      return operatingSystems
+    case "networkCard":
+      return networkCards
+    case "soundCard":
+      return soundCards
+    case "fan":
+      return fans
+    case "thermalPaste":
+      return thermalPastes
+    case "ups":
+      return upsUnits
+    case "controller":
+      return controllers
     default:
       return []
   }
