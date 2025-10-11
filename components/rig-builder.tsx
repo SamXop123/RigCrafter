@@ -25,6 +25,7 @@ import {
   Fan,
   Shuffle,
   Zap,
+  
 
   Save,
     ChevronLeft,
@@ -47,7 +48,18 @@ export default function RigBuilder() {
     powerSupply: null,
     case: null,
     cooling: null,
+    keyboard: null,
+    mouse: null,
+    headset: null,
+    operatingSystem: null,
+    networkCard: null,
+    soundCard: null,
+    fan: null,
+    thermalPaste: null,
+    ups: null,
+    controller: null,
   });
+
 
   const [compatibilityIssues, setCompatibilityIssues] = useState<string[]>([]);
   const [suggestions, setSuggestions] = useState<
@@ -61,7 +73,18 @@ export default function RigBuilder() {
     powerSupply: [],
     case: [],
     cooling: [],
+    keyboard: [],
+    mouse: [],
+    headset: [],
+    operatingSystem: [],
+    networkCard: [],
+    soundCard: [],
+    fan: [],
+    thermalPaste: [],
+    ups: [],
+    controller: [],
   });
+
 
   const [activeTab, setActiveTab] = useState<ComponentType>("cpu")
   const [isRandomizing, setIsRandomizing] = useState(false)
@@ -164,15 +187,98 @@ export default function RigBuilder() {
   };
 
   const componentTabs = [
-    { type: "cpu" as ComponentType, icon: <Cpu className="w-5 h-5" />, label: "CPU" },
-    { type: "gpu" as ComponentType, icon: <Gpu className="w-5 h-5" />, label: "GPU" },
-    { type: "ram" as ComponentType, icon: <Memory className="w-5 h-5" />, label: "RAM" },
-    { type: "storage" as ComponentType, icon: <HardDrive className="w-5 h-5" />, label: "Storage" },
-    { type: "motherboard" as ComponentType, icon: <Motherboard className="w-5 h-5" />, label: "Motherboard" },
-    { type: "powerSupply" as ComponentType, icon: <Power className="w-5 h-5" />, label: "Power Supply" },
-    { type: "case" as ComponentType, icon: <Box className="w-5 h-5" />, label: "Case" },
-    { type: "cooling" as ComponentType, icon: <Fan className="w-5 h-5" />, label: "Cooling" },
+    {
+      type: "cpu" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "CPU",
+    },
+    {
+      type: "gpu" as ComponentType,
+      icon: <Gpu className="w-5 h-5" />,
+      label: "GPU",
+    },
+    {
+      type: "ram" as ComponentType,
+      icon: <Memory className="w-5 h-5" />,
+      label: "RAM",
+    },
+    {
+      type: "storage" as ComponentType,
+      icon: <HardDrive className="w-5 h-5" />,
+      label: "Storage",
+    },
+    {
+      type: "motherboard" as ComponentType,
+      icon: <Motherboard className="w-5 h-5" />,
+      label: "Motherboard",
+    },
+    {
+      type: "powerSupply" as ComponentType,
+      icon: <Power className="w-5 h-5" />,
+      label: "Power Supply",
+    },
+    {
+      type: "case" as ComponentType,
+      icon: <Box className="w-5 h-5" />,
+      label: "Case",
+    },
+    {
+      type: "cooling" as ComponentType,
+      icon: <Fan className="w-5 h-5" />,
+      label: "Cooling",
+    },
+    {
+      type: "keyboard" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "Keyboard",
+    },
+    {
+      type: "mouse" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "Mouse",
+    },
+    {
+      type: "headset" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "Headset",
+    },
+    {
+      type: "operatingSystem" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "OS",
+    },
+    {
+      type: "networkCard" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "Network Card",
+    },
+    {
+      type: "soundCard" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "Sound Card",
+    },
+    {
+      type: "fan" as ComponentType,
+      icon: <Fan className="w-5 h-5" />,
+      label: "Fan",
+    },
+    {
+      type: "thermalPaste" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "Thermal Paste",
+    },
+    {
+      type: "ups" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "UPS",
+    },
+    {
+      type: "controller" as ComponentType,
+      icon: <Cpu className="w-5 h-5" />,
+      label: "Controller",
+    },
   ];
+
 
   return (
     <section id="builder" className="relative z-10 py-16">

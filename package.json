@@ -49,11 +49,11 @@
     "framer-motion": "latest",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "^15.5.3",
+    "next": "^15.5.4",
     "next-themes": "^0.4.4",
-    "react": "^19",
+    "react": "^19.2.0",
     "react-day-picker": "^9.8.1",
-    "react-dom": "^19",
+    "react-dom": "^19.2.0",
     "react-hook-form": "^7.54.1",
     "react-intersection-observer": "latest",
     "react-resizable-panels": "^2.1.7",
@@ -66,12 +66,12 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/node": "^22",
-    "@types/react": "^19.1.9",
+    "@types/node": "^22.18.8",
+    "@types/react": "^19.2.0",
     "@types/react-dom": "^19.1.7",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "main": "index.js",
   "directories": {
