@@ -42,7 +42,14 @@ function AnimatedCounter({ value, duration = 2 }: { value: string; duration?: nu
 
 export default function HeroSection() {
   return (
-    <section className="py-20 relative overflow-hidden">
+    // <section className="py-20 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden 
+            bg-[radial-gradient(ellipse_at_top,_var(--tw-color-zinc-900)_0%,_var(--tw-color-black)_80%)]
+            before:content-['']
+            before:absolute before:inset-0
+            before:bg-repeat before:z-0"
+      >
+  
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -123,3 +130,5 @@ export default function HeroSection() {
     </section>
   )
 }
+
+// UPDATED Code Snippet:
