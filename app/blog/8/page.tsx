@@ -1,8 +1,9 @@
 "use client"
 
-import { Calendar, Clock, User, Tag } from "lucide-react"
+import { Calendar, Clock, ArrowLeft, User, Tag } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function BlogPage8() {
     const tags = ["SSD", "PCIe 5.0", "Storage", "Performance"]
@@ -10,7 +11,20 @@ export default function BlogPage8() {
     return (
         <main className="min-h-screen pt-32 pb-16 px-4 bg-black text-white">
             <div className="max-w-4xl mx-auto space-y-8">
-
+                {/* Back Button */}
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <Link
+                        href="/blog"
+                        className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+                    >
+                        <ArrowLeft className="w-4 h-4" />
+                        Back to Blog
+                    </Link>
+                </motion.div>
                 {/* Cover Image */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
