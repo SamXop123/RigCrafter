@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Clock, Users, Star, ArrowRight, BookOpen, Video, FileText, Wrench, User } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
+import Link from "next/link"
 
 const guides = [
   {
@@ -455,6 +456,21 @@ const guides = [
     icon: <Video className="w-4 h-4" />,
     author: "Mike Rodriguez",
     lastUpdated: "2024-01-11"
+  },
+  {
+    id: 31,
+    title: "The Ultimate CPU Cooler Guide: Air vs AIO vs Custom Loop",
+    description: "Everything you need to know to keep your processor running cool, quiet, and efficient",
+    image: "/guide/ultimate-cooler-guide.png",
+    category: "Cooling",
+    readTime: "15 min read",
+    difficulty: "Medium",
+    rating: 4.8,
+    views: "38k",
+    type: "Article",
+    icon: <FileText className="w-4 h-4" />,
+    author: "Darshan Solanki",
+    lastUpdated: "2025-11-08"
   }
 ]
 
@@ -568,10 +584,10 @@ export default function BuildGuidesSection() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filteredGuides.map((guide) => (
-              <motion.div
-                key={guide.id}
-                variants={itemVariants}
-                className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer"
+              <Link href={`/guides/${guide.id}`} key={guide.id}>
+                <motion.div
+                  variants={itemVariants}
+                  className="bg-black/50 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all group cursor-pointer"
                 whileHover={{ y: -5 }}
               >
                 <div className="relative overflow-hidden">
@@ -637,7 +653,8 @@ export default function BuildGuidesSection() {
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </motion.button>
                 </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             ))}
           </motion.div>
         ) : (
