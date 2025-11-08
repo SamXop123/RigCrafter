@@ -624,7 +624,7 @@ export default function BuildGuidesSection() {
                   <div className="text-xs text-zinc-500 mb-4 border-t border-white/5 pt-3">
                     <div className="flex items-center justify-between">
                       <span>By {guide.author}</span>
-                      <span>Updated {new Date(guide.lastUpdated).toLocaleDateString()}</span>
+                      <span>Updated {new Date(guide.lastUpdated).toLocaleDateString('en-US')}</span>
                     </div>
                   </div>
 
