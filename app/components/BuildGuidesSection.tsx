@@ -11,16 +11,16 @@ const guides = [
     id: 1,
     title: "Complete Beginner's Guide to PC Building",
     description: "Everything you need to know to build your first gaming PC from scratch.",
-    image: "/placeholder.jpg",
+    image: "/guide/complete-pc-build-guide.png",
     category: "Beginner",
-    readTime: "15 min read",
+    readTime: "20 min read",
     difficulty: "Easy",
     rating: 4.9,
     views: "125k",
     type: "Article",
     icon: <BookOpen className="w-4 h-4" />,
-    author: "Alex Chen",
-    lastUpdated: "2024-01-15"
+    author: "Darshan Solanki",
+    lastUpdated: "2025-11-09"
   },
   {
     id: 2,
@@ -56,16 +56,16 @@ const guides = [
     id: 4,
     title: "High-End Gaming Rig ($2000+)",
     description: "Create the ultimate gaming machine for 4K and VR gaming.",
-    image: "/placeholder.jpg",
+    image: "/guide/high-end-gaming-rig.jpg",
     category: "High-End Builds",
-    readTime: "18 min read",
+    readTime: "25 min read",
     difficulty: "Advanced",
     rating: 4.9,
     views: "156k",
     type: "Article",
     icon: <BookOpen className="w-4 h-4" />,
-    author: "Emma Davis",
-    lastUpdated: "2024-01-08"
+    author: "Darshan Solanki",
+    lastUpdated: "2025-11-09"
   },
   {
     id: 5,

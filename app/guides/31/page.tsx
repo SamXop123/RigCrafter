@@ -63,7 +63,7 @@ export default function CPUCoolerBuildGuide() {
         >
           <div className="flex items-center gap-1">
             <User className="w-4 h-4" />
-            Marcus Rodriguez
+            Darshan Solanki
           </div>
           <div className="flex items-center gap-1">
             <Calendar className="w-4 h-4" />
@@ -863,15 +863,15 @@ export default function CPUCoolerBuildGuide() {
         >
           <div className="flex items-center mb-4">
             <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-2xl font-bold">
-              M
+              DS
             </div>
             <div className="ml-4">
-              <h3 className="text-xl font-bold text-white">Marcus Rodriguez</h3>
+              <h3 className="text-xl font-bold text-white">Darshan Solanki</h3>
               <p className="text-zinc-400">Thermal Solutions Specialist & PC Builder</p>
             </div>
           </div>
           <p className="text-zinc-300 leading-relaxed">
-            Marcus has built over 200 custom PCs and spent 5 years testing cooling solutions for various workloads. His passion for thermal optimization and noise reduction has helped thousands of builders choose the perfect cooling setup for their needs.
+            Darshan has built over 200 custom PCs and spent 5 years testing cooling solutions for various workloads. His passion for thermal optimization and noise reduction has helped thousands of builders choose the perfect cooling setup for their needs.
           </p>
         </motion.div>
 
