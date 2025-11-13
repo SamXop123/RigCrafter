@@ -360,6 +360,204 @@ export default function BudgetGamingPCGuide() {
               </div>
               <div className="p-6">
                 <p className="text-zinc-300 mb-6">Time to install the motherboard into the case:</p>
+                
+                <div className="grid md:grid-cols-2 gap-8 mb-6">
+                  <div>
+                    <h4 className="font-medium text-zinc-200 mb-3">Installation Steps:</h4>
+                    <ol className="list-decimal pl-5 space-y-3 text-zinc-300">
+                      <li>Install I/O shield (if not pre-installed)</li>
+                      <li>Install standoffs in the case to match your motherboard size</li>
+                      <li>Carefully lower the motherboard into place</li>
+                      <li>Secure with screws (don't overtighten)</li>
+                      <li>Connect front panel connectors (refer to motherboard manual)</li>
+                    </ol>
+                  </div>
+                  <div className="bg-zinc-800/30 p-4 rounded-lg border border-zinc-700">
+                    <h4 className="font-medium text-zinc-200 mb-3">Tips:</h4>
+                    <ul className="space-y-2 text-zinc-300">
+                      <li>✓ Use the correct number of standoffs</li>
+                      <li>✓ Don't overtighten screws</li>
+                      <li>✓ Route cables through cable management cutouts</li>
+                      <li>✓ Connect the 24-pin ATX and 8-pin CPU power</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+
+          <h2 className="text-2xl font-bold mt-12 mb-6 text-white">Optimization Tips</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">Enable XMP/DOCP</h3>
+              <p className="text-zinc-300">Enable XMP (Intel) or DOCP (AMD) in your BIOS to run your RAM at its advertised speed.</p>
+            </div>
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">Update Drivers</h3>
+              <p className="text-zinc-300">Download the latest drivers for your GPU and motherboard for optimal performance.</p>
+            </div>
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">Windows Optimization</h3>
+              <p className="text-zinc-300">Disable unnecessary startup programs and enable Game Mode in Windows settings.</p>
+            </div>
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">Cooling</h3>
+              <p className="text-zinc-300">Ensure good airflow in your case and consider adding more case fans if temperatures are high.</p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 my-12">
+            <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-6 rounded-r">
+              <div className="flex">
+                <CheckCircle className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <div className="ml-3">
+                  <p className="text-sm text-emerald-100 font-medium">Budget Tip: Smart Shopping</p>
+                  <p className="text-sm text-emerald-50 mt-1">Save up to 30% by shopping for used GPUs and RAM from reputable sellers. Look for components with remaining warranty and good benchmark results.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-blue-500/10 border-l-4 border-blue-500 p-6 rounded-r">
+              <div className="flex">
+                <Clock className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <div className="ml-3">
+                  <p className="text-sm text-blue-100 font-medium">Build Time</p>
+                  <p className="text-sm text-blue-50 mt-1">First-time builders should allocate 3-4 hours for assembly. Take your time and follow each step carefully.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-purple-500/10 border-l-4 border-purple-500 p-6 rounded-r md:col-span-2">
+              <div className="flex">
+                <Shield className="h-5 w-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                <div className="ml-3">
+                  <p className="text-sm text-purple-100 font-medium">Warranty Information</p>
+                  <p className="text-sm text-purple-50 mt-1">Most components come with a 2-3 year manufacturer's warranty. Register your products online and keep your receipts safe.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 className="text-3xl font-bold mt-16 mb-8 text-white border-b border-zinc-800 pb-4">Future Upgrade Path</h2>
+          
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 p-6 rounded-xl border border-blue-800/30">
+              <h3 className="text-xl font-semibold text-blue-400 mb-4">Immediate Upgrades (0-6 months)</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <div className="bg-blue-500/20 p-1 rounded-full mr-3">
+                    <TrendingUp className="w-4 h-4 text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-white">Additional Storage</p>
+                    <p className="text-sm text-zinc-400">Add a 2TB SATA SSD for more game storage ($80-100)</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-blue-500/20 p-1 rounded-full mr-3">
+                    <TrendingUp className="w-4 h-4 text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-white">CPU Cooler</p>
+                    <p className="text-sm text-zinc-400">Aftermarket air cooler for better thermals ($30-50)</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-xl border border-purple-800/30">
+              <h3 className="text-xl font-semibold text-purple-400 mb-4">Mid-term Upgrades (6-18 months)</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <div className="bg-purple-500/20 p-1 rounded-full mr-3">
+                    <Zap className="w-4 h-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-white">GPU Upgrade</p>
+                    <p className="text-sm text-zinc-400">RTX 4060 Ti or RX 7700 XT for 1440p gaming ($400-500)</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-purple-500/20 p-1 rounded-full mr-3">
+                    <Zap className="w-4 h-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-white">RAM Expansion</p>
+                    <p className="text-sm text-zinc-400">Upgrade to 32GB for content creation ($60-80)</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-pink-900/30 to-rose-900/30 p-6 rounded-xl border border-pink-800/30 md:col-span-2">
+              <h3 className="text-xl font-semibold text-pink-400 mb-4">Long-term Upgrades (18+ months)</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-medium text-white mb-2">Major Upgrades</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                      <span>Next-gen GPU (RTX 5000/RX 8000 series)</span>
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                      <span>PCIe 5.0 SSD for faster storage</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-medium text-white mb-2">Peripherals</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                      <span>1440p 144Hz+ monitor</span>
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                      <span>Mechanical keyboard & gaming mouse</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center mt-16 pt-8 border-t border-zinc-800">
+            <Link 
+              href="/guides/2" 
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Previous: How to Use RigCrafter
+            </Link>
+            <Link 
+              href="/guides/4" 
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              Next: High-End Gaming Rig
+              <ArrowLeft className="w-4 h-4 ml-2 transform rotate-180" />
+            </Link>
+          </div>
+
+          <div className="mt-16 pt-8 border-t border-zinc-800">
+            <h3 className="text-xl font-semibold mb-6 text-white">About the Author</h3>
+            <div className="flex items-start gap-4">
+                <div className="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center text-2xl font-bold text-blue-400 p-5">
+                  SAM
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium text-white">SamXop123</h4>
+                  <p className="text-zinc-400 mt-1">Developer of RigCrafter</p>
+                  <p className="text-zinc-500 text-sm mt-2">
+                    Sam has good knowledge about PC building and specializes in budget gaming builds. 
+                    When not testing hardware, he enjoys playing competitive FPS games and helping others 
+                    build their dream gaming rigs.
+                  </p>
+                </div>
+              </div>
+            </div>
         </div>
     </main>
   )
