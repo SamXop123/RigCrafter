@@ -176,6 +176,101 @@ export default function BudgetGamingPCGuide() {
               <div className="p-6">
                 <p className="text-zinc-300 mb-4">A proper workspace is crucial for a smooth building experience. Here's what you'll need:</p>
                 <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-medium text-zinc-200 mb-3">Essential Tools:</h4>
+                    <ul className="space-y-2 text-zinc-300">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Phillips #2 screwdriver (magnetic tip preferred)</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Anti-static wrist strap (highly recommended)</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Needle-nose pliers (for standoffs and small screws)</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Zip ties and velcro straps for cable management</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="bg-zinc-800/30 p-4 rounded-lg border border-zinc-700">
+                    <h4 className="font-medium text-zinc-200 mb-3">Workspace Setup:</h4>
+                    <ul className="space-y-2 text-zinc-300">
+                      <li>✓ Clean, flat surface with good lighting</li>
+                      <li>✓ Anti-static mat (optional but recommended)</li>
+                      <li>✓ Small containers for different screw types</li>
+                      <li>✓ Flashlight or headlamp</li>
+                      <li>✓ Thermal paste (if not pre-applied)</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-6 bg-blue-500/10 border-l-4 border-blue-500 p-4">
+                  <div className="flex">
+                    <div className="h-5 w-5 text-blue-400 flex-shrink-0">i</div>
+                    <div className="ml-3">
+                      <p className="text-sm text-blue-100">Work in a static-free environment. If you don't have an anti-static wrist strap, frequently touch the metal part of your case to discharge any static electricity.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CPU Installation */}
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
+              <div className="bg-zinc-800/50 p-4 border-b border-zinc-800">
+                <h3 className="text-xl font-semibold text-blue-400">2. CPU Installation</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-zinc-300 mb-6">The Ryzen 5 5600 is the heart of this build. Follow these steps carefully to install it properly:</p>
+                
+                <div className="grid md:grid-cols-2 gap-8 mb-6">
+                  <div>
+                    <h4 className="font-medium text-zinc-200 mb-3">Step-by-Step:</h4>
+                    <ol className="list-decimal pl-5 space-y-3 text-zinc-300">
+                      <li>Locate the CPU socket on your motherboard (AM4 socket)</li>
+                      <li>Lift the retention arm to the open position</li>
+                      <li>Align the gold triangle on the CPU with the triangle on the socket</li>
+                      <li>Gently place the CPU into the socket (no force needed)</li>
+                      <li>Lower the retention arm back into place</li>
+                    </ol>
+                  </div>
+                  <div className="bg-zinc-800/30 p-4 rounded-lg border border-zinc-700">
+                    <h4 className="font-medium text-zinc-200 mb-3">Key Points:</h4>
+                    <ul className="space-y-2 text-zinc-300">
+                      <li>✓ Never touch the CPU pins</li>
+                      <li>✓ The CPU only fits one way - don't force it</li>
+                      <li>✓ If using an aftermarket cooler, clean old thermal paste with isopropyl alcohol</li>
+                      <li>✓ The stock cooler has pre-applied thermal paste</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-yellow-500/10 border-l-4 border-yellow-500 p-4 my-4">
+                  <div className="flex">
+                    <AlertTriangle className="h-5 w-5 text-yellow-400 flex-shrink-0" />
+                    <div className="ml-3">
+                      <p className="text-sm text-yellow-300 font-medium">Important Safety Note</p>
+                      <p className="text-sm text-yellow-100 mt-1">Never apply power to your system without the CPU cooler properly installed. Modern CPUs can overheat in seconds without proper cooling.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <h4 className="font-medium text-zinc-200 mb-3">Thermal Paste Application (if needed):</h4>
+                  <div className="grid md:grid-cols-3 gap-4 text-center">
+                    <div className="bg-zinc-800/50 p-4 rounded-lg border border-zinc-700">
+                      <div className="w-4 h-4 mx-auto mb-2 bg-blue-400 rounded-full"></div>
+                      <p className="text-sm">Pea-sized Dot</p>
+                      <p className="text-xs text-zinc-400">Most common method</p>
+                    </div>
+                    <div className="bg-zinc-800/50 p-4 rounded-lg border border-zinc-700">
+                      <div className="w-4 h-4 mx-auto mb-2 bg-blue-400 rounded-full"></div>
+                      <p className="text-sm">X Pattern</p>
+                      <p className="text-xs text-zinc-400">For larger CPUs</p>
         </div>
     </main>
   )
