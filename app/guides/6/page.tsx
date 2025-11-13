@@ -331,6 +331,62 @@ export default function CableManagementGuide() {
             </div>
           </div>
 
+
+          <div className="mt-12 mb-12">
+            <h2 className="text-2xl font-bold mb-6 text-white">Helpful Video Guides</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
+                <div className="aspect-w-16 aspect-h-9 bg-black">
+                  <iframe 
+                    className="w-full h-full" 
+                    src="https://www.youtube.com/embed/AIP4fYNjnF4" 
+                    title="A Beginners Guide to PC Cables & Wiring"
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen>
+                  </iframe>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-medium text-white mb-2">PC Cables & Wiring Guide</h3>
+                  <p className="text-sm text-zinc-400">Learn about all the different cables in your PC and where they go.</p>
+                </div>
+              </div>
+
+              <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
+                <div className="aspect-w-16 aspect-h-9 bg-black">
+                  <iframe 
+                    className="w-full h-full" 
+                    src="https://www.youtube.com/embed/IWYLdQDwYZM" 
+                    title="10 Cable Management Tips & Tricks"
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen>
+                  </iframe>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-medium text-white mb-2">10 Cable Management Tips</h3>
+                  <p className="text-sm text-zinc-400">Professional techniques for perfect cable management.</p>
+                </div>
+              </div>
+
+              <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
+                <div className="aspect-w-16 aspect-h-9 bg-black">
+                  <iframe 
+                    className="w-full h-full" 
+                    src="https://www.youtube.com/embed/LVV_mihEh6g" 
+                    title="What To Do AFTER Building a Gaming PC"
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen>
+                  </iframe>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-medium text-white mb-2">Post-Build Setup Guide</h3>
+                  <p className="text-sm text-zinc-400">Complete walkthrough of BIOS setup and software installation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
