@@ -387,6 +387,41 @@ export default function CableManagementGuide() {
               </div>
             </div>
           </div>
+
+          <div className="flex justify-between items-center mt-16 pt-8 border-t border-zinc-800">
+            <Link 
+              href="/guides/5" 
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Previous: Understanding PC Component Compatibility
+            </Link>
+            <Link 
+              href="/guides/7" 
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              Next: Mini-ITX Small Form Factor Builds
+              <ArrowLeft className="w-4 h-4 ml-2 transform rotate-180" />
+            </Link>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-zinc-800">
+            <h3 className="text-xl font-semibold mb-6 text-white">About the Author</h3>
+            <div className="flex items-start gap-4">
+              <div className="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center text-2xl font-bold text-blue-400 p-5">
+                SAM
+              </div>
+              <div>
+                <h4 className="text-lg font-medium text-white">SamXop123</h4>
+                <p className="text-zinc-400 mt-1">Developer of RigCrafter</p>
+                <p className="text-zinc-500 text-sm mt-2">
+                  Sam is passionate about PC building and helping others create their perfect systems. 
+                  With years of experience in both hardware and software, he enjoys sharing knowledge 
+                  about PC building and optimization.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
