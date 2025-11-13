@@ -95,6 +95,64 @@ export default function CableManagementGuide() {
             </li>
           </ul>
           
+
+          <h2 className="text-2xl font-bold mt-12 mb-6 text-white">Cable Management Essentials</h2>
+          
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 mb-8">
+            <h3 className="text-xl font-semibold mb-4 text-white flex items-center gap-2">
+              <GitBranch className="w-5 h-5 text-green-400" />
+              Cable Routing Basics
+            </h3>
+            <ul className="space-y-3 text-zinc-300">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span>Route cables behind the motherboard tray whenever possible</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span>Use zip ties or Velcro straps to group cables together</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span>Keep power cables away from data cables to reduce interference</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span>Leave some slack for components that might need to be removed later</span>
+              </li>
+            </ul>
+          </div>
+
+          <h3 className="text-xl font-semibold mt-10 mb-4 text-white">Cable Management Checklist</h3>
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+              <h4 className="font-medium text-lg mb-3 text-white flex items-center gap-2">
+                <Zap className="w-5 h-5 text-yellow-400" />
+                Power Supply Cables
+              </h4>
+              <ul className="space-y-2 text-zinc-300">
+                <li>24-pin ATX power cable</li>
+                <li>8-pin EPS/CPU power cable</li>
+                <li>PCIe power cables for GPU</li>
+                <li>SATA power cables for drives</li>
+                <li>Molex connections (if needed)</li>
+              </ul>
+            </div>
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+              <h4 className="font-medium text-lg mb-3 text-white flex items-center gap-2">
+                <GitBranch className="w-5 h-5 text-blue-400" />
+                Data Cables
+              </h4>
+              <ul className="space-y-2 text-zinc-300">
+                <li>SATA data cables</li>
+                <li>Front panel USB headers</li>
+                <li>Audio headers</li>
+                <li>Fan and RGB headers</li>
+                <li>Front panel connectors</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>
