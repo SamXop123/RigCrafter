@@ -271,6 +271,95 @@ export default function BudgetGamingPCGuide() {
                       <div className="w-4 h-4 mx-auto mb-2 bg-blue-400 rounded-full"></div>
                       <p className="text-sm">X Pattern</p>
                       <p className="text-xs text-zinc-400">For larger CPUs</p>
+                    </div>
+                    <div className="bg-zinc-800/50 p-4 rounded-lg border border-zinc-700">
+                      <div className="w-4 h-4 mx-auto mb-2 bg-blue-400 rounded-full"></div>
+                      <p className="text-sm">Line</p>
+                      <p className="text-xs text-zinc-400">For modern Intel CPUs</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* RAM Installation */}
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
+              <div className="bg-zinc-800/50 p-4 border-b border-zinc-800">
+                <h3 className="text-xl font-semibold text-blue-400">3. RAM Installation</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-zinc-300 mb-6">Installing RAM is straightforward but crucial for dual-channel performance:</p>
+                
+                <div className="grid md:grid-cols-2 gap-8 mb-6">
+                  <div>
+                    <h4 className="font-medium text-zinc-200 mb-3">Installation Steps:</h4>
+                    <ol className="list-decimal pl-5 space-y-3 text-zinc-300">
+                      <li>Open the RAM slot clips on both ends</li>
+                      <li>Align the notch in the RAM stick with the slot</li>
+                      <li>Press down firmly on both ends until the clips snap into place</li>
+                      <li>For dual-channel, use slots 2 and 4 (A2/B2) as per your motherboard manual</li>
+                    </ol>
+                  </div>
+                  <div className="bg-zinc-800/30 p-4 rounded-lg border border-zinc-700">
+                    <h4 className="font-medium text-zinc-200 mb-3">RAM Configuration:</h4>
+                    <ul className="space-y-2 text-zinc-300">
+                      <li>✓ 16GB (2x8GB) DDR4-3200MHz recommended</li>
+                      <li>✓ Enable XMP/DOCP in BIOS for full speed</li>
+                      <li>✓ Ensure the RAM is fully seated (you'll hear a click)</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-purple-500/10 border-l-4 border-purple-500 p-4">
+                  <div className="flex">
+                    <div className="h-5 w-5 text-purple-400 flex-shrink-0">i</div>
+                    <div className="ml-3">
+                      <p className="text-sm text-purple-100">For optimal performance, install RAM in the correct slots as specified in your motherboard manual. Most motherboards use the 2nd and 4th slots (A2/B2) for dual-channel configuration.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            {/* M.2 SSD Installation */}
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
+              <div className="bg-zinc-800/50 p-4 border-b border-zinc-800">
+                <h3 className="text-xl font-semibold text-blue-400">4. M.2 SSD Installation</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-zinc-300 mb-6">M.2 SSDs provide the fastest storage solution for your operating system and games:</p>
+                
+                <div className="grid md:grid-cols-2 gap-8 mb-6">
+                  <div>
+                    <h4 className="font-medium text-zinc-200 mb-3">Installation Steps:</h4>
+                    <ol className="list-decimal pl-5 space-y-3 text-zinc-300">
+                      <li>Locate the M.2 slot on your motherboard (usually above the first PCIe slot)</li>
+                      <li>Remove the M.2 screw (if present) from the standoff</li>
+                      <li>Insert the M.2 SSD at a 30-degree angle</li>
+                      <li>Gently press down and secure with the screw</li>
+                      <li>Some motherboards include a heatsink - install it if available</li>
+                    </ol>
+                  </div>
+                  <div className="bg-zinc-800/30 p-4 rounded-lg border border-zinc-700">
+                    <h4 className="font-medium text-zinc-200 mb-3">SSD Recommendations:</h4>
+                    <ul className="space-y-2 text-zinc-300">
+                      <li>✓ 1TB NVMe PCIe 3.0 or 4.0</li>
+                      <li>✓ Look for DRAM cache for better performance</li>
+                      <li>✓ Popular choices: WD Blue SN570, Crucial P5 Plus, Samsung 970 Evo Plus</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Motherboard Installation */}
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
+              <div className="bg-zinc-800/50 p-4 border-b border-zinc-800">
+                <h3 className="text-xl font-semibold text-blue-400">5. Motherboard Installation</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-zinc-300 mb-6">Time to install the motherboard into the case:</p>
         </div>
     </main>
   )
