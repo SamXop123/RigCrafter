@@ -41,16 +41,16 @@ const guides = [
     id: 3,
     title: "Budget Gaming PC Build Guide ($600-800)",
     description: "Build a capable gaming PC without breaking the bank.",
-    image: "/placeholder.jpg",
+    image: "/guide/budget-pc-rig-guide.jpeg",
     category: "Budget Builds",
-    readTime: "12 min read",
+    readTime: "10 min read",
     difficulty: "Medium",
     rating: 4.7,
-    views: "200k",
+    views: "202k",  
     type: "Article",
     icon: <FileText className="w-4 h-4" />,
-    author: "Mike Rodriguez",
-    lastUpdated: "2024-01-10"
+    author: "SamXop123",
+    lastUpdated: "2025-11-13"
   },
   {
     id: 4,
