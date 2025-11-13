@@ -78,7 +78,7 @@ export default function BudgetGamingPCGuide() {
           <div className="w-1 h-1 rounded-full bg-zinc-700"></div>
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
-            <span>10 min read</span>
+            <span>14 min read</span>
           </div>
         </div>
 
