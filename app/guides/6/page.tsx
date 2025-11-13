@@ -249,6 +249,88 @@ export default function CableManagementGuide() {
             </div>
           </div>
 
+          <h2 className="text-2xl font-bold mt-12 mb-6 text-white">Operating System Installation</h2>
+          
+          <div className="bg-blue-500/10 border-l-4 border-blue-500 p-4 mb-8">
+            <div className="flex">
+              <div className="h-5 w-5 text-blue-400 flex-shrink-0">i</div>
+              <div className="ml-3">
+                <p className="text-sm text-blue-100">Have your Windows license key and a USB drive (16GB+) ready before starting the installation process.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="prose prose-invert max-w-none">
+            <ol className="space-y-4 text-zinc-300">
+              <li>
+                <span className="font-medium text-white">Create a bootable USB:</span> Use the official Windows Media Creation Tool or Rufus to create a bootable USB drive.
+              </li>
+              <li>
+                <span className="font-medium text-white">Boot from USB:</span> Restart your PC and enter the boot menu (usually F12, F11, or DEL) to select your USB drive.
+              </li>
+              <li>
+                <span className="font-medium text-white">Install Windows:</span> Follow the on-screen instructions, selecting your SSD/HDD as the installation location.
+              </li>
+              <li>
+                <span className="font-medium text-white">Complete setup:</span> After installation, complete the Windows setup process and connect to your network.
+              </li>
+            </ol>
+          </div>
+
+          <h2 className="text-2xl font-bold mt-12 mb-6 text-white">Post-Installation Setup</h2>
+          
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+              <h4 className="font-medium text-lg mb-3 text-white flex items-center gap-2">
+                <Download className="w-5 h-5 text-green-400" />
+                Essential Software
+              </h4>
+              <ul className="space-y-2 text-zinc-300">
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400">•</span>
+                  <span><span className="font-medium">GPU Drivers:</span> Download directly from NVIDIA/AMD/Intel</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400">•</span>
+                  <span><span className="font-medium">Chipset Drivers:</span> Essential for motherboard functionality</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400">•</span>
+                  <span><span className="font-medium">Audio Drivers:</span> For proper sound output</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400">•</span>
+                  <span><span className="font-medium">Network Drivers:</span> Wired and wireless connectivity</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400">•</span>
+                  <span><span className="font-medium">Peripheral Software:</span> For keyboards, mice, and other devices</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-400">•</span>
+                  <span><span className="font-medium">System Monitoring:</span> HWMonitor, CPU-Z, or HWiNFO</span>
+                </li>
+              </ul>
+              
+              <div className="mt-4 p-3 bg-zinc-800/50 rounded-lg">
+                <p className="text-xs text-zinc-400">💡 <span className="font-medium">Tip:</span> Download drivers directly from manufacturer websites rather than using third-party tools to ensure you get the latest, most stable versions.</p>
+              </div>
+            </div>
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+              <h4 className="font-medium text-lg mb-3 text-white flex items-center gap-2">
+                <Shield className="w-5 h-5 text-blue-400" />
+                System Security
+              </h4>
+              <ul className="space-y-2 text-zinc-300">
+                <li>Enable Windows Defender</li>
+                <li>Set up Windows Hello</li>
+                <li>Configure backup solutions</li>
+                <li>Install system monitoring tools</li>
+                <li>Set up a password manager</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>
