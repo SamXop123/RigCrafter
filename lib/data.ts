@@ -112,6 +112,178 @@ const cpus: Component[] = [
       tdp: 105,
     },
   },
+  {
+    id: "cpu-6",
+    type: "cpu",
+    name: "AMD Ryzen 9 9950X3D",
+    brand: "AMD",
+    price: 679.99,
+    rating: 4.9,
+    description: "Flagship 3D V-Cache processor offering industry-leading gaming performance and strong productivity performance.",
+    imageUrl: "https://m.media-amazon.com/images/I/71hZfMZNZuL._AC_SX679_.jpg",
+    specs: {
+      Cores: "16",
+      Threads: "32",
+      BaseClock: "4.2 GHz",
+      BoostClock: "5.7 GHz",
+      Cache: "192MB (3D V-Cache)",
+      TDP: "170W",
+      Socket: "AM5"
+    },
+    tags: ["AMD", "Ryzen 9", "9950X3D", "Gaming", "High-end", "3D V-Cache"],
+    compatibility: {
+      tdp: 170,
+      socket: "AM5"
+    }
+  },
+  {
+    id: "cpu-7",
+    type: "cpu",
+    name: "Intel Core i9-14900K",
+    brand: "Intel",
+    price: 460.99,
+    rating: 4.7,
+    description: "High-performance processor with hybrid architecture, excellent for gaming and heavy multitasking workloads.",
+    imageUrl: "https://m.media-amazon.com/images/I/619ytLAytAL._AC_SX679_.jpg",
+    specs: {
+      Cores: "24 (8P + 16E)",
+      Threads: "32",
+      BaseClock: "3.2 GHz (P-Core)",
+      BoostClock: "6.0 GHz",
+      Cache: "36MB",
+      TDP: "125W (253W Turbo)",
+      Socket: "LGA1700"
+    },
+    tags: ["Intel", "i9", "14900K", "High-end", "Hybrid Architecture"],
+    compatibility: {
+      tdp: 253,
+      socket: "LGA1700"
+    }
+  },
+  {
+    id: "cpu-8",
+    type: "cpu",
+    name: "AMD Ryzen 7 9800X3D",
+    brand: "AMD",
+    price: 459.99,
+    rating: 4.8,
+    description: "Top-tier gaming CPU with 3D V-Cache technology, designed for maximum fps at 1080p and 1440p.",
+    imageUrl: "https://m.media-amazon.com/images/I/71aHvYUgX1L._AC_SX679_.jpg",
+    specs: {
+      Cores: "8",
+      Threads: "16",
+      BaseClock: "4.0 GHz",
+      BoostClock: "5.7 GHz",
+      Cache: "128MB (3D V-Cache)",
+      TDP: "120W",
+      Socket: "AM5"
+    },
+    tags: ["AMD", "Ryzen 7", "9800X3D", "Gaming", "3D V-Cache"],
+    compatibility: {
+      tdp: 120,
+      socket: "AM5"
+    }
+  },
+  {
+    id: "cpu-9",
+    type: "cpu",
+    name: "Intel Core i7-14700K",
+    brand: "Intel",
+    price: 319.99,
+    rating: 4.6,
+    description: "Balanced high-performance CPU with hybrid P-core and E-core design, ideal for gaming and productivity.",
+    imageUrl: "https://m.media-amazon.com/images/I/61aAAg73uLL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Cores: "20 (8P + 12E)",
+      Threads: "28",
+      BaseClock: "3.4 GHz (P-Core)",
+      BoostClock: "5.6 GHz",
+      Cache: "33MB",
+      TDP: "125W (253W Turbo)",
+      Socket: "LGA1700"
+    },
+    tags: ["Intel", "i7", "14700K", "Gaming", "Productivity"],
+    compatibility: {
+      tdp: 253,
+      socket: "LGA1700"
+    }
+  },
+  {
+    id: "cpu-10",
+    type: "cpu",
+    name: "AMD Ryzen 7 9700X",
+    brand: "AMD",
+    price: 329.99,
+    rating: 4.6,
+    description: "Energy-efficient 8-core Zen 5 CPU offering excellent gaming and productivity performance.",
+    imageUrl: "https://m.media-amazon.com/images/I/61F3ZChalyL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Cores: "8",
+      Threads: "16",
+      BaseClock: "3.8 GHz",
+      BoostClock: "5.5 GHz",
+      Cache: "40MB",
+      TDP: "65W",
+      Socket: "AM5"
+    },
+    tags: ["AMD", "Ryzen 7", "9700X", "Efficiency", "Zen 5"],
+    compatibility: {
+      tdp: 65,
+      socket: "AM5"
+    }
+  },
+  {
+    id: "cpu-11",
+    type: "cpu",
+    name: "Intel Core i9-13900KF",
+    brand: "Intel",
+    price: 459.99,
+    rating: 4.8,
+    description: "A GPU-less variant of the i9-13900K, offering the same extreme performance at a more affordable price.",
+    imageUrl: "https://m.media-amazon.com/images/I/61My4F2-XUL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Cores: "24 (8P+16E)",
+      Threads: "32",
+      BoostClock: "5.8 GHz",
+      Cache: "36MB",
+      TDP: "125W",
+      Socket: "LGA1700"
+    },
+    tags: ["Intel", "Core i9", "KF", "Gaming", "Enthusiast"],
+    compatibility: {
+      socket: "LGA1700",
+      tdp: 125
+    }
+  },
+  {
+    id: "cpu-12",
+    type: "cpu",
+    name: "AMD Ryzen 9 7900X",
+    brand: "AMD",
+    price: 559.99,
+    rating: 4.7,
+    description: "A 12-core Zen 4 CPU delivering powerful multi-threaded performance for content creation and gaming.",
+    imageUrl: "https://m.media-amazon.com/images/I/51OEiWrUtqL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Cores: "12",
+      Threads: "24",
+      BoostClock: "5.6 GHz",
+      Cache: "76MB",
+      TDP: "170W",
+      Socket: "AM5"
+    },
+    tags: ["AMD", "Ryzen 9", "7900X", "Workstation", "AM5"],
+    compatibility: {
+      socket: "AM5",
+      tdp: 170
+    }
+  }
+
+
+
+
+
+
 ]
 
 const gpus: Component[] = [
@@ -241,8 +413,7 @@ const gpus: Component[] = [
     tdp: 160,
     pciSlots: 2,
   },
-}
-
+},
 
 
 
