@@ -1,6 +1,5 @@
 import type { Component, ComponentType } from "./types"
 
-// Mock data for components
 const cpus: Component[] = [
   {
     id: "cpu-1",
@@ -165,7 +164,7 @@ const cpus: Component[] = [
     type: "cpu",
     name: "AMD Ryzen 7 9800X3D",
     brand: "AMD",
-    price: 459.99,
+    price: 499.99,
     rating: 4.8,
     description: "Top-tier gaming CPU with 3D V-Cache technology, designed for maximum fps at 1080p and 1440p.",
     imageUrl: "https://m.media-amazon.com/images/I/71aHvYUgX1L._AC_SX679_.jpg",
