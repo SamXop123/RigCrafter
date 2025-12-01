@@ -24,6 +24,7 @@ Thank you for your interest in contributing to RigCrafter! This guide will help 
    # or
    yarn install
    ```
+   - Use `npm install --force` if above not working.
 
 2. **Environment Setup**
    ```bash
