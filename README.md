@@ -2,6 +2,10 @@
 
 **Build your dream gaming PC with our interactive component selector**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Security Policy](https://img.shields.io/badge/Security-Policy-brightgreen.svg)](SECURITY.md)
+[![DSCWOC '26](https://img.shields.io/badge/DSCWOC-2026-blue.svg)](https://github.com/SamXop123/rigcrafter)
+
 RigCrafter is a modern, interactive web application that helps users build custom gaming PCs by selecting compatible components, checking compatibility issues, and optimizing their budget. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
 ![RigCrafter Preview](./public/rigcraft.png)
