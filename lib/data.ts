@@ -519,6 +519,106 @@ const ram: Component[] = [
       memoryType: "DDR4",
     },
   },
+  {
+    id: "ram-acer-vesta-2-32gb-6000",
+    type: "ram",
+    name: "Acer Predator Vesta II RGB 32GB (2x16GB)",
+    brand: "Acer",
+    price: 129.99,
+    rating: 4.8,
+    description: "Premium DDR5 gaming memory featuring high-performance ICs, customizable RGB lighting, and ultra-low CL30 latency for optimal gaming performance.",
+    imageUrl: "https://m.media-amazon.com/images/I/8123JLDDIlL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Capacity: "32GB",
+      Speed: "6000MHz",
+      "CAS Latency": "CL30",
+      Type: "DDR5"
+    },
+    tags: ["Acer", "DDR5", "RGB", "32GB", "6000MHz", "Gaming"],
+    compatibility: {
+      memoryType: "DDR5",
+    }
+  },
+  {
+    id: "ram-teamgroup-delta-32gb-5200",
+    type: "ram",
+    name: "TeamGroup T-Force Delta RGB 32GB (2x16GB)",
+    brand: "TeamGroup",
+    price: 95.99,
+    rating: 4.6,
+    description: "Reliable DDR5 memory with a 120° ultra-wide lighting angle and power management ICs (PMIC) for enhanced stability and efficiency.",
+    imageUrl: "https://m.media-amazon.com/images/I/81ov4cFmdaL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Capacity: "32GB",
+      Speed: "5200MHz",
+      "CAS Latency": "CL40",
+      Type: "DDR5"
+    },
+    tags: ["TeamGroup", "DDR5", "RGB", "32GB", "5200MHz"],
+    compatibility: {
+      memoryType: "DDR5",
+    }
+  },
+  {
+    id: "ram-crucial-pro-32gb-6400",
+    type: "ram",
+    name: "Crucial Pro 32GB (2x16GB)",
+    brand: "Crucial",
+    price: 109.99,
+    rating: 4.7,
+    description: "High-speed DDR5 memory designed for next-gen multi-core CPUs, offering exceptional multitasking bandwidth without the RGB tax.",
+    imageUrl: "https://m.media-amazon.com/images/I/510wEDzO3BL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Capacity: "32GB",
+      Speed: "6400MHz",
+      "CAS Latency": "CL38",
+      Type: "DDR5"
+    },
+    tags: ["Crucial", "DDR5", "No-RGB", "32GB", "6400MHz"],
+    compatibility: {
+      memoryType: "DDR5",
+    }
+  },
+  {
+    id: "ram-acer-ht200-32gb-6400",
+    type: "ram",
+    name: "Acer HT200 32GB (2x16GB)",
+    brand: "Acer",
+    price: 114.99,
+    rating: 4.8,
+    description: "High-frequency memory kit crafted for extreme overclocking and enthusiast gaming builds, delivering tight timings and massive bandwidth.",
+    imageUrl: "https://m.media-amazon.com/images/I/71+87sNgzpL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Capacity: "32GB",
+      Speed: "6400MHz",
+      "CAS Latency": "CL32",
+      Type: "DDR5"
+    },
+    tags: ["Acer", "DDR5", "Enthusiast", "32GB", "6400MHz"],
+    compatibility: {
+      memoryType: "DDR5",
+    }
+  },
+  {
+    id: "ram-patriot-viper-64gb-6000",
+    type: "ram",
+    name: "Patriot Viper Venom 64GB (2x32GB)",
+    brand: "Patriot",
+    price: 185.99,
+    rating: 4.9,
+    description: "Massive 64GB DDR5 kit from the Viper Venom series, combining blazing fast 6000MHz speeds with a bold heatshield design for intensive workloads and gaming.",
+    imageUrl: "https://m.media-amazon.com/images/I/61SkXMMKFTL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Capacity: "64GB",
+      Speed: "6000MHz",
+      "CAS Latency": "CL36",
+      Type: "DDR5"
+    },
+    tags: ["Patriot", "DDR5", "64GB", "6000MHz", "Workstation"],
+    compatibility: {
+      memoryType: "DDR5",
+    }
+  }
 ]
 
 const storage: Component[] = [
