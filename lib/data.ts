@@ -1250,7 +1250,7 @@ const cooling: Component[] = [
       tdp: 250,
     },
   },
-  
+
 ]
 const keyboards: Component[] = [
   {
@@ -1289,6 +1289,166 @@ const keyboards: Component[] = [
       Connectivity: "Wired USB",
     },
     tags: ["Logitech", "Mechanical", "Tenkeyless", "Esports"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-3",
+    type: "keyboard",
+    name: "Razer Huntsman V3 Pro",
+    brand: "Razer",
+    price: 249.99,
+    rating: 4.9,
+    description:
+      "Tournament-grade analog optical keyboard with adjustable actuation and rapid trigger for competitive gaming dominance.",
+    imageUrl: "/products/keyboard-rgb.png",
+    specs: {
+      Switches: "Razer Analog Optical Gen-2",
+      Backlight: "Per-key RGB",
+      Connectivity: "Wired USB-C",
+    },
+    tags: ["Razer", "Optical", "Analog", "Rapid Trigger", "Tournament"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-4",
+    type: "keyboard",
+    name: "SteelSeries Apex Pro TKL (2023)",
+    brand: "SteelSeries",
+    price: 189.99,
+    rating: 4.8,
+    description:
+      "Adjustable per-key actuation from 0.2mm to 3.8mm with OmniPoint 2.0 switches and an OLED smart display.",
+    imageUrl: "/products/keyboard-tkl.png",
+    specs: {
+      Switches: "OmniPoint 2.0 Adjustable",
+      Backlight: "Per-key RGB",
+      Connectivity: "Wired USB-C",
+    },
+    tags: ["SteelSeries", "Adjustable", "OLED", "TKL", "Esports"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-5",
+    type: "keyboard",
+    name: "Wooting 60HE+",
+    brand: "Wooting",
+    price: 174.99,
+    rating: 4.9,
+    description:
+      "60% form factor with hall-effect magnetic switches enabling Rapid Trigger and analog input. The choice of pro FPS players.",
+    imageUrl: "/products/keyboard-60.png",
+    specs: {
+      Switches: "Lekker (Hall Effect)",
+      Backlight: "Per-key RGB",
+      Connectivity: "Wired USB-C",
+    },
+    tags: ["Wooting", "Hall Effect", "Rapid Trigger", "60%", "Competitive"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-6",
+    type: "keyboard",
+    name: "Corsair K100 RGB",
+    brand: "Corsair",
+    price: 229.99,
+    rating: 4.8,
+    description:
+      "Flagship full-size keyboard with optical-mechanical switches, iCUE control wheel, and 44-zone LightEdge RGB.",
+    imageUrl: "/products/keyboard-rgb.png",
+    specs: {
+      Switches: "Corsair OPX Optical",
+      Backlight: "Per-key RGB + LightEdge",
+      Connectivity: "Wired USB",
+    },
+    tags: ["Corsair", "Optical", "Full-size", "iCUE", "Control Wheel"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-7",
+    type: "keyboard",
+    name: "Ducky One 3 SF",
+    brand: "Ducky",
+    price: 129.99,
+    rating: 4.7,
+    description:
+      "65% hot-swappable mechanical keyboard with PBT double-shot keycaps, Quack Mechanics gasket mount, and vibrant RGB.",
+    imageUrl: "/products/keyboard-60.png",
+    specs: {
+      Switches: "Cherry MX Red (Hot-Swap)",
+      Backlight: "Per-key RGB",
+      Connectivity: "Wired USB-C",
+    },
+    tags: ["Ducky", "Hot-Swap", "65%", "PBT", "Gasket Mount"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-8",
+    type: "keyboard",
+    name: "HyperX Alloy Origins 65",
+    brand: "HyperX",
+    price: 99.99,
+    rating: 4.7,
+    description:
+      "Compact 65% mechanical keyboard with full aircraft-grade aluminum body, HyperX Red linear switches, and RGB backlighting.",
+    imageUrl: "/products/keyboard-tkl.png",
+    specs: {
+      Switches: "HyperX Red Linear",
+      Backlight: "Per-key RGB",
+      Connectivity: "Wired USB-C",
+    },
+    tags: ["HyperX", "Aluminum", "65%", "Linear", "Compact"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-9",
+    type: "keyboard",
+    name: "ASUS ROG Azoth",
+    brand: "ASUS",
+    price: 249.99,
+    rating: 4.8,
+    description:
+      "Premium 75% wireless mechanical keyboard with OLED display, hot-swappable NX switches, gasket mount, and three-layer sound dampening.",
+    imageUrl: "/products/keyboard-rgb.png",
+    specs: {
+      Switches: "ROG NX (Hot-Swap)",
+      Backlight: "Per-key RGB",
+      Connectivity: "Wireless / Bluetooth / USB-C",
+    },
+    tags: ["ASUS", "ROG", "Wireless", "OLED", "75%", "Gasket Mount"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "keyboard-10",
+    type: "keyboard",
+    name: "Cherry MX Board 3.0S Wireless",
+    brand: "Cherry",
+    price: 159.99,
+    rating: 4.6,
+    description:
+      "Full-size wireless keyboard from the inventors of the mechanical switch. Features genuine Cherry MX Red switches and ultra-durable German engineering.",
+    imageUrl: "/products/keyboard-tkl.png",
+    specs: {
+      Switches: "Cherry MX Red",
+      Backlight: "White LED",
+      Connectivity: "Wireless 2.4GHz / Bluetooth / USB-C",
+    },
+    tags: ["Cherry", "Wireless", "Full-size", "MX Red", "Premium"],
     compatibility: {
       tdp: 250,
     },
@@ -1334,6 +1494,174 @@ const mice: Component[] = [
       Connectivity: "Wireless",
     },
     tags: ["Razer", "Wireless", "Lightweight", "Gaming"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-3",
+    type: "mouse",
+    name: "Logitech G Pro X Superlight 2",
+    brand: "Logitech",
+    price: 159.99,
+    rating: 4.9,
+    description:
+      "Ultra-lightweight 60g wireless gaming mouse with HERO 2 sensor delivering 44K DPI and sub-1ms LIGHTSPEED wireless.",
+    imageUrl: "/products/mouse-wireless.png",
+    specs: {
+      Sensor: "HERO 2",
+      DPI: "44,000",
+      Weight: "60g",
+      Connectivity: "LIGHTSPEED Wireless",
+    },
+    tags: ["Logitech", "Superlight", "Wireless", "Esports", "Ultralight"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-4",
+    type: "mouse",
+    name: "Razer Viper V3 Pro",
+    brand: "Razer",
+    price: 159.99,
+    rating: 4.9,
+    description:
+      "54g wireless esports mouse with Focus Pro 35K sensor, 8000Hz polling via HyperPolling dongle, and optical switches gen-3.",
+    imageUrl: "/products/mouse-ergonomic.png",
+    specs: {
+      Sensor: "Focus Pro 35K",
+      DPI: "35,000",
+      Weight: "54g",
+      Connectivity: "Wireless / USB-C",
+    },
+    tags: ["Razer", "Viper", "Wireless", "8000Hz", "Esports"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-5",
+    type: "mouse",
+    name: "Finalmouse UltralightX",
+    brand: "Finalmouse",
+    price: 189.99,
+    rating: 4.7,
+    description:
+      "Groundbreaking 42g wireless gaming mouse with magnesium alloy shell and Finalsensor delivering industry-leading tracking.",
+    imageUrl: "/products/mouse-ultralight.png",
+    specs: {
+      Sensor: "Finalsensor",
+      DPI: "26,000",
+      Weight: "42g",
+      Connectivity: "Wireless 2.4GHz",
+    },
+    tags: ["Finalmouse", "Ultralight", "Magnesium", "Premium", "Wireless"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-6",
+    type: "mouse",
+    name: "Zowie EC2-CW Wireless",
+    brand: "Zowie",
+    price: 119.99,
+    rating: 4.8,
+    description:
+      "Wireless version of the legendary EC2 ergonomic shape, designed for competitive FPS with plug-and-play simplicity and 3370 sensor.",
+    imageUrl: "/products/mouse-ergonomic.png",
+    specs: {
+      Sensor: "3370",
+      DPI: "3,200",
+      Weight: "77g",
+      Connectivity: "Wireless 2.4GHz",
+    },
+    tags: ["Zowie", "Ergonomic", "Wireless", "FPS", "Esports"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-7",
+    type: "mouse",
+    name: "Corsair M75 Air Wireless",
+    brand: "Corsair",
+    price: 129.99,
+    rating: 4.8,
+    description:
+      "Ultra-light 60g wireless gaming mouse with Corsair MARKSMAN 26K sensor, Slipstream wireless, and up to 100 hours battery.",
+    imageUrl: "/products/mouse-wireless.png",
+    specs: {
+      Sensor: "MARKSMAN 26K",
+      DPI: "26,000",
+      Weight: "60g",
+      Connectivity: "Slipstream / Bluetooth",
+    },
+    tags: ["Corsair", "Wireless", "Ultralight", "Slipstream", "Gaming"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-8",
+    type: "mouse",
+    name: "SteelSeries Prime Wireless",
+    brand: "SteelSeries",
+    price: 129.99,
+    rating: 4.7,
+    description:
+      "Pro-grade wireless mouse co-developed with esports athletes, featuring prestige OM optical magnetic switches and TrueMove Air sensor.",
+    imageUrl: "/products/mouse-ergonomic.png",
+    specs: {
+      Sensor: "TrueMove Air",
+      DPI: "18,000",
+      Weight: "80g",
+      Connectivity: "Quantum 2.0 Wireless",
+    },
+    tags: ["SteelSeries", "Wireless", "Esports", "Optical Switches"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-9",
+    type: "mouse",
+    name: "Endgame Gear OP1we",
+    brand: "Endgame Gear",
+    price: 89.99,
+    rating: 4.7,
+    description:
+      "59g wireless gaming mouse with PixArt PAW3395 sensor, Kailh 8.0 switches, and ergonomic right-hand design for FPS gaming.",
+    imageUrl: "/products/mouse-ultralight.png",
+    specs: {
+      Sensor: "PixArt PAW3395",
+      DPI: "26,000",
+      Weight: "59g",
+      Connectivity: "Wireless 2.4GHz / USB-C",
+    },
+    tags: ["Endgame Gear", "Wireless", "Lightweight", "PAW3395", "FPS"],
+    compatibility: {
+      tdp: 250,
+    },
+  },
+  {
+    id: "mouse-10",
+    type: "mouse",
+    name: "Pulsar X2V2 Wireless",
+    brand: "Pulsar",
+    price: 99.99,
+    rating: 4.8,
+    description:
+      "Symmetrical wireless gaming mouse at 52g with PAW3395 sensor, designed for claw and fingertip grip styles with superior glide.",
+    imageUrl: "/products/mouse-wireless.png",
+    specs: {
+      Sensor: "PixArt PAW3395",
+      DPI: "26,000",
+      Weight: "52g",
+      Connectivity: "Wireless 2.4GHz",
+    },
+    tags: ["Pulsar", "Symmetrical", "Wireless", "Ultralight", "Esports"],
     compatibility: {
       tdp: 250,
     },
