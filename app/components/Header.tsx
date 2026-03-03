@@ -130,6 +130,11 @@ export default function Header() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="hover:text-purple-400 transition-colors duration-300">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/#builder" className="hover:text-purple-400 transition-colors duration-300">
                   Builder
                 </Link>
@@ -218,6 +223,15 @@ export default function Header() {
                 onClick={closeMenu}
               >
                 About
+              </Link>
+            </li>
+            <li className="transform transition-all duration-200 hover:translate-x-2">
+              <Link 
+                href="/blog" 
+                className="block py-3 px-4 rounded-lg hover:text-purple-400 hover:bg-white/5 transition-all duration-200 text-center"
+                onClick={closeMenu}
+              >
+                Blog
               </Link>
             </li>
             <li className="transform transition-all duration-200 hover:translate-x-2">
