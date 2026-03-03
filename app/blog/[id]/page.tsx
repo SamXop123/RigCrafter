@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Calendar, Clock, User, ArrowLeft, Tag, Share2, Heart, Bookmark } from "lucide-react"
+import { Calendar, Clock, User, ArrowLeft, ArrowRight, Tag, Share2, Heart, Bookmark } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -635,7 +635,157 @@ const blogPosts = [
       <h2>Which Speed Should You Buy? Decision Framework</h2>
       <p>For most builders, DDR5-6000 CL30 32GB kits offer the best balance of performance, compatibility, and value. The money saved compared to DDR5-7200 is better invested in other components. Only consider faster memory if you're building an enthusiast-level system where every percentage of performance matters.</p>
       
-      <p>Choose DDR5-6000 if you're building a budget-conscious system, primarily play single-player games, or prefer guaranteed compatibility. Choose DDR5-7200 if you're building a high-end system, play competitive games at high refresh rates, or do professional content creation.</p>
+      Choose DDR5-6000 if you're building a budget-conscious system, primarily play single-player games, or prefer guaranteed compatibility. Choose DDR5-7200 if you're building a high-end system, play competitive games at high refresh rates, or do professional content creation.</p>
+    `
+  },
+  {
+    id: 9,
+    title: "Best PC Cases of 2025: Airflow, Aesthetics & Value",
+    excerpt: "From compact ITX builds to full-tower showcases, we round up the best PC cases of 2025 that nail the balance between airflow, looks, and price.",
+    image: "/blog/pc-cases-2025.jpg",
+    author: "SamXop123",
+    date: "2025-01-01",
+    readTime: "10 min read",
+    category: "Cases",
+    featured: false,
+    tags: ["Cases", "Airflow", "Build", "Aesthetics"],
+    content: `
+      <p>Choosing a PC case in 2025 is nothing like it was five years ago. We've come a long way from the days of bulky steel boxes with zero personality. Today's cases are engineered marvels that blend stunning aesthetics with serious thermal performance—and you don't have to spend a fortune to get a great one. After testing over 20 cases across every form factor and budget, here are my picks for the best PC cases of 2025.</p>
+
+      <h2>Why Your Case Choice Matters More Than You Think</h2>
+      <p>I used to be the person who spent everything on a GPU and CPU and then threw parts into whatever $40 box was on sale. Big mistake. Your case determines airflow, noise levels, cable management, build quality, and even how easy future upgrades will be. A bad case can throttle your expensive components, while a great one can make a mid-range build feel premium.</p>
+
+      <p>Think of your case as the foundation of your build. It's the one component you'll interact with physically every time you want to tweak something. A well-designed case with good cable routing, tool-less drive bays, and proper airflow channels will save you hours of frustration—and your components will run cooler and quieter as a result.</p>
+
+      <h2>Best Overall: Fractal Design North 2</h2>
+      <p>The successor to one of the most beloved cases of the past few years, the North 2 takes everything great about the original—the walnut front panel, the clean Scandinavian aesthetic—and adds meaningful upgrades. The mesh side panels now offer 15% better airflow while maintaining the same refined look.</p>
+
+      <p>What really sets the North 2 apart is its build experience. The cable management space behind the motherboard tray is generous, the PSU shroud hides everything neatly, and the front panel pops off effortlessly for filter cleaning. At $140, it's not the cheapest option, but it's the one I recommend most to anyone who wants their PC to look like a piece of furniture rather than a gaming relic.</p>
+
+      <h2>Best Budget: Phanteks XT View</h2>
+      <p>If you told me five years ago that a $70 case could deliver this level of build quality and airflow, I'd have laughed. The Phanteks XT View comes with three pre-installed 140mm fans, a full mesh front panel, and a tempered glass side panel that doesn't wobble when you breathe near it.</p>
+
+      <p>Cable management is surprisingly good for this price point, with rubber grommets and enough tie-down points to keep everything tidy. The only real compromise is the lack of USB-C on the front panel, but at this price, that's a nitpick, not a dealbreaker. For budget builders, this is the case to beat in 2025.</p>
+
+      <h2>Best Compact: Lian Li A3-mATX</h2>
+      <p>Small form factor builds have never been hotter, and the Lian Li A3 is proof that you don't need a full tower to get great performance. This mATX case supports full-size GPUs up to 370mm, fits a 280mm AIO on top, and still manages to be compact enough to sit comfortably on a desk.</p>
+
+      <p>The dual-chamber design separates the PSU and cables from the main components, which not only looks cleaner but improves airflow dramatically. The included reverse connector motherboard support means your GPU cables route behind the tray—no more ugly power cables ruining your build photos.</p>
+
+      <h2>Best Airflow: Corsair 6500X</h2>
+      <p>If raw thermal performance is your top priority, the Corsair 6500X is hard to beat. This dual-chamber mid-tower features mesh panels on practically every surface, support for up to 10 fans, and a design philosophy that treats airflow as a first-class citizen.</p>
+
+      <p>In my testing, the 6500X ran 8-12°C cooler than closed-front cases with the same fan configuration. GPU temperatures in particular benefited from the unrestricted bottom intake. It's not the quietest case at full fan speed, but with a proper fan curve, it strikes an excellent balance between silence and cooling.</p>
+
+      <h2>Best Premium: HYTE Y70 Touch</h2>
+      <p>For builders who want their PC to be a conversation piece, the HYTE Y70 Touch is in a class of its own. The front panel is a fully functional 14.1-inch touchscreen that can display system monitoring, custom artwork, videos, or even act as a secondary display for Discord or Spotify.</p>
+
+      <p>Beyond the screen gimmick (which, honestly, is incredibly well-implemented), the Y70 Touch is a genuinely excellent case. Thermals are competitive with dedicated airflow cases, the build quality is outstanding, and the panoramic glass panels create that "floating components" look that's so popular right now. At $350, it's expensive, but it's also the most visually striking case you can buy.</p>
+
+      <h2>Key Factors to Consider When Choosing a Case</h2>
+      
+      <h3>Airflow vs. Silence</h3>
+      <p>This is the eternal trade-off. Mesh panels let air flow freely but can be noisier since there's less between you and the fans. Solid or dampened panels are quieter but restrict airflow. The sweet spot for most people is a mesh front panel with solid side panels—good intake airflow with reduced noise transmission.</p>
+
+      <h3>GPU Clearance</h3>
+      <p>Modern GPUs are massive. The RTX 4090 and its successors regularly exceed 350mm in length and take up 3.5-4 slots. Before buying any case, check the maximum GPU clearance—and subtract about 30mm if you're using a front-mounted AIO radiator. There's nothing worse than getting everything assembled only to discover your graphics card doesn't fit.</p>
+
+      <h3>Cable Management</h3>
+      <p>Good cable management isn't just about aesthetics (though it certainly helps). Properly routed cables improve airflow, make maintenance easier, and reduce dust buildup. Look for cases with at least 20mm of space behind the motherboard tray, rubber grommets on cable pass-throughs, and integrated cable channels or Velcro straps.</p>
+
+      <h2>Final Thoughts: Build Smart, Build Beautiful</h2>
+      <p>The PC case market in 2025 is the best it's ever been. Whether you're spending $70 or $350, there's a case out there that will complement your build perfectly. My advice? Don't treat your case as an afterthought. A well-chosen case makes building more enjoyable, keeps your components cooler, and gives you something to admire every time you sit down at your desk. Happy building!</p>
+    `
+  },
+  {
+    id: 10,
+    title: "PSU Buying Guide 2025: How Much Wattage Do You Really Need?",
+    excerpt: "Power supplies are the unsung heroes of every PC build. Learn how to pick the right wattage, efficiency rating, and form factor for your next rig.",
+    image: "/blog/psu-guide-2025.jpg",
+    author: "SamXop123",
+    date: "2024-12-28",
+    readTime: "9 min read",
+    category: "Power Supplies",
+    featured: false,
+    tags: ["PSU", "Power Supply", "Efficiency", "Guide"],
+    content: `
+      <p>Let me tell you a story that still haunts me. A few years back, a friend came to me with a dead PC—his brand-new RTX 4070 had fried along with his motherboard. The culprit? A no-name 500W power supply he'd grabbed because it was ten dollars cheaper than the reputable alternative. The PSU is the one component you absolutely cannot cheap out on, and yet it's the one most builders understand the least. Let's fix that.</p>
+
+      <h2>Understanding Wattage: The Big Number That Confuses Everyone</h2>
+      <p>When you see a PSU labeled "750W," that number represents the maximum sustained power it can deliver. But here's the thing most people miss: your system almost never draws its maximum rated power. A typical gaming PC with a modern GPU and CPU might idle at 80-120W and only peak at 350-450W during intense gaming loads.</p>
+
+      <p>So why not just buy a 500W PSU for a 450W system? Two reasons. First, PSUs operate most efficiently at 50-80% load. A 750W PSU powering a 450W system sits right in that sweet spot, running cooler and quieter while wasting less energy as heat. Second, you want headroom for power spikes—modern GPUs can have transient power spikes that briefly exceed their rated TDP by 50-100%, and if your PSU can't handle those spikes, you'll get shutdowns or worse.</p>
+
+      <h2>How to Calculate Your Actual Wattage Needs</h2>
+      <p>Here's my simple formula that I've used for dozens of builds: take your GPU's TDP, add your CPU's TDP, add 100W for everything else (RAM, storage, fans, RGB), and then multiply by 1.5. That gives you a comfortable wattage target with plenty of headroom.</p>
+
+      <p>For real-world examples in 2025:</p>
+      <ul>
+        <li><strong>Budget Build (RTX 4060 + Ryzen 5 7600):</strong> 115W + 65W + 100W = 280W × 1.5 = 420W → Get a 550W PSU</li>
+        <li><strong>Mid-Range Build (RTX 4070 Ti + Ryzen 7 7800X3D):</strong> 285W + 120W + 100W = 505W × 1.5 = 758W → Get a 750W or 850W PSU</li>
+        <li><strong>High-End Build (RTX 5080 + Ryzen 9 9950X):</strong> 350W + 170W + 100W = 620W × 1.5 = 930W → Get a 1000W PSU</li>
+      </ul>
+
+      <h2>Efficiency Ratings Explained: 80 Plus and Beyond</h2>
+      <p>You've probably seen the 80 Plus certification labels—Bronze, Gold, Platinum, Titanium. These ratings tell you how efficiently the PSU converts AC wall power to DC power for your components. The differences matter more than you might think.</p>
+
+      <p>An 80 Plus Bronze PSU is about 82-85% efficient at typical loads, meaning 15-18% of the power it draws from the wall is wasted as heat. An 80 Plus Gold unit improves that to 87-90%, and Platinum pushes it further to 89-92%. Over a year of moderate use (6 hours per day), the difference between Bronze and Gold can amount to $30-50 in electricity savings—and that adds up over the PSU's 7-10 year lifespan.</p>
+
+      <p>My recommendation for most builders: 80 Plus Gold is the sweet spot. The jump from Bronze to Gold is well worth the extra $15-30 at purchase. Going beyond Gold to Platinum or Titanium offers diminishing returns unless you're building a workstation that runs 24/7.</p>
+
+      <h2>Modular vs. Non-Modular: The Cable Question</h2>
+      <p>PSUs come in three flavors of cable management: non-modular (all cables permanently attached), semi-modular (essential cables attached, extras detachable), and fully modular (every cable detachable).</p>
+
+      <p>For most builders, fully modular is the way to go. You only connect the cables you actually need, which dramatically reduces clutter and improves airflow. The extra cost—usually $10-20 over a comparable semi-modular unit—is absolutely worth it for the cleaner build and easier cable management.</p>
+
+      <p>Semi-modular is a solid budget compromise. The permanently attached cables (24-pin motherboard and 8-pin CPU) are ones you'll always need anyway, and you can add GPU and SATA cables as needed. Non-modular PSUs are really only worth considering at the extreme budget end, and even then, I'd encourage spending the extra few dollars for semi-modular.</p>
+
+      <h2>ATX 3.0 and the 12VHPWR Connector</h2>
+      <p>If you're buying a PSU in 2025, you should strongly consider one that supports the ATX 3.0 standard. The biggest change with ATX 3.0 is the 12VHPWR (or 12V-2x6) connector—a single cable that can deliver up to 600W to power-hungry GPUs, replacing the mess of multiple 8-pin cables that older cards required.</p>
+
+      <p>Modern NVIDIA RTX 40 and 50 series cards use this connector, and while adapter cables exist, a native 12VHPWR connection is cleaner, safer, and eliminates the fire risk concerns that plagued early adapter cables. If you're buying a new GPU in 2025, an ATX 3.0 PSU with a native 12VHPWR cable is a must-have.</p>
+
+      <h2>Brands and Reliability: Who to Trust</h2>
+      <p>Not all PSU brands are created equal, and this is one area where brand reputation genuinely matters. The good news is that several manufacturers consistently produce reliable, well-built units:</p>
+
+      <ul>
+        <li><strong>Corsair:</strong> The RM and HX series are consistently excellent. Great build quality, quiet operation, and outstanding warranties.</li>
+        <li><strong>Seasonic:</strong> Often manufactures PSUs for other brands. Their Focus and Prime series are among the most reliable on the market.</li>
+        <li><strong>be quiet!:</strong> Lives up to their name with some of the quietest PSUs available. The Straight Power and Dark Power series are fantastic.</li>
+        <li><strong>EVGA:</strong> The SuperNOVA G series offers excellent performance and value, with generous warranty terms.</li>
+      </ul>
+
+      <p>Avoid unknown brands, especially at suspiciously low prices. A cheap PSU isn't a bargain if it takes your other components with it when it fails. Stick with reputable manufacturers and check independent reviews from outlets like Tom's Hardware, TechPowerUp, or JonnyGuru (now part of Corsair) before buying.</p>
+
+      <h2>SFX vs. ATX: Size Matters</h2>
+      <p>With the rise of compact builds, SFX power supplies are more popular than ever. These smaller units are designed for ITX and compact mATX cases where a standard ATX PSU simply won't fit. Modern SFX units are impressively capable—Corsair's SF series and Cooler Master's V SFX lineup offer up to 850W in the tiny SFX form factor.</p>
+
+      <p>The trade-off? SFX PSUs use smaller fans that can be noisier under load, and they're typically $20-40 more expensive than equivalent ATX units. If your case supports ATX, go with ATX—you'll get more wattage options, quieter operation, and better value. Only choose SFX if your case demands it.</p>
+
+      <h2>Red Flags: When to Walk Away</h2>
+      <p>Over the years, I've learned to spot the warning signs of a bad PSU before it becomes a problem:</p>
+
+      <ul>
+        <li><strong>No 80 Plus certification at all:</strong> If it's not even Bronze-rated, the efficiency (and likely the build quality) is suspect.</li>
+        <li><strong>Warranty under 5 years:</strong> Reputable PSUs come with 7-10 year warranties because the manufacturers trust their products. Short warranties are a red flag.</li>
+        <li><strong>Suspiciously lightweight:</strong> Quality components weigh more. If a "750W" PSU feels lighter than a textbook, the internal components are probably cutting corners.</li>
+        <li><strong>No independent reviews:</strong> If nobody reputable has reviewed it, there's probably a reason.</li>
+        <li><strong>Price too good to be true:</strong> A genuine 750W Gold-rated modular PSU costs at least $80-100. If you're seeing $40 units claiming the same specs, something doesn't add up.</li>
+      </ul>
+
+      <h2>My Top Picks for 2025</h2>
+
+      <h3>Budget: Corsair RM650x (2024) — $90</h3>
+      <p>Fully modular, 80 Plus Gold, near-silent operation with a zero-RPM fan mode, and a 10-year warranty. It's everything a budget-to-mid-range build needs, and Corsair's quality control is top-notch.</p>
+
+      <h3>Mid-Range: Seasonic Focus GX-850 — $130</h3>
+      <p>850W of Gold-rated power with exceptional voltage regulation and ripple suppression. Includes a native 12VHPWR cable for modern GPUs. Seasonic's reliability speaks for itself.</p>
+
+      <h3>High-End: be quiet! Dark Power 13 1000W — $230</h3>
+      <p>Titanium efficiency, virtually silent even under full load, and overbuilt with components that will outlast your entire system. If you're building a high-end rig or workstation, this is the PSU to buy.</p>
+
+      <h2>Final Advice: Invest in Your Foundation</h2>
+      <p>Your PSU isn't sexy. It doesn't show up in benchmark scores or make your games run faster. But it's the single most important component for the long-term health of your entire system. Spend the extra $20-40 on a quality unit from a reputable brand, and you'll have a reliable power foundation that lasts through multiple CPU and GPU upgrades. Your future self—and your wallet—will thank you.</p>
     `
   }
 ]
@@ -652,6 +802,12 @@ export default function BlogPost({ params }: BlogPageProps) {
   if (!post) {
     notFound()
   }
+
+  // Compute prev/next posts based on sorted IDs
+  const sortedIds = blogPosts.map(p => p.id).sort((a, b) => a - b)
+  const currentIndex = sortedIds.indexOf(post.id)
+  const prevPost = currentIndex > 0 ? blogPosts.find(p => p.id === sortedIds[currentIndex - 1]) : null
+  const nextPost = currentIndex < sortedIds.length - 1 ? blogPosts.find(p => p.id === sortedIds[currentIndex + 1]) : null
 
   return (
     <div className="min-h-screen text-white relative">
@@ -801,6 +957,47 @@ export default function BlogPost({ params }: BlogPageProps) {
                 system optimization, and helping enthusiasts build their dream rigs. Always eager to explore the
                 latest innovations in the PC building space.
               </p>
+            </motion.div>
+
+            {/* Prev / Next Navigation */}
+            <motion.div
+              className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              {prevPost ? (
+                <Link
+                  href={`/blog/${prevPost.id}`}
+                  className="group flex items-center gap-4 p-5 bg-black/50 backdrop-blur-lg rounded-xl border border-white/10 hover:border-purple-500/30 transition-all"
+                >
+                  <ArrowLeft className="w-5 h-5 text-purple-400 group-hover:-translate-x-1 transition-transform flex-shrink-0" />
+                  <div className="min-w-0">
+                    <span className="text-xs text-zinc-500 uppercase tracking-wider">Previous</span>
+                    <p className="text-sm text-white font-medium truncate group-hover:text-purple-400 transition-colors">
+                      {prevPost.title}
+                    </p>
+                  </div>
+                </Link>
+              ) : (
+                <div />
+              )}
+              {nextPost ? (
+                <Link
+                  href={`/blog/${nextPost.id}`}
+                  className="group flex items-center justify-end gap-4 p-5 bg-black/50 backdrop-blur-lg rounded-xl border border-white/10 hover:border-purple-500/30 transition-all text-right"
+                >
+                  <div className="min-w-0">
+                    <span className="text-xs text-zinc-500 uppercase tracking-wider">Next</span>
+                    <p className="text-sm text-white font-medium truncate group-hover:text-purple-400 transition-colors">
+                      {nextPost.title}
+                    </p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-purple-400 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                </Link>
+              ) : (
+                <div />
+              )}
             </motion.div>
 
             {/* Related Posts */}
