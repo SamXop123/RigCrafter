@@ -11,7 +11,7 @@ const blogPosts = [
     title: "The Future of PC Building: Trends to Watch in 2025",
     excerpt: "Explore upcoming technologies and trends that will shape the PC building landscape in the coming year, including DDR5 adoption, AI-powered components, and sustainable building practices.",
     image: "/blog/pc-building-trends-2025.jpg",
-    author: "Alex Chen",
+    author: "SamXop123",
     date: "2025-01-20",
     readTime: "8 min read",
     category: "Industry News",
@@ -23,7 +23,7 @@ const blogPosts = [
     title: "RTX 5080 vs RTX 4090: The Ultimate GPU Showdown",
     excerpt: "A comprehensive comparison of NVIDIA's latest flagship graphics cards to help you decide which offers the best value for your gaming setup.",
     image: "/blog/rtx-5080-vs-4090-comparison.jpg",
-    author: "Sarah Johnson",
+    author: "SamXop123",
     date: "2025-01-18",
     readTime: "12 min read",
     category: "Hardware Review",
@@ -35,7 +35,7 @@ const blogPosts = [
     title: "Building Your First Gaming PC: 2025 Complete Guide",
     excerpt: "Learn from the most common first-time builder mistakes and how to avoid them in your build. Updated for 2025 with latest components and best practices.",
     image: "/blog/first-gaming-pc-build-guide.webp",
-    author: "Mike Rodriguez",
+    author: "SamXop123",
     date: "2025-01-15",
     readTime: "15 min read",
     category: "Tutorials",
@@ -47,7 +47,7 @@ const blogPosts = [
     title: "AMD Ryzen 8000 Series: Performance Deep Dive",
     excerpt: "An in-depth analysis of AMD's latest Ryzen processors and how they stack up against Intel's 14th gen offerings for gaming and productivity.",
     image: "/blog/amd-ryzen-8000-performance-review.webp",
-    author: "Emma Davis",
+    author: "SamXop123",
     date: "2025-01-12",
     readTime: "10 min read",
     category: "Hardware Review",
@@ -59,7 +59,7 @@ const blogPosts = [
     title: "The Rise of OLED Gaming Monitors: Worth the Upgrade?",
     excerpt: "Discover how OLED gaming monitors are changing the game for competitive and immersive gaming experiences, plus our top recommendations.",
     image: "/blog/oled-gaming-monitors-review.jpg",
-    author: "David Kim",
+    author: "SamXop123",
     date: "2025-01-10",
     readTime: "9 min read",
     category: "Peripherals",
@@ -71,7 +71,7 @@ const blogPosts = [
     title: "DDR5-7200 vs DDR5-6000: Does Speed Matter?",
     excerpt: "A comprehensive look at the latest high-speed memory and whether paying for faster RAM actually improves gaming and productivity performance.",
     image: "/blog/ddr5-memory-speed-comparison.jpg",
-    author: "Lisa Thompson",
+    author: "SamXop123",
     date: "2025-01-08",
     readTime: "11 min read",
     category: "Hardware Review",
@@ -83,7 +83,7 @@ const blogPosts = [
     title: "Custom Loop vs AIO: Which Cooling Solution is Right for You?",
     excerpt: "Break down the pros and cons of custom liquid cooling loops versus all-in-one coolers to help you make the best choice for your build.",
     image: "/blog/AIOvsCUSTOM.png",
-    author: "James Wilson",
+    author: "SamXop123",
     date: "2025-01-05",
     readTime: "13 min read",
     category: "Cooling",
@@ -95,23 +95,49 @@ const blogPosts = [
     title: "PCIe 5.0 SSDs: The Future of Storage is Here",
     excerpt: "Explore the benefits of PCIe 5.0 NVMe SSDs and whether they're worth the premium for gaming, content creation, and everyday computing.",
     image: "/blog/SSD.png",
-    author: "Maria Garcia",
+    author: "SamXop123",
     date: "2025-01-03",
     readTime: "7 min read",
     category: "Storage",
     featured: false,
     tags: ["SSD", "PCIe 5.0", "Storage", "Performance"]
+  },
+  {
+    id: 9,
+    title: "Best PC Cases of 2025: Airflow, Aesthetics & Value",
+    excerpt: "From compact ITX builds to full-tower showcases, we round up the best PC cases of 2025 that nail the balance between airflow, looks, and price.",
+    image: "/blog/pc-cases-2025.jpg",
+    author: "SamXop123",
+    date: "2025-01-01",
+    readTime: "10 min read",
+    category: "Cases",
+    featured: false,
+    tags: ["Cases", "Airflow", "Build", "Aesthetics"]
+  },
+  {
+    id: 10,
+    title: "PSU Buying Guide 2025: How Much Wattage Do You Really Need?",
+    excerpt: "Power supplies are the unsung heroes of every PC build. Learn how to pick the right wattage, efficiency rating, and form factor for your next rig.",
+    image: "/blog/psu-guide-2025.jpg",
+    author: "SamXop123",
+    date: "2024-12-28",
+    readTime: "9 min read",
+    category: "Power Supplies",
+    featured: false,
+    tags: ["PSU", "Power Supply", "Efficiency", "Guide"]
   }
 ]
 
 const categories = [
   "All Posts",
   "Industry News",
-  "Hardware Review", 
+  "Hardware Review",
   "Tutorials",
   "Peripherals",
   "Cooling",
-  "Storage"
+  "Storage",
+  "Cases",
+  "Power Supplies"
 ]
 
 export default function BlogSection() {
@@ -139,7 +165,7 @@ export default function BlogSection() {
   return (
     <section className="min-h-screen py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -202,7 +228,7 @@ export default function BlogSection() {
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="p-8 flex flex-col justify-center">
                   <div className="flex items-center mb-3">
                     <span className="text-sm text-purple-400 font-medium">{featuredPost.category}</span>
@@ -225,7 +251,7 @@ export default function BlogSection() {
                       <Calendar className="w-4 h-4 ml-4 mr-2" />
                       {new Date(featuredPost.date).toLocaleDateString()}
                     </div>
-                    
+
                     <motion.button
                       className="flex items-center text-purple-400 hover:text-purple-300 transition-colors"
                       whileHover={{ x: 5 }}
