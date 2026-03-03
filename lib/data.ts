@@ -307,7 +307,6 @@ const gpus: Component[] = [
       pciSlots: 4,
     },
   },
-
   {
     id: "gpu-2",
     type: "gpu",
@@ -392,30 +391,137 @@ const gpus: Component[] = [
       pciSlots: 2,
     },
   },
-{
-  id: "gpu-6",
-  type: "gpu",
-  name: "NVIDIA GeForce RTX 4060 Ti",
-  brand: "NVIDIA",
-  price: 399.99,
-  rating: 4.6,
-  description: "A budget-friendly yet capable GPU, perfect for 1080p and entry-level 1440p gaming with DLSS 3 support.",
-  imageUrl: "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/40-series/rtx-4060-ti/rtx-4060-ti-shop-600-p.jpg",
-  specs: {
-    VRAM: "8GB GDDR6",
-    "Boost Clock": "2.54 GHz",
-    "CUDA Cores": "4352",
-    TDP: "160W",
+  {
+    id: "gpu-6",
+    type: "gpu",
+    name: "NVIDIA GeForce RTX 4060 Ti",
+    brand: "NVIDIA",
+    price: 399.99,
+    rating: 4.6,
+    description: "A budget-friendly yet capable GPU, perfect for 1080p and entry-level 1440p gaming with DLSS 3 support.",
+    imageUrl: "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/40-series/rtx-4060-ti/rtx-4060-ti-shop-600-p.jpg",
+    specs: {
+      VRAM: "8GB GDDR6",
+      "Boost Clock": "2.54 GHz",
+      "CUDA Cores": "4352",
+      TDP: "160W",
+    },
+    tags: ["NVIDIA", "RTX 4060 Ti", "1080p", "Budget", "Ray Tracing", "DLSS 3"],
+    compatibility: {
+      tdp: 160,
+      pciSlots: 2,
+    },
   },
-  tags: ["NVIDIA", "RTX 4060 Ti", "1080p", "Budget", "Ray Tracing", "DLSS 3"],
-  compatibility: {
-    tdp: 160,
-    pciSlots: 2,
+  {
+    id: "gpu-asus-rog-astral-5090",
+    type: "gpu",
+    name: "ASUS ROG Astral LC GeForce RTX 5090",
+    brand: "ASUS",
+    price: 3499.99,
+    rating: 4.9,
+    description: "A liquid-cooled behemoth featuring a premium 360mm AIO cooler, full-coverage copper plate, and 80-amp MOSFETs. It delivers the ultimate Blackwell architecture performance with massive 32GB GDDR7 memory for extreme 8K gaming and heavy creative workloads.",
+    imageUrl: "https://m.media-amazon.com/images/I/81agXcNA6zL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Chipset: "NVIDIA GeForce RTX 5090",
+      VRAM: "32GB GDDR7",
+      "Core Clock": "2580 MHz",
+      "Boost Clock": "2610 MHz",
+      TDP: "600W"
+    },
+    tags: ["ASUS", "RTX 5090", "Liquid Cooled", "8K", "Enthusiast"],
+    compatibility: {
+      tdp: 600,
+      pciSlots: 3
+    }
   },
-},
-
-
-
+  {
+    id: "gpu-gigabyte-gaming-oc-5090",
+    type: "gpu",
+    name: "Gigabyte GeForce RTX 5090 Gaming OC",
+    brand: "Gigabyte",
+    price: 2999.99,
+    rating: 4.8,
+    description: "Built for hardcore enthusiasts, this card features the high-performance WINDFORCE cooling system, a dedicated vapor chamber, and a factory overclock to push the RTX 5090 to its absolute limits.",
+    imageUrl: "https://m.media-amazon.com/images/I/71lZess7M8L._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Chipset: "NVIDIA GeForce RTX 5090",
+      VRAM: "32GB GDDR7",
+      "Core Clock": "2407 MHz",
+      "Boost Clock": "2550 MHz",
+      TDP: "600W"
+    },
+    tags: ["Gigabyte", "RTX 5090", "Gaming OC", "High-End"],
+    compatibility: {
+      tdp: 600,
+      pciSlots: 4
+    }
+  },
+  {
+    id: "gpu-asus-tuf-5080",
+    type: "gpu",
+    name: "ASUS TUF Gaming GeForce RTX 5080",
+    brand: "ASUS",
+    price: 1499.99,
+    rating: 4.8,
+    description: "Military-grade durability meets next-gen performance. Features a rugged vented metal exoskeleton, triple Axial-tech fans, and massive bandwidth to easily handle 4K gaming at ultra settings.",
+    imageUrl: "https://m.media-amazon.com/images/I/71WSd4clFZL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Chipset: "NVIDIA GeForce RTX 5080",
+      VRAM: "16GB GDDR7",
+      "Core Clock": "2617 MHz",
+      "Boost Clock": "2730 MHz",
+      TDP: "400W"
+    },
+    tags: ["ASUS", "RTX 5080", "TUF", "4K", "Durable"],
+    compatibility: {
+      tdp: 400,
+      pciSlots: 3
+    }
+  },
+  {
+    id: "gpu-asrock-steel-legend-9070xt",
+    type: "gpu",
+    name: "ASRock Radeon RX 9070 XT Steel Legend",
+    brand: "ASRock",
+    price: 699.99,
+    rating: 4.7,
+    description: "Striking white aesthetics with a triple-fan cooling system. Leveraging the RDNA 4 architecture, it delivers exceptional rasterization performance and competitive ray tracing capabilities.",
+    imageUrl: "https://m.media-amazon.com/images/I/611FTdLlAYL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Chipset: "AMD Radeon RX 9070 XT",
+      VRAM: "16GB GDDR6",
+      "Core Clock": "2400 MHz",
+      "Boost Clock": "2970 MHz",
+      TDP: "300W"
+    },
+    tags: ["ASRock", "Radeon", "RX 9070 XT", "White Build", "1440p", "4K"],
+    compatibility: {
+      tdp: 300,
+      pciSlots: 3
+    }
+  },
+  {
+    id: "gpu-asus-dual-6700xt",
+    type: "gpu",
+    name: "ASUS Dual Radeon RX 6700 XT",
+    brand: "ASUS",
+    price: 349.99,
+    rating: 4.6,
+    description: "Delivering the AMD RDNA 2 architecture experience in its purest form. Features dual Axial-tech fans for a perfect balance of cooling efficiency and wide case compatibility.",
+    imageUrl: "https://m.media-amazon.com/images/I/81EoGRqh1DL._AC_UY327_FMwebp_QL65_.jpg",
+    specs: {
+      Chipset: "AMD Radeon RX 6700 XT",
+      VRAM: "12GB GDDR6",
+      "Core Clock": "2424 MHz",
+      "Boost Clock": "2581 MHz",
+      TDP: "230W"
+    },
+    tags: ["ASUS", "Radeon", "RX 6700 XT", "1440p", "Value"],
+    compatibility: {
+      tdp: 230,
+      pciSlots: 2
+    }
+  }
 ]
 
 const ram: Component[] = [
