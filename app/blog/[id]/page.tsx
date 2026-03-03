@@ -13,7 +13,7 @@ const blogPosts = [
     title: "The Future of PC Building: Trends to Watch in 2025",
     excerpt: "Explore upcoming technologies and trends that will shape the PC building landscape in the coming year, including DDR5 adoption, AI-powered components, and sustainable building practices.",
     image: "/blog/pc-building-trends-2025.jpg",
-    author: "Alex Chen",
+    author: "SamXop123",
     date: "2025-01-20",
     readTime: "8 min read",
     category: "Industry News",
@@ -58,7 +58,7 @@ const blogPosts = [
     title: "RTX 5080 vs RTX 4090: The Ultimate GPU Showdown",
     excerpt: "A comprehensive comparison of NVIDIA's latest flagship graphics cards to help you decide which offers the best value for your gaming setup.",
     image: "/blog/rtx-5080-vs-4090-comparison.jpg",
-    author: "Sarah Johnson",
+    author: "SamXop123",
     date: "2025-01-18",
     readTime: "12 min read",
     category: "Hardware Review",
@@ -107,7 +107,7 @@ const blogPosts = [
     title: "Building Your First Gaming PC: 2025 Complete Guide",
     excerpt: "Learn from the most common first-time builder mistakes and how to avoid them in your build. Updated for 2025 with latest components and best practices.",
     image: "/blog/first-gaming-pc-build-guide.webp",
-    author: "Mike Rodriguez",
+    author: "SamXop123",
     date: "2025-01-15",
     readTime: "15 min read",
     category: "Tutorials",
@@ -221,7 +221,7 @@ const blogPosts = [
     title: "AMD Ryzen 8000 Series: Performance Deep Dive",
     excerpt: "An in-depth analysis of AMD's latest Ryzen processors and how they stack up against Intel's 14th gen offerings for gaming and productivity.",
     image: "/blog/amd-ryzen-8000-performance-review.webp",
-    author: "Emma Davis",
+    author: "SamXop123",
     date: "2025-01-12",
     readTime: "10 min read",
     category: "Hardware Review",
@@ -334,7 +334,7 @@ const blogPosts = [
     title: "Custom Loop vs AIO: Which Cooling Solution is Right for You?",
     excerpt: "Break down the pros and cons of custom liquid cooling loops versus all-in-one coolers to help you make the best choice for your build.",
     image: "/blog/AIOvsCUSTOM.png",
-    author: "James Wilson",
+    author: "SamXop123",
     date: "2025-01-05",
     readTime: "13 min read",
     category: "Cooling",
@@ -456,7 +456,7 @@ const blogPosts = [
     title: "PCIe 5.0 SSDs: The Future of Storage is Here",
     excerpt: "Explore the benefits of PCIe 5.0 NVMe SSDs and whether they're worth the premium for gaming, content creation, and everyday computing.",
     image: "/blog/SSD.png",
-    author: "Maria Garcia",
+    author: "SamXop123",
     date: "2025-01-03",
     readTime: "7 min read",
     category: "Storage",
@@ -569,7 +569,7 @@ const blogPosts = [
     title: "The Rise of OLED Gaming Monitors: Worth the Upgrade?",
     excerpt: "Discover how OLED gaming monitors are changing the game for competitive and immersive gaming experiences, plus our top recommendations.",
     image: "/blog/oled-gaming-monitors-review.jpg",
-    author: "David Kim",
+    author: "SamXop123",
     date: "2025-01-10",
     readTime: "9 min read",
     category: "Peripherals",
@@ -607,7 +607,7 @@ const blogPosts = [
     title: "DDR5-7200 vs DDR5-6000: Does Speed Matter?",
     excerpt: "A comprehensive look at the latest high-speed memory and whether paying for faster RAM actually improves gaming and productivity performance.",
     image: "/blog/ddr5-memory-speed-comparison.jpg",
-    author: "Lisa Thompson",
+    author: "SamXop123",
     date: "2025-01-08",
     readTime: "11 min read",
     category: "Hardware Review",
@@ -657,12 +657,12 @@ export default function BlogPost({ params }: BlogPageProps) {
     <div className="min-h-screen text-white relative">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-black/30 to-black"></div>
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:40px_40px]" />
-      
+
       <div className="relative z-10">
         {/* Header */}
         <header className="px-4 py-6">
           <div className="container mx-auto">
-            <Link 
+            <Link
               href="/blog"
               className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors"
             >
@@ -797,8 +797,8 @@ export default function BlogPost({ params }: BlogPageProps) {
                 </div>
               </div>
               <p className="text-zinc-300 leading-relaxed">
-                Passionate about PC building and technology, with over 8 years of experience in hardware reviews, 
-                system optimization, and helping enthusiasts build their dream rigs. Always eager to explore the 
+                Passionate about PC building and technology, with over 8 years of experience in hardware reviews,
+                system optimization, and helping enthusiasts build their dream rigs. Always eager to explore the
                 latest innovations in the PC building space.
               </p>
             </motion.div>
