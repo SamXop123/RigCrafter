@@ -276,6 +276,52 @@ const cpus: Component[] = [
       socket: "AM5",
       tdp: 170
     }
+  },
+  {
+    id: "cpu-threadripper-7970x",
+    type: "cpu",
+    name: "AMD Ryzen Threadripper 7970X",
+    brand: "AMD",
+    price: 3299.00,
+    rating: 4.8,
+    description: "An incredibly powerful 32-core/64-thread processor that strikes the perfect balance for extreme gaming, streaming, and heavy workstation tasks without reaching the top-tier enterprise pricing.",
+    imageUrl: "https://m.media-amazon.com/images/I/61Hls7Fp9wL._AC_SL1500_.jpg",
+    specs: {
+      Cores: "32",
+      Threads: "64",
+      BoostClock: "5.3 GHz",
+      Cache: "160MB",
+      TDP: "350W",
+      Socket: "sTR5"
+    },
+    tags: ["AMD", "Threadripper", "HEDT", "Workstation", "32-Core"],
+    compatibility: {
+      socket: "sTR5",
+      tdp: 350
+    }
+  },
+  {
+    id: "cpu-threadripper-7995wx",
+    type: "cpu",
+    name: "AMD Ryzen Threadripper PRO 7995WX",
+    brand: "AMD",
+    price: 9999.00,
+    rating: 5.0,
+    description: "The absolute pinnacle of workstation performance. Featuring 96 cores and 192 threads, it obliterates rendering, compiling, and massive dataset workloads.",
+    imageUrl: "https://m.media-amazon.com/images/I/61q3K8o+6VL._AC_SL1500_.jpg",
+    specs: {
+      Cores: "96",
+      Threads: "192",
+      BoostClock: "5.1 GHz",
+      Cache: "384MB",
+      TDP: "350W",
+      Socket: "sTR5"
+    },
+    tags: ["AMD", "Threadripper", "PRO", "Workstation", "HEDT", "96-Core"],
+    compatibility: {
+      socket: "sTR5",
+      tdp: 350
+    }
   }
 
 
@@ -962,9 +1008,51 @@ const motherboards: Component[] = [
       formFactor: "ATX",
     },
   },
+  {
+    id: "mb-trx50-sage",
+    type: "motherboard",
+    name: "ASUS Pro WS TRX50-SAGE WIFI",
+    brand: "ASUS",
+    price: 899.99,
+    rating: 4.9,
+    description: "The ultimate workstation motherboard designed for AMD Ryzen Threadripper PRO 7000 WX-Series. Features massive power delivery, abundant PCIe 5.0 slots, and robust cooling.",
+    imageUrl: "https://m.media-amazon.com/images/I/81B84N14WXL._AC_SL1500_.jpg",
+    specs: {
+      Socket: "sTR5",
+      Chipset: "TRX50",
+      "Memory Support": "DDR5 ECC",
+      "Form Factor": "CEB (E-ATX)",
+    },
+    tags: ["ASUS", "TRX50", "sTR5", "DDR5", "Workstation", "PCIe 5.0"],
+    compatibility: {
+      socket: "sTR5",
+      memoryType: "DDR5",
+      formFactor: "ATX", // Map to ATX for builder compatibility
+    },
+  },
 ]
 
 const powerSupplies: Component[] = [
+  {
+    id: "psu-ax1600i",
+    type: "powerSupply",
+    name: "Corsair AX1600i 1600W 80+ Titanium",
+    brand: "Corsair",
+    price: 609.99,
+    rating: 5.0,
+    description: "The ultimate power supply for extreme enthusiast builds. Features staggering 1600W delivery, 80+ Titanium efficiency, and world-class ripple suppression.",
+    imageUrl: "https://m.media-amazon.com/images/I/71wE855dFqL._AC_SL1500_.jpg",
+    specs: {
+      Wattage: "1600W",
+      Efficiency: "80+ Titanium",
+      Modularity: "Fully Modular",
+      "Fan Size": "140mm FDB",
+    },
+    tags: ["Corsair", "1600W", "80+ Titanium", "Workstation", "Enthusiast"],
+    compatibility: {
+      wattage: 1600,
+    },
+  },
   {
     id: "psu-1",
     type: "powerSupply",
