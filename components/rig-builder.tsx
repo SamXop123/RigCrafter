@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import ComponentSelector from "./component-selector"
 import BuildSummary from "./build-summary"
 import CompatibilityChecker from "./compatibility-checker"
+import BottleneckIndicator from "./bottleneck-indicator"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -392,8 +393,8 @@ export default function RigBuilder() {
                         key={tab.type}
                         variant={activeTab === tab.type ? "default" : "outline"}
                         className={`flex items-center ${activeTab === tab.type
-                            ? "bg-purple-600 hover:bg-purple-700"
-                            : "hover:bg-zinc-800"
+                          ? "bg-purple-600 hover:bg-purple-700"
+                          : "hover:bg-zinc-800"
                           }`}
                         onClick={() => setActiveTab(tab.type)}
                       >
@@ -444,6 +445,11 @@ export default function RigBuilder() {
             </AnimatePresence>
 
             <CompatibilityChecker issues={compatibilityIssues} />
+
+            <BottleneckIndicator
+              cpu={selectedComponents.cpu}
+              gpu={selectedComponents.gpu}
+            />
           </div>
 
           <div>
