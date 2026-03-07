@@ -255,6 +255,54 @@ const cpus: Component[] = [
     }
   },
   {
+    id: "cpu-core-ultra-9-285k",
+    type: "cpu",
+    name: "Intel Core Ultra 9 285K",
+    brand: "Intel",
+    price: 589.99,
+    rating: 4.8,
+    description: "Intel's flagship Arrow Lake desktop processor delivering impressive gaming and multi-threaded performance with top-tier power efficiency.",
+    imageUrl: "https://m.media-amazon.com/images/I/61F2KxP1tQL._AC_SL1500_.jpg",
+    specs: {
+      Cores: "24 (8P + 16E)",
+      Threads: "24",
+      BaseClock: "3.2 GHz (P-Core)",
+      BoostClock: "5.7 GHz",
+      Cache: "36MB",
+      TDP: "125W (250W Turbo)",
+      Socket: "LGA1851"
+    },
+    tags: ["Intel", "Core Ultra 9", "285K", "Arrow Lake", "Gaming", "Efficiency"],
+    compatibility: {
+      tdp: 250,
+      socket: "LGA1851"
+    }
+  },
+  {
+    id: "cpu-core-ultra-7-265k",
+    type: "cpu",
+    name: "Intel Core Ultra 7 265K",
+    brand: "Intel",
+    price: 394.99,
+    rating: 4.8,
+    description: "The sweet-spot Intel Arrow Lake CPU for high-end gaming and productivity builds, offering a fantastic balance of speed and new-gen efficiency.",
+    imageUrl: "https://m.media-amazon.com/images/I/61uB3k8A3dL._AC_SL1500_.jpg",
+    specs: {
+      Cores: "20 (8P + 12E)",
+      Threads: "20",
+      BaseClock: "3.3 GHz (P-Core)",
+      BoostClock: "5.5 GHz",
+      Cache: "30MB",
+      TDP: "125W (250W Turbo)",
+      Socket: "LGA1851"
+    },
+    tags: ["Intel", "Core Ultra 7", "265K", "Arrow Lake", "Gaming"],
+    compatibility: {
+      tdp: 250,
+      socket: "LGA1851"
+    }
+  },
+  {
     id: "cpu-12",
     type: "cpu",
     name: "AMD Ryzen 9 7900X",
@@ -984,6 +1032,28 @@ const motherboards: Component[] = [
       socket: "LGA1700",
       memoryType: "DDR4",
       formFactor: "Micro-ATX",
+    },
+  },
+  {
+    id: "mb-z890-e",
+    type: "motherboard",
+    name: "ASUS ROG Strix Z890-E Gaming WiFi",
+    brand: "ASUS",
+    price: 499.99,
+    rating: 4.8,
+    description: "A premium Z890 motherboard designed specifically for Intel Core Ultra 200S Series processors. It features robust power delivery, Next-Gen Wi-Fi 7, and PCIe 5.0 readiness for elite gaming machines.",
+    imageUrl: "https://m.media-amazon.com/images/I/71Y0P6G6Z4L._AC_SL1500_.jpg",
+    specs: {
+      Socket: "LGA1851",
+      Chipset: "Z890",
+      "Memory Support": "DDR5",
+      "Form Factor": "ATX",
+    },
+    tags: ["ASUS", "Z890", "LGA1851", "DDR5", "ATX", "Gaming"],
+    compatibility: {
+      socket: "LGA1851",
+      memoryType: "DDR5",
+      formFactor: "ATX",
     },
   },
   {
