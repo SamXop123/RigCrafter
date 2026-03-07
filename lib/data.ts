@@ -420,7 +420,7 @@ const gpus: Component[] = [
     price: 1999.99,
     rating: 5.0,
     description: "The ultimate flagship Blackwell GPU offering unprecedented 4K and 8K gaming performance, featuring massive 32GB of GDDR7 memory.",
-    imageUrl: "https://m.media-amazon.com/images/I/61H+V3Qo5HL._AC_SL1500_.jpg",
+    imageUrl: "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/50-series/rtx-5090/geforce-rtx-5090-learn-more-og-1200x630.jpg",
     specs: {
       VRAM: "32GB GDDR7",
       "Boost Clock": "2.9 GHz",
