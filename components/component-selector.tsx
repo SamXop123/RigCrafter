@@ -38,7 +38,7 @@ export default function ComponentSelector({
   suggestions = [], // default empty array
 }: ComponentSelectorProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [priceFilter, setPriceFilter] = useState<[number, number]>([0, 2000]);
+  const [priceFilter, setPriceFilter] = useState<[number, number]>([0, 10000]);
   const [sortBy, setSortBy] = useState<"price" | "rating" | "name">("rating");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
@@ -232,8 +232,8 @@ function ComponentCard({
     >
       <Card
         className={`overflow-hidden transition-colors ${isSelected
-            ? "bg-purple-900/30 border-purple-500"
-            : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
+          ? "bg-purple-900/30 border-purple-500"
+          : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
           }`}
       >
         <CardContent className="p-0">
@@ -313,8 +313,8 @@ function ComponentCard({
 
             <Button
               className={`w-full ${isSelected
-                  ? "bg-purple-700 hover:bg-purple-800"
-                  : "bg-purple-600 hover:bg-purple-700"
+                ? "bg-purple-700 hover:bg-purple-800"
+                : "bg-purple-600 hover:bg-purple-700"
                 }`}
               onClick={() => onSelect(isSelected ? null : component)}
             >
