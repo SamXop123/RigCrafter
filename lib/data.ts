@@ -1711,48 +1711,7 @@ const headsets: Component[] = [
   },
 ];
 
-const operatingSystems: Component[] = [
-  {
-    id: "os-1",
-    type: "operatingSystem",
-    name: "Windows 11 Pro",
-    brand: "Microsoft",
-    price: 199.99,
-    rating: 4.7,
-    description:
-      "The latest Windows OS with productivity, gaming, and security enhancements for modern PCs.",
-    imageUrl: "https://m.media-amazon.com/images/I/71eo5Xy3pBL._SL1500_.jpg",
-    specs: {
-      Version: "Windows 11 Pro",
-      Architecture: "64-bit",
-      LicenseType: "Retail",
-    },
-    tags: ["Microsoft", "Windows", "64-bit", "Productivity"],
-    compatibility: {
-      tdp: 250,
-    },
-  },
-  {
-    id: "os-2",
-    type: "operatingSystem",
-    name: "Ubuntu 24.04 LTS",
-    brand: "Canonical",
-    price: 0,
-    rating: 4.9,
-    description:
-      "Free and open-source Linux-based OS designed for developers and professionals.",
-    imageUrl: "https://assets.ubuntu.com/v1/8dd99b80-ubuntu-logo32.png",
-    specs: {
-      Version: "24.04 LTS",
-      Architecture: "64-bit",
-      LicenseType: "Open Source",
-    },
-    tags: ["Linux", "Ubuntu", "Free", "Open Source"],
-    compatibility: {
-      tdp: 250,
-    },
-  },
-];
+
 
 const networkCards: Component[] = [
   {
@@ -1918,8 +1877,7 @@ export function getComponents(type: ComponentType): Component[] {
       return mice
     case "headset":
       return headsets
-    case "operatingSystem":
-      return operatingSystems
+
     case "networkCard":
       return networkCards
     case "soundCard":

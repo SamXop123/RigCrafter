@@ -11,7 +11,6 @@ export type ComponentType =
   | "keyboard"
   | "mouse"
   | "headset"
-  | "operatingSystem"
   | "networkCard"
   | "soundCard"
   | "fan"
