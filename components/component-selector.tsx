@@ -40,7 +40,7 @@ export default function ComponentSelector({
   const [searchQuery, setSearchQuery] = useState("");
   const [priceFilter, setPriceFilter] = useState<[number, number]>([0, 10000]);
   const [sortBy, setSortBy] = useState<"price" | "rating" | "name">("rating");
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
   const components = getComponents(type) || [];
 
@@ -133,7 +133,7 @@ export default function ComponentSelector({
             onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
             className="bg-zinc-900 border-zinc-700"
           >
-            {sortOrder === "asc" ? "↑" : "↓"}
+            {sortOrder === "desc" ? "↓" : "↑"}
           </Button>
 
           <TooltipProvider>
