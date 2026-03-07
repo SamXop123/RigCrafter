@@ -45,22 +45,14 @@ const severityConfig: Record<
 };
 
 function BalanceBar({ result }: { result: BottleneckResult }) {
-    // cpuRatio: how much of the bar goes to CPU (left)
-    // gpuRatio: how much goes to GPU (right)
-    // For a balanced build, both are near 50%
-    // For CPU bottleneck: GPU side overweights → bar leans right
-    // For GPU bottleneck: CPU side overweights → bar leans left
-
-    let cpuWidth = 50;
-    let gpuWidth = 50;
-
-    if (result.bottleneckedBy === "cpu") {
-        gpuWidth = Math.min(50 + result.percentage / 2, 80);
-        cpuWidth = 100 - gpuWidth;
-    } else if (result.bottleneckedBy === "gpu") {
-        cpuWidth = Math.min(50 + result.percentage / 2, 80);
-        gpuWidth = 100 - cpuWidth;
-    }
+    // Width is determined purely by severity category, not a percentage number
+    const widthMap = {
+        none: { cpu: 50, gpu: 50 },
+        mild: result.bottleneckedBy === "cpu" ? { cpu: 35, gpu: 65 } : { cpu: 65, gpu: 35 },
+        moderate: result.bottleneckedBy === "cpu" ? { cpu: 25, gpu: 75 } : { cpu: 75, gpu: 25 },
+        severe: result.bottleneckedBy === "cpu" ? { cpu: 15, gpu: 85 } : { cpu: 85, gpu: 15 },
+    };
+    const { cpu: cpuWidth, gpu: gpuWidth } = widthMap[result.severity];
 
     return (
         <div className="mt-3 mb-1">
@@ -81,10 +73,6 @@ function BalanceBar({ result }: { result: BottleneckResult }) {
                     animate={{ width: `${gpuWidth}%` }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                 />
-            </div>
-            <div className="flex justify-between text-xs mt-1 text-zinc-500">
-                <span>{Math.round(cpuWidth)}%</span>
-                <span>{Math.round(gpuWidth)}%</span>
             </div>
         </div>
     );
