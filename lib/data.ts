@@ -413,6 +413,27 @@ const gpus: Component[] = [
     },
   },
   {
+    id: "gpu-nvidia-5090",
+    type: "gpu",
+    name: "NVIDIA GeForce RTX 5090",
+    brand: "NVIDIA",
+    price: 1999.99,
+    rating: 5.0,
+    description: "The ultimate flagship Blackwell GPU offering unprecedented 4K and 8K gaming performance, featuring massive 32GB of GDDR7 memory.",
+    imageUrl: "https://m.media-amazon.com/images/I/61H+V3Qo5HL._AC_SL1500_.jpg",
+    specs: {
+      VRAM: "32GB GDDR7",
+      "Boost Clock": "2.9 GHz",
+      "CUDA Cores": "21760",
+      TDP: "600W",
+    },
+    tags: ["NVIDIA", "RTX 5090", "Flagship", "8K", "Enthusiast"],
+    compatibility: {
+      tdp: 600,
+      pciSlots: 3,
+    },
+  },
+  {
     id: "gpu-asus-rog-astral-5090",
     type: "gpu",
     name: "ASUS ROG Astral LC GeForce RTX 5090",
