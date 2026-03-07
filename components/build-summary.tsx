@@ -47,58 +47,57 @@ export default function BuildSummary({ selectedComponents, totalPrice, onRemoveC
   const [savedBuilds, setSavedBuilds] = useState<any[]>([])
   const [selectedSavedBuild, setSelectedSavedBuild] = useState("")
   const [showAuthModal, setShowAuthModal] = useState(false)
-  
+
   const { user } = useAuth()
 
- const componentIcons: Record<ComponentType, JSX.Element> = {
-   cpu: <Cpu className="w-4 h-4" />,
-   gpu: <Gpu className="w-4 h-4" />,
-   ram: <Memory className="w-4 h-4" />,
-   storage: <HardDrive className="w-4 h-4" />,
-   motherboard: <Motherboard className="w-4 h-4" />,
-   powerSupply: <Power className="w-4 h-4" />,
-   case: <Box className="w-4 h-4" />,
-   cooling: <Fan className="w-4 h-4" />,
-   keyboard: <Keyboard className="w-4 h-4" />,
-   mouse: <Mouse className="w-4 h-4" />,
-   headset: <Headphones className="w-4 h-4" />,
-   operatingSystem: <Disc className="w-4 h-4" />,
-   networkCard: <Network className="w-4 h-4" />,
-   soundCard: <Waves className="w-4 h-4" />,
-   fan: <Fan className="w-4 h-4" />,
-   thermalPaste: <ThermometerSnowflake className="w-4 h-4" />,
-   ups: <Plug className="w-4 h-4" />,
-   controller: <Gamepad2 className="w-4 h-4" />,
- };
+  const componentIcons: Record<ComponentType, JSX.Element> = {
+    cpu: <Cpu className="w-4 h-4" />,
+    gpu: <Gpu className="w-4 h-4" />,
+    ram: <Memory className="w-4 h-4" />,
+    storage: <HardDrive className="w-4 h-4" />,
+    motherboard: <Motherboard className="w-4 h-4" />,
+    powerSupply: <Power className="w-4 h-4" />,
+    case: <Box className="w-4 h-4" />,
+    cooling: <Fan className="w-4 h-4" />,
+    keyboard: <Keyboard className="w-4 h-4" />,
+    mouse: <Mouse className="w-4 h-4" />,
+    headset: <Headphones className="w-4 h-4" />,
+    networkCard: <Network className="w-4 h-4" />,
+    soundCard: <Waves className="w-4 h-4" />,
+    fan: <Fan className="w-4 h-4" />,
+    thermalPaste: <ThermometerSnowflake className="w-4 h-4" />,
+    ups: <Plug className="w-4 h-4" />,
+    controller: <Gamepad2 className="w-4 h-4" />,
+  };
 
 
-const componentLabels: Record<ComponentType, string> = {
-  cpu: "CPU",
-  gpu: "GPU",
-  ram: "RAM",
-  storage: "Storage",
-  motherboard: "Motherboard",
-  powerSupply: "Power Supply",
-  case: "Case",
-  cooling: "Cooling",
-  keyboard: "Keyboard",
-  mouse: "Mouse",
-  headset: "Headset",
-  operatingSystem: "Operating System",
-  networkCard: "Network Card",
-  soundCard: "Sound Card",
-  fan: "Fan",
-  thermalPaste: "Thermal Paste",
-  ups: "UPS",
-  controller: "Controller",
-};
+  const componentLabels: Record<ComponentType, string> = {
+    cpu: "CPU",
+    gpu: "GPU",
+    ram: "RAM",
+    storage: "Storage",
+    motherboard: "Motherboard",
+    powerSupply: "Power Supply",
+    case: "Case",
+    cooling: "Cooling",
+    keyboard: "Keyboard",
+    mouse: "Mouse",
+    headset: "Headset",
+
+    networkCard: "Network Card",
+    soundCard: "Sound Card",
+    fan: "Fan",
+    thermalPaste: "Thermal Paste",
+    ups: "UPS",
+    controller: "Controller",
+  };
 
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedBuilds") || "[]")
     setSavedBuilds(saved)
   }, [])
-  
+
   const selectedComponentsCount = Object.values(selectedComponents).filter(Boolean).length
 
   const handleCopyBuild = () => {
@@ -281,8 +280,8 @@ const componentLabels: Record<ComponentType, string> = {
         </div>
 
         <div className="space-y-3">
-          <Button 
-            className="w-full bg-purple-600 hover:bg-purple-700" 
+          <Button
+            className="w-full bg-purple-600 hover:bg-purple-700"
             disabled={selectedComponentsCount === 0}
             onClick={handleCompleteBuild}
           >
@@ -349,9 +348,9 @@ const componentLabels: Record<ComponentType, string> = {
       </CardContent>
 
       {/* Authentication Modal */}
-      <AuthModal 
-        isOpen={showAuthModal} 
-        onClose={() => setShowAuthModal(false)} 
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
       />
     </Card>
   )

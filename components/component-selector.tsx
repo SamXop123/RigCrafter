@@ -85,7 +85,6 @@ export default function ComponentSelector({
       keyboard: "Keyboard",
       mouse: "Mouse",
       headset: "Headset",
-      operatingSystem: "Operating System",
       networkCard: "Network Card",
       soundCard: "Sound Card",
       fan: "Fan",
@@ -232,11 +231,10 @@ function ComponentCard({
       transition={{ duration: 0.3 }}
     >
       <Card
-        className={`overflow-hidden transition-colors ${
-          isSelected
+        className={`overflow-hidden transition-colors ${isSelected
             ? "bg-purple-900/30 border-purple-500"
             : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-700"
-        }`}
+          }`}
       >
         <CardContent className="p-0">
           <div className="p-4">
@@ -314,11 +312,10 @@ function ComponentCard({
             </div>
 
             <Button
-              className={`w-full ${
-                isSelected
+              className={`w-full ${isSelected
                   ? "bg-purple-700 hover:bg-purple-800"
                   : "bg-purple-600 hover:bg-purple-700"
-              }`}
+                }`}
               onClick={() => onSelect(isSelected ? null : component)}
             >
               {isSelected ? (
