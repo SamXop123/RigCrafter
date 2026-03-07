@@ -25,10 +25,10 @@ import {
   Fan,
   Shuffle,
   Zap,
-  
+
 
   Save,
-    ChevronLeft,
+  ChevronLeft,
   ChevronRight,
 } from "lucide-react"
 import type { Component, ComponentType } from "@/lib/types"
@@ -51,7 +51,7 @@ export default function RigBuilder() {
     keyboard: null,
     mouse: null,
     headset: null,
-    operatingSystem: null,
+
     networkCard: null,
     soundCard: null,
     fan: null,
@@ -76,7 +76,7 @@ export default function RigBuilder() {
     keyboard: [],
     mouse: [],
     headset: [],
-    operatingSystem: [],
+
     networkCard: [],
     soundCard: [],
     fan: [],
@@ -92,7 +92,7 @@ export default function RigBuilder() {
   const [buildName, setBuildName] = useState("")
   const [isSaving, setIsSaving] = useState(false)
   const { user } = useAuth()
-    
+
   // For popup message
   const [popupMessage, setPopupMessage] = useState<string | null>(null);
 
@@ -168,7 +168,7 @@ export default function RigBuilder() {
         totalPrice: calculateTotalPrice(),
         createdAt: serverTimestamp(),
       })
-      
+
       setBuildName("")
       setShowSaveDialog(false)
       toast.success("Build saved successfully!")
@@ -242,11 +242,7 @@ export default function RigBuilder() {
       icon: <Cpu className="w-5 h-5" />,
       label: "Headset",
     },
-    {
-      type: "operatingSystem" as ComponentType,
-      icon: <Cpu className="w-5 h-5" />,
-      label: "OS",
-    },
+
     {
       type: "networkCard" as ComponentType,
       icon: <Cpu className="w-5 h-5" />,
@@ -283,9 +279,9 @@ export default function RigBuilder() {
   return (
     <section id="builder" className="relative z-10 py-16">
 
-  <div className="absolute inset-0 -z-10 flex justify-center items-center">
-    <div className="w-full max-w-7xl h-full rounded-3xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 blur-[70px] opacity-35 scale-[1.04]"></div>
-  </div>
+      <div className="absolute inset-0 -z-10 flex justify-center items-center">
+        <div className="w-full max-w-7xl h-full rounded-3xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 blur-[70px] opacity-35 scale-[1.04]"></div>
+      </div>
       {/* Popup Toast */}
       <AnimatePresence>
         {popupMessage && (
@@ -395,11 +391,10 @@ export default function RigBuilder() {
                       <Button
                         key={tab.type}
                         variant={activeTab === tab.type ? "default" : "outline"}
-                        className={`flex items-center ${
-                          activeTab === tab.type
+                        className={`flex items-center ${activeTab === tab.type
                             ? "bg-purple-600 hover:bg-purple-700"
                             : "hover:bg-zinc-800"
-                        }`}
+                          }`}
                         onClick={() => setActiveTab(tab.type)}
                       >
                         {tab.icon}
