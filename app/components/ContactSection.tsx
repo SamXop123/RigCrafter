@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Loader2, Send, CheckCircle, Mail, MessageSquare, User } from "lucide-react"
+import { toast } from "react-toastify"
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -38,16 +39,35 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulating an API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    console.log("Form submitted:", formData)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json().catch(() => null)
+
+      if (!response.ok) {
+        throw new Error(result?.error || "Failed to send your message.")
+      }
+
+      toast.success("Message sent to Discord!")
+      setIsSubmitted(true)
       setFormData({ name: "", email: "", subject: "", message: "" })
-    }, 3000)
+
+      setTimeout(() => {
+        setIsSubmitted(false)
+      }, 3000)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Failed to send your message."
+      toast.error(message)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const containerVariants = {
