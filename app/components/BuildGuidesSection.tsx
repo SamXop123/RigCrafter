@@ -26,7 +26,7 @@ const guides = [
     id: 2,
     title: "How to Use RigCrafter: Step-by-Step Tutorial",
     description: "Master RigCrafter's features to build the perfect PC configuration.",
-    image: "/placeholder.jpg",
+    image: "/guide/rigcrafter-tutorial.png",
     category: "Tutorial",
     readTime: "8 min read",
     difficulty: "Easy",
@@ -34,8 +34,8 @@ const guides = [
     views: "89k",
     type: "Video",
     icon: <Video className="w-4 h-4" />,
-    author: "Sarah Johnson",
-    lastUpdated: "2024-01-20"
+    author: "SamXop123",
+    lastUpdated: "2026-06-24"
   },
   {
     id: 3,
