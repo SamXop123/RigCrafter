@@ -973,6 +973,17 @@ export default function BeginnerPCBuildGuide() {
             </button>
           </div>
         </div>
+
+        <div className="flex justify-between items-center mt-16 pt-8 border-t border-zinc-800">
+          <div />
+          <Link 
+            href="/guides/2" 
+            className="inline-flex items-center text-emerald-400 hover:text-emerald-300 transition-colors"
+          >
+            Next: How to Use RigCrafter
+            <ArrowLeft className="w-4 h-4 ml-2 transform rotate-180" />
+          </Link>
+        </div>
       </div>
     </main>
   )
