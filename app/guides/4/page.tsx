@@ -1108,6 +1108,23 @@ export default function HighEndGamingRig() {
             </button>
           </div>
         </div>
+
+        <div className="flex justify-between items-center mt-16 pt-8 border-t border-zinc-800">
+          <Link 
+            href="/guides/3" 
+            className="inline-flex items-center text-red-400 hover:text-red-300 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Previous: Budget Gaming PC Build Guide
+          </Link>
+          <Link 
+            href="/guides/5" 
+            className="inline-flex items-center text-red-400 hover:text-red-300 transition-colors"
+          >
+            Next: Understanding PC Component Compatibility
+            <ArrowLeft className="w-4 h-4 ml-2 transform rotate-180" />
+          </Link>
+        </div>
       </div>
     </main>
   )
