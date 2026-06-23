@@ -71,7 +71,7 @@ const guides = [
     id: 5,
     title: "Understanding PC Component Compatibility",
     description: "Learn how different components work together and avoid compatibility issues.",
-    image: "/placeholder.jpg",
+    image: "/guide/component-compatibility.png",
     category: "Technical",
     readTime: "10 min read",
     difficulty: "Medium",
@@ -79,8 +79,8 @@ const guides = [
     views: "78k",
     type: "Article",
     icon: <Wrench className="w-4 h-4" />,
-    author: "David Kim",
-    lastUpdated: "2024-01-05"
+    author: "SamXop123",
+    lastUpdated: "2026-06-24"
   },
   {
     id: 6,
