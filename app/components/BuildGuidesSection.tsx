@@ -131,7 +131,7 @@ const guides = [
     id: 9,
     title: "Overclocking for Beginners",
     description: "Safely overclock your CPU and GPU for better performance.",
-    image: "/placeholder.jpg",
+    image: "/guide/overclocking-guide.png",
     category: "Performance",
     readTime: "13 min read",
     difficulty: "Medium",
@@ -139,8 +139,8 @@ const guides = [
     views: "134k",
     type: "Article",
     icon: <Wrench className="w-4 h-4" />,
-    author: "Robert Chen",
-    lastUpdated: "2024-01-14"
+    author: "SamXop123",
+    lastUpdated: "2026-06-26"
   },
   {
     id: 10,
