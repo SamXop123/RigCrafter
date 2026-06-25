@@ -101,7 +101,7 @@ const guides = [
     id: 7,
     title: "Mini-ITX Small Form Factor Builds",
     description: "Build powerful gaming PCs in compact cases with special considerations.",
-    image: "/placeholder.jpg",
+    image: "/guide/mini-itx-sff-guide.png",
     category: "Specialized",
     readTime: "16 min read",
     difficulty: "Advanced",
@@ -109,8 +109,8 @@ const guides = [
     views: "67k",
     type: "Article",
     icon: <BookOpen className="w-4 h-4" />,
-    author: "James Wilson",
-    lastUpdated: "2024-01-12"
+    author: "SamXop123",
+    lastUpdated: "2026-06-25"
   },
   {
     id: 8,
