@@ -116,7 +116,7 @@ const guides = [
     id: 8,
     title: "Water Cooling Setup Guide",
     description: "Learn how to install AIO and custom water cooling for optimal temperatures.",
-    image: "/placeholder.jpg",
+    image: "/guide/water-cooling-guide.png",
     category: "Cooling",
     readTime: "20 min read",
     difficulty: "Advanced",
@@ -124,8 +124,8 @@ const guides = [
     views: "89k",
     type: "Video",
     icon: <Video className="w-4 h-4" />,
-    author: "Maria Garcia",
-    lastUpdated: "2024-01-07"
+    author: "SamXop123",
+    lastUpdated: "2026-06-26"
   },
   {
     id: 9,
