@@ -146,7 +146,7 @@ const guides = [
     id: 10,
     title: "Your First PC Build: A Complete Walkthrough",
     description: "Follow along as we build a complete gaming PC step by step.",
-    image: "/placeholder.jpg",
+    image: "/guide/complete-walkthrough.png",
     category: "Beginner",
     readTime: "25 min read",
     difficulty: "Easy",
@@ -154,8 +154,8 @@ const guides = [
     views: "98k",
     type: "Video",
     icon: <Video className="w-4 h-4" />,
-    author: "Alex Chen",
-    lastUpdated: "2024-01-18"
+    author: "SamXop123",
+    lastUpdated: "2026-06-27"
   },
   {
     id: 11,
