@@ -431,7 +431,7 @@ const guides = [
     id: 29,
     title: "Dual Boot Setup: Windows and Linux",
     description: "Set up a dual boot system with Windows and your favorite Linux distribution.",
-    image: "/placeholder.jpg",
+    image: "/guide/dual-boot-guide.png",
     category: "Software",
     readTime: "21 min read",
     difficulty: "Advanced",
@@ -439,8 +439,8 @@ const guides = [
     views: "45k",
     type: "Article",
     icon: <FileText className="w-4 h-4" />,
-    author: "Sarah Johnson",
-    lastUpdated: "2024-01-16"
+    author: "SamXop123",
+    lastUpdated: "2026-07-01"
   },
   {
     id: 30,
