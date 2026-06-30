@@ -161,7 +161,7 @@ const guides = [
     id: 11,
     title: "Choosing the Right Power Supply",
     description: "Everything you need to know about PSU selection, efficiency ratings, and wattage calculations.",
-    image: "/placeholder.jpg",
+    image: "/guide/psu-guide.png",
     category: "Components",
     readTime: "9 min read",
     difficulty: "Easy",
@@ -169,8 +169,8 @@ const guides = [
     views: "145k",
     type: "Article",
     icon: <BookOpen className="w-4 h-4" />,
-    author: "Sarah Johnson",
-    lastUpdated: "2024-01-22"
+    author: "SamXop123",
+    lastUpdated: "2026-07-01"
   },
   {
     id: 12,
