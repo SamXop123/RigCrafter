@@ -446,7 +446,7 @@ const guides = [
     id: 30,
     title: "Cable Sleeving and Custom Cables",
     description: "Create custom sleeved cables for a professional, clean look.",
-    image: "/placeholder.jpg",
+    image: "/guide/cable-sleeving.png",
     category: "Aesthetics",
     readTime: "19 min read",
     difficulty: "Advanced",
@@ -454,8 +454,8 @@ const guides = [
     views: "38k",
     type: "Video",
     icon: <Video className="w-4 h-4" />,
-    author: "Mike Rodriguez",
-    lastUpdated: "2024-01-11"
+    author: "SamXop123",
+    lastUpdated: "2026-07-01"
   },
   {
     id: 31,
