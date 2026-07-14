@@ -370,6 +370,30 @@ const cpus: Component[] = [
       socket: "sTR5",
       tdp: 350
     }
+  },
+  {
+    id: "cpu-ryzen-7-7700",
+    type: "cpu",
+    name: "AMD Ryzen 7 7700",
+    brand: "AMD",
+    price: 232.19,
+    rating: 4.7,
+    description: "An 8-core, 16-thread AM5 processor offering outstanding gaming speed and workload efficiency at a low 65W TDP.",
+    imageUrl: "https://m.media-amazon.com/images/I/51f2Z-3Fz0L._AC_SX679_.jpg",
+    specs: {
+      Cores: "8",
+      Threads: "16",
+      BaseClock: "3.6 GHz",
+      BoostClock: "5.3 GHz",
+      Cache: "40MB",
+      TDP: "65W",
+      Socket: "AM5"
+    },
+    tags: ["AMD", "Ryzen 7", "AM5", "DDR5", "Gaming", "Efficiency"],
+    compatibility: {
+      socket: "AM5",
+      tdp: 65
+    }
   }
 
 
@@ -636,6 +660,28 @@ const gpus: Component[] = [
       tdp: 230,
       pciSlots: 2
     }
+  },
+  {
+    id: "gpu-msi-ventus-4060ti-16gb",
+    type: "gpu",
+    name: "MSI VENTUS 2X BLACK OC GeForce RTX 4060 Ti 16 GB",
+    brand: "MSI",
+    price: 479.99,
+    rating: 4.6,
+    description: "A compact dual-fan graphics card featuring 16GB of VRAM, ideal for 1080p and 1440p gaming with DLSS 3 support.",
+    imageUrl: "https://m.media-amazon.com/images/I/71YyP+2+JFL._AC_SL1500_.jpg",
+    specs: {
+      Chipset: "NVIDIA GeForce RTX 4060 Ti",
+      VRAM: "16GB GDDR6",
+      "Core Clock": "2310 MHz",
+      "Boost Clock": "2565 MHz",
+      TDP: "165W"
+    },
+    tags: ["MSI", "RTX 4060 Ti", "16GB", "Mid-Range", "Ray Tracing", "DLSS 3"],
+    compatibility: {
+      tdp: 165,
+      pciSlots: 2
+    }
   }
 ]
 
@@ -839,6 +885,26 @@ const ram: Component[] = [
     compatibility: {
       memoryType: "DDR5",
     }
+  },
+  {
+    id: "ram-corsair-vengeance-48gb-5200",
+    type: "ram",
+    name: "Corsair Vengeance 48GB (2x24GB) DDR5-5200",
+    brand: "Corsair",
+    price: 499.99,
+    rating: 4.7,
+    description: "A high-capacity non-binary DDR5 memory kit offering 48GB of capacity for demanding gaming and creative workloads.",
+    imageUrl: "https://m.media-amazon.com/images/I/61XsKRKsGoL._SL1500_.jpg",
+    specs: {
+      Capacity: "48GB (2x24GB)",
+      Speed: "5200MHz",
+      "CAS Latency": "CL38",
+      Type: "DDR5"
+    },
+    tags: ["Corsair", "DDR5", "48GB", "5200MHz", "Gaming", "High-Capacity"],
+    compatibility: {
+      memoryType: "DDR5"
+    }
   }
 ]
 
@@ -943,6 +1009,27 @@ const storage: Component[] = [
       storageInterface: ["SATA"],
     },
   },
+  {
+    id: "storage-teamgroup-mp44l-2tb",
+    type: "storage",
+    name: "TEAMGROUP MP44L 2TB M.2 NVMe SSD",
+    brand: "TEAMGROUP",
+    price: 288.99,
+    rating: 4.7,
+    description: "A reliable PCIe 4.0 NVMe SSD offering fast read/write speeds and generous 2TB storage space for extensive game libraries.",
+    imageUrl: "https://m.media-amazon.com/images/I/61Gj7Mv0uPL._AC_SL1500_.jpg",
+    specs: {
+      Capacity: "2TB",
+      Interface: "PCIe Gen 4.0 x4",
+      "Form Factor": "M.2 2280",
+      "Read Speed": "4800 MB/s",
+      "Write Speed": "4400 MB/s"
+    },
+    tags: ["TEAMGROUP", "2TB", "M.2", "NVMe", "PCIe 4.0", "Gaming"],
+    compatibility: {
+      storageInterface: ["M.2", "PCIe 4.0"]
+    }
+  },
 ]
 
 const motherboards: Component[] = [
@@ -995,7 +1082,7 @@ const motherboards: Component[] = [
     type: "motherboard",
     name: "Gigabyte B650 AORUS Elite AX",
     brand: "Gigabyte",
-    price: 229.99,
+    price: 149.99,
     rating: 4.6,
     description: "A fantastic mid-range B650 board for AMD CPUs, providing a strong feature set including Wi-Fi 6E without the premium price tag.",
     imageUrl: "https://m.media-amazon.com/images/I/618BzIHxbsL._SL1000_.jpg",
@@ -1223,6 +1310,26 @@ const powerSupplies: Component[] = [
       wattage: 550,
     },
   },
+  {
+    id: "psu-corsair-rm850x-2021",
+    type: "powerSupply",
+    name: "Corsair RM850x (2021) 850W 80+ Gold",
+    brand: "Corsair",
+    price: 129.99,
+    rating: 4.8,
+    description: "A legendary fully modular 850W PSU with Gold-rated efficiency and magnetic levitation cooling fan, delivering rock-solid power to gaming systems.",
+    imageUrl: "https://m.media-amazon.com/images/I/718t82mBofL._AC_SL1500_.jpg",
+    specs: {
+      Wattage: "850W",
+      Efficiency: "80+ Gold",
+      Modularity: "Fully Modular",
+      "Fan Size": "135mm"
+    },
+    tags: ["Corsair", "850W", "80+ Gold", "Modular", "RM850x", "Gaming"],
+    compatibility: {
+      wattage: 850
+    }
+  },
 ]
 
 const cases: Component[] = [
@@ -1326,6 +1433,26 @@ const cases: Component[] = [
       formFactor: "Mini-ITX",
     },
   },
+  {
+    id: "case-phanteks-eclipse-p360a",
+    type: "case",
+    name: "Phanteks Eclipse P360A ATX Mid Tower",
+    brand: "Phanteks",
+    price: 79.99,
+    rating: 4.7,
+    description: "An elegant ATX mid-tower case featuring a high-airflow metal mesh front panel, tempered glass side, and dual D-RGB fans.",
+    imageUrl: "https://static.bhphoto.com/images/images500x500/1628172900_1658428.jpg",
+    specs: {
+      Type: "Mid Tower",
+      "Mobo Support": "ATX, Micro-ATX, Mini-ITX",
+      "Max Radiator": "280mm",
+      Color: "Black"
+    },
+    tags: ["Phanteks", "Mid Tower", "Mesh", "D-RGB", "Airflow"],
+    compatibility: {
+      formFactor: "ATX"
+    }
+  },
 ]
 
 const cooling: Component[] = [
@@ -1428,6 +1555,26 @@ const cooling: Component[] = [
     compatibility: {
       tdp: 250,
     },
+  },
+  {
+    id: "cooling-thermalright-peerless-assassin-120se",
+    type: "cooling",
+    name: "Thermalright Peerless Assassin 120 SE",
+    brand: "Thermalright",
+    price: 34.90,
+    rating: 4.8,
+    description: "A dual-tower CPU cooler with six heat pipes and dual 120mm PWM fans, delivering flagship thermal performance at an unbeatable price.",
+    imageUrl: "https://m.media-amazon.com/images/I/71XmX9QpZAL._AC_SL1500_.jpg",
+    specs: {
+      Type: "Air CPU Cooler",
+      "Fan Size": "2x 120mm",
+      "Noise Level": "25.6 dBA",
+      Airflow: "66.17 CFM"
+    },
+    tags: ["Thermalright", "Air Cooler", "Dual Tower", "Budget", "Gaming"],
+    compatibility: {
+      tdp: 260
+    }
   },
 
 ]
