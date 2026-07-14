@@ -669,7 +669,7 @@ const gpus: Component[] = [
     price: 479.99,
     rating: 4.6,
     description: "A compact dual-fan graphics card featuring 16GB of VRAM, ideal for 1080p and 1440p gaming with DLSS 3 support.",
-    imageUrl: "https://m.media-amazon.com/images/I/71YyP+2+JFL._AC_SL1500_.jpg",
+    imageUrl: "/components/msi-rtx-4060ti-16gb.png",
     specs: {
       Chipset: "NVIDIA GeForce RTX 4060 Ti",
       VRAM: "16GB GDDR6",
