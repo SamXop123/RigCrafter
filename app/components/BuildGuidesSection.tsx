@@ -176,7 +176,7 @@ const guides = [
     id: 12,
     title: "Ultra Budget PC Build ($400-600)",
     description: "Build a functional gaming PC on an extremely tight budget.",
-    image: "/placeholder.jpg",
+    image: "/guide/ultra-budget-build.png",
     category: "Budget Builds",
     readTime: "11 min read",
     difficulty: "Medium",
@@ -184,8 +184,8 @@ const guides = [
     views: "187k",
     type: "Article",
     icon: <FileText className="w-4 h-4" />,
-    author: "Mike Rodriguez",
-    lastUpdated: "2024-01-19"
+    author: "SamXop123",
+    lastUpdated: "2026-07-16"
   },
   {
     id: 13,

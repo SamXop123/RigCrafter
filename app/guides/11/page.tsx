@@ -305,9 +305,9 @@ export default function ChoosingPowerSupplyGuide() {
             <p className="text-zinc-300 mb-4">
               Use RigCrafter's power supply tab to filter modular configurations and complete your desktop design!
             </p>
-            <div className="bg-indigo-600/10 border border-indigo-500/30 rounded-lg p-4">
+            <div className="bg-indigo-600/15 border border-indigo-500/30 rounded-lg p-4">
               <p className="text-sm text-indigo-300">
-                <strong>Next Step:</strong> Open the <Link href="/#builder" className="font-semibold underline hover:text-indigo-400">Rig Builder</Link> and select a modular power supply to complete your build!
+                <strong>Next Step:</strong> Read the <Link href="/guides/12" className="font-semibold underline hover:text-indigo-400">Ultra Budget PC Build ($400-600) Guide</Link> to learn how to build on a tight budget!
               </p>
             </div>
           </div>
