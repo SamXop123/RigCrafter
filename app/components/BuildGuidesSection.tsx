@@ -191,16 +191,16 @@ const guides = [
     id: 13,
     title: "RGB Lighting Setup and Control",
     description: "Create stunning RGB effects and sync all your components.",
-    image: "/placeholder.jpg",
+    image: "/guide/rgb-lighting-guide.png",
     category: "Aesthetics",
     readTime: "12 min read",
     difficulty: "Easy",
     rating: 4.5,
     views: "76k",
-    type: "Video",
-    icon: <Video className="w-4 h-4" />,
-    author: "Emma Davis",
-    lastUpdated: "2024-01-16"
+    type: "Article",
+    icon: <FileText className="w-4 h-4" />,
+    author: "SamXop123",
+    lastUpdated: "2026-07-18"
   },
   {
     id: 14,
