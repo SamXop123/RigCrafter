@@ -206,7 +206,7 @@ const guides = [
     id: 14,
     title: "Workstation Build for Content Creation",
     description: "Build a powerful workstation for video editing, 3D rendering, and content creation.",
-    image: "/placeholder.jpg",
+    image: "/guide/workstation-build.png",
     category: "Workstation",
     readTime: "22 min read",
     difficulty: "Advanced",
@@ -214,8 +214,8 @@ const guides = [
     views: "112k",
     type: "Article",
     icon: <BookOpen className="w-4 h-4" />,
-    author: "David Kim",
-    lastUpdated: "2024-01-11"
+    author: "SamXop123",
+    lastUpdated: "2026-07-21"
   },
   {
     id: 15,
